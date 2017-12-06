@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<title>Flight Offline Voucher</title>
+<meta name="description" content="tayyarah" />
+<meta name="author" content="see humans.txt" />
+
+
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style type="text/css">
+body {
+	margin: 0;
+	padding: 0;
+	min-width: 100%;
+	background-color: #ffffff;
+}
+
+table {
+	border-spacing: 0;
+	font-family: sans-serif;
+	color: #333333;
+}
+
+td {
+	padding: 0;
+	font-size: 13px;
+	text-align: center;
+}
+
+img {
+	border: 0;
+}
+
+.wrapper {
+	width: 100%;
+	table-layout: fixed;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+.webkit {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.outer {
+	margin: 10px auto;
+	width: 100%;
+	max-width: 600px;
+	background-color: #f9f9f9;
+	border: 1px solid #ddd;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.inner {
+	width: 40%
+}
+
+.inner img {
+	padding: 10px;
+	width: 80%;
+}
+
+.in-no-date {
+	width: 60%
+}
+
+.main-head {
+	background-color: #000;
+}
+
+.invoicefrom-address {
+	width: 60%;
+}
+
+.invoicefrom-address h4 {
+	margin: 4px;
+}
+
+.invoice-no p {
+	font-size: 13px;
+	font-family: Georgia, Times, serif;
+	line-height: 0px;
+	color: #fff;
+}
+
+.invoice-no .h2no p {
+	font-size: 18px;
+}
+
+.to-from {
+	background-color: #f1f1f1;
+}
+
+.to-from h2 {
+	background-color: #ccc;
+	padding: 2px;
+	margin: 3px;
+}
+
+.to-from h4 {
+	font-size: 14px;
+	margin: 3px;
+	text-align: left;
+}
+
+.to-from p {
+	font-size: 13px;
+	text-align: left;
+}
+
+.from {
+	padding-right: 5px;
+}
+
+.heading {
+	padding: 10px;
+}
+
+.invoice-no {
+	width: 80%;
+}
+
+.gst-table table tr td {
+	border-bottom: 1px solid #ccc;
+}
+
+.gst-table table tr th.hed {
+	background-color: #D9EDF7;
+	text-align: center;
+	padding-left: 0px;
+	border-right: 1px solid #fff;
+	font-size: 13px;
+}
+
+.info th {
+	font-size: 12px;
+}
+
+.gst-table-summ {
+	padding: 10px;
+	width: 65%;
+}
+
+.total-am {
+	width: 33%;
+}
+
+.gst-summary {
+	vertical-align: top;
+}
+
+.gst-totals td {
+	font-size: 13px;
+}
+
+.gst-totals td p {
+	margin: 0px 0px 5px;
+}
+
+.gst-totals td h4 {
+	text-align: right;
+}
+
+.gst-tot h4 {
+	margin: 0px;
+}
+
+.col-3 {
+	margin-bottom: 10px;
+}
+
+/*.payment, .details{
+        padding: 10px;
+}*/
+.payment>h4, .details>h4 {
+	text-align: left;
+}
+
+.payment>h4 span, .details>h4 span {
+	border-bottom: 1px solid #555;
+	padding-bottom: 5px;
+}
+
+.please-check {
+	text-align: left;
+	padding: 0px 10px;
+}
+
+.please-check h4 {
+	margin: 3px 0px;
+}
+
+.signature {
+	padding: 0px 10px;
+}
+
+/*Media Queries*/
+@media screen and (max-width: 400px) {
+	.inner, .in-no-date, .from, .to {
+		width: 100% !important;
+		display: block !important;
+	}
+	.invoicefrom-address {
+		width: 100% !important;
+		display: block !important;
+	}
+	.invoice-no {
+		width: 100% !important;
+		display: block !important;
+	}
+	.to-from h2 {
+		font-size: 16px !important;
+	}
+	.to-from h4 {
+		font-size: 12px !important;
+	}
+	.to-from p {
+		font-size: 12px !important;
+	}
+	.gst-table table tr th.hed h4 {
+		font-size: 12px !important;
+	}
+	.total-am, .gst-summary {
+		display: block !important;
+		width: 100% !important;
+	}
+	.info th {
+		font-size: 11px !important;
+	}
+	.please-check h4 {
+		font-size: 12px !important;
+	}
+	.please-check table td {
+		display: block !important;
+		width: 100% !important;
+	}
+}
+</style>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0"
+	yahoo="fix"
+	style="font-family: Georgia, Times, serif; margin: 0; padding: 0; min-width: 100%; background-color: #ffffff;">
+	<div th:object="${flightorder}">
+		
+	</div>
+
+	<div th:class="wrapper"
+		style="width: 100%; table-layout: fixed; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;">
+		<div th:class="webkit" style="max-width: 100%; margin: 0 auto;">
+			<!--[if (gte mso 9)|(IE)]>
+            <table width="600" align="center">
+            <tr>
+            <td>
+            <![endif]-->
+
+
+			<table th:class="outer" align="center"
+				style="border-spacing: 0; font-family: sans-serif; color: #333333; margin: 10px auto; width: 98%; max-width: 100%; background-color: #fff;">
+				<tr th:class="main-head" style="background-color: #fff;">
+					<td style="padding: 0; font-size: 13px; text-align: center;" colspan="10">
+						<table width="100%"
+							style="border-spacing: 0; font-family: sans-serif; color: #333333;">
+							<tr>
+								<td th:class="inner"
+									style="padding: 0; font-size: 13px; text-align: left; width: 40%;">
+									<img th:object="${user}" th:src="${user.logoDisplayable}"
+									width="150" height="100" />
+								</td>
+								<td th:class="in-no-date" align="right"
+									style="padding: 0; font-size: 13px; text-align: left; width: 60%;">
+
+									<address class="text-left"
+										style="font-size: 13px; font-style: normal; font-family: Arial, Times, serif; line-height: 18px; color: #000;">
+										<b><span th:text="${company.Companyname}"></span></b> <br />
+										Address : <span th:text="${company.Address}"></span><br />
+										City : <span th:text="${company.City}"></span><br /> Country
+										: <span th:text="${company.Countryname}"></span><br /> Phone
+										: <span th:text="${company.Phone}"></span><br /> Email : <span
+											th:text="${company.Email}"></span><br />
+									</address>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+
+
+				<tr th:class="col-3" >
+					<td th:class="payment" colspan="10"
+						>
+						<br/>
+						<br/>
+						<table width="100%"
+							style="border-spacing: 0; font-family: sans-serif; color: #333333;">
+							<thead>
+								<tr th:class="info">
+									<th style="font-size: 12px; border: 1px solid #ccc; border-left: 0px; text-align: left; border-right: 0px; background-color: #d56100; color: #fff;"
+										colspan="2"><p style="margin: 5px 0px;">
+											<strong><span
+												style="font-size: 13px; font-family: Arial,Times, sans-serif">Flight Quotation List
+													</span></strong>
+
+										</p></th>
+								</tr>
+							</thead>
+						</table>
+					
+					</td>
+				</tr>
+				
+				<tr th:class="col-3" style="margin-bottom: 10px;">
+				
+				<!-- constant feilds with options -->
+					<td th:class="payment"
+						style="font-size: 13px; border: 1px solid #000;border-right: 0px;">
+						<table width="100%"
+							style="border-spacing: 0; font-family: Arial,Times, sans-serif; color: #333333;">
+							<tbody>
+							<tr th:class="info">
+							<td>
+						<table width="100%"
+							style="border-spacing: 0; font-family: Arial,Times,sans-serif; color: #333333;">
+							<tbody>
+								<tr th:class="info" th:each="columndisplayables,rowCount  : ${displayables}">								
+                                       		<td th:each="columndisplayable,columnCount  : ${columndisplayables}" style="padding: 2px 2px;font-size: 12px;text-align: left;background-color: #fff;border-bottom: 1px solid #000;border-right: 1px solid #000;border-right: 1px solid #000;">
+	                                          <span  th:text="${columndisplayable}" th:style="${(rowCount.count==0) ? 'border-style: solid;border-color: red;font-weight: bold;' : ((columnCount.count==0) ? 'border-style: solid;border-color: red;' :'')}" ></span>
+	                                          
+												                                     
+	                                          </td>	                                        
+	                             </tr>	                            
+							</tbody>
+						</table>
+						</td>
+						</tr>
+						</tbody>
+						</table>
+						
+						
+					</td>
+				</tr>
+			</table>
+			
+			<table width="100%" style="border-spacing: 0; font-family: Arial,Times,sans-serif; color: #333333;">
+							<tbody>
+							<tr>
+								<td>Note: Service charges applicable</td>
+							</tr>
+								                            
+							</tbody>
+						</table>
+					<br/>
+					<br/>
+			<!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+		</div>
+	</div>
+</body>
+<!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+</html>

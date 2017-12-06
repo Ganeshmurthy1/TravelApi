@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<title>Hotel Email Vocher</title>
+<meta name="description" content="Intellicomm" />
+<meta name="author" content="see humans.txt"/>
+
+
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+ <style type="text/css">
+
+ /* Some resets and issue fixes */
+        #outlook a { padding:0; }
+        body{ width:100% !important; -webkit-text; size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0; }     
+        .ReadMsgBody { width: 100%; }
+        .ExternalClass {width:100%;} 
+        .backgroundTable {margin:0 auto; padding:0; width:100%;!important;} 
+        table td {border-collapse: collapse;}
+        .ExternalClass * {line-height: 115%;}           
+        /* End reset */
+
+     body {
+            margin: 0;
+                padding: 0;
+                min-width: 100%;
+                background-color: #ffffff;
+            }
+            table {
+                border-spacing: 0;
+                font-family: sans-serif;
+                color: #333333;
+            }
+            td {
+                padding: 0;
+                font-size: 13px;
+                    text-align: center;
+            }
+            img {
+                border: 0;
+            }
+            .wrapper {
+                width: 100%;
+                table-layout: fixed;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+            }
+            .webkit {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            .outer {
+                margin: 10px auto;
+                    width: 100%;
+                    max-width: 600px;                    
+                    background-color: #f9f9f9;    
+                    border: 1px solid #ddd;
+                }
+           
+       
+    </style>
+
+
+       </head>
+    <body  leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" yahoo="fix" style="font-family: Georgia, Times, serif; margin: 0;padding: 0;min-width: 100%;background-color: #ffffff;">
+        
+        
+ 
+                 <div th:th:class="wrapper" style="width: 100%;table-layout: fixed;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;">
+        <div th:class="webkit" style="max-width: 600px;margin: 0 auto;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table width="600" align="center">
+            <tr>
+            <td>
+            <![endif]-->
+            <table th:class="outer" style="border-spacing: 0;font-family: sans-serif;color: #333333;margin: 10px auto;width: 100%;max-width: 600px;background-color: #f9f9f9;border: 2px solid #eee;">
+                <tr th:class="main-head" style="background-color: #fff;">
+                      <td style="padding: 0;font-size: 13px;text-align: center;">
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;" >
+                            <tr>
+                                <td th:class="inner" style="padding: 0;font-size: 13px;text-align: center;width: 40%;">
+                                 <!--  <img src="http://dev.tayyarah.com/images/t-n.png" style="border: 0;padding: 10px;width: 80%;"/> -->
+                                 <img th:object="${user}"  th:src="${user.logoDisplayable}" width="150" height="100"  /> 
+                                 <!--  <img src="http://dev.tayyarah.com/images/t-n.png" style="border: 0;padding: 10px;width: 80%;" th:attr="src=@{${companylogo}}"/> -->
+                                  
+                                </td>
+                                <td th:class="in-no-date" align="right" style="padding: 0;font-size: 13px;text-align: center;width: 60%;">
+                                       <table width="100%" th:class="invoice-no" style="border-spacing: 0;font-family: sans-serif;color: #333333;width: 100%;">
+                                        <tbody>
+                                          <tr th:class="h2no" >
+                                            <td style="padding: 0;font-size: 13px;text-align: right; padding-right: 10px;"><!-- <p style="font-size: 18px;font-family: Georgia, Times, serif;line-height: 0px;color: #fff;">E-Ticket No:</p> -->
+                                            <address class="text-right" style="font-size: 13px;font-style: normal;font-family: Georgia, Times, serif;line-height: 18px;color: #000;">            
+                                                  <b>Client Name:<span th:text="${company.Companyname}"></span></b>
+                                                  <br />
+                                                  Address : <span th:text="${company.Address}"></span><br />
+                                                  City : <span th:text="${company.City}"></span><br />
+                                                  Country : <span th:text="${company.Countryname}"></span><br />
+                                                  Phone : <span th:text="${company.Phone}"></span><br />
+                                                  Email : <span th:text="${company.Email}"></span><br />
+                                            </address>
+                                            </td>                                           
+                                          </tr>                                         
+                                      </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table> 
+                        
+                                              
+                    </td>
+                </tr>
+
+            <tr style="border-top: 1px solid #ddd;background-color: #fff;">
+                <td style="padding: 0;,margin: 0px;font-size: 9px;border-top: 1px solid #ddd;background-color: #fff;">
+                    Please carry a print out of this page along with a valid identity proof to be presented at the hotel desk at the time of check in
+                </td>
+            </tr>
+
+            <tr style="background-color: #fff;">
+                <td style="padding: 0;margin: 0;font-size: 12px;border-top: 1px solid #ddd ">
+                <div style="background: #eee;color: #fff;width: 100%;">
+                    <h2 style="padding: 3px 0px;margin: 0px;border-bottom: 1px solid #ddd;background: #eee;color: #000; font-size: 13px;">Guest Details</h2>
+                    </div>
+                    <table  width="100%" style="border-spacing: 0;font-family: Georgia, Times, serif; color: #333333;">
+            <thead >
+        	<tr style="background-color: #fff;">
+          	<th style="border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;font-size: 12px;font-family: Georgia, Times, serif;"><b>S.No</b></th>
+          	<th style="border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;font-size: 12px;font-family: Georgia, Times, serif;"><b>Title</b></th>
+          	<th style="border-bottom: 1px solid #ddd;font-size: 12px;font-family: Georgia, Times, serif;"><b>Name</b></th>
+          
+        </tr>
+      </thead>
+      <tbody>
+       <tr >
+       <td>
+       </td>
+       </tr>
+     
+        <tr th:each="guestDetails,iterationStatus  : ${session.guestList}" style="background-color: #fff;">
+        
+         <td style="border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;font-family: Georgia, Times, serif;padding-bottom: 3px;padding-top: 3px;"><span th:text="${iterationStatus.count}">1</span></td>
+          <td style="border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;font-family: Georgia, Times, serif;padding-bottom: 3px;padding-top: 3px;"><span th:text="${guestDetails.title}"></span></td>
+          <td style="border-bottom: 1px solid #ddd;font-family: Georgia, Times, serif;padding-bottom: 3px;padding-top: 3px;"><span  th:text="${guestDetails.firstName} +' '+ ${guestDetails.lastName}" ></span></td>
+                                       
+        </tr>
+      
+      </tbody>
+    </table>
+                </td>
+</tr>
+
+<tr style="background-color: #fff;">
+    <td style="padding: 0;margin: 0;font-size: 12px;border-top: 1px solid #ddd; ">
+    
+    <div style="background: #eee;color: #000;width: 100%;">
+        <h2 style="padding: 3px 0px;margin: 0px;border-bottom: 1px solid #ddd;background: #eee;color: #000; font-size: 13px; ">Booking Details</h2>
+</div>
+              <table width="100%" style="border-spacing: 0;font-family: Georgia, Times, serif; color: #333333;">
+            <thead >
+       
+      </thead>
+      <tbody>
+        <tr style="border-right: 1px solid #ccc;">
+          <td style="width: 50%; padding: 0px;height:180px;border-right: 1px solid #ccc;">
+            <table width="100%" style="font-family: Georgia, Times, serif; color: #333333;">
+               <tbody>
+                <tr style="background-color: #fff;">
+                  <td  style="height:126px;text-align: left;padding-left: 10px;"><h4><b><b>Hotel Name:</b>  <span style="font-size: 11px" th:text="${hotelorder.hotelOrderHotelData.name}"></span></b></h4>
+                    <br/><b>Address:</b><span style="font-size: 11px" th:text="${hotelorder.hotelOrderHotelData.address1}">
+                                       </span>
+                   	<br/><b>Contact No:</b><span style="font-size: 11px" th:text="${hotelorder.hotelOrderHotelData.telephone}"></span>
+
+                  </td>
+                 
+                </tr>
+                  <tr style="background-color: #fff;">
+                  <td style="border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;font-size: 12px;"><b>Rooms, &amp; Nights</b>
+                   
+                  </td>
+                 
+                </tr>
+                  <tr style="background-color: #fff;">
+                  <td style="background-color: #fff;padding-bottom: 1px;padding-top: 3px;">
+                  
+                 <span style="font-size:10.5pt;font-family: Arial,sans-serif"  th:text="${hotelorder.noOfRooms}"></span>
+    									<span  style="font-size:10.5pt;font-family: Arial,sans-serif">Room(s)</span>
+    									 <span style="font-size:10.5pt;font-family: Arial,sans-serif"  th:text="${session.numberOfNights}"></span>
+    									<span  style="font-size:10.5pt;font-family: Arial,sans-serif">Night(s)</span>
+                   
+                  </td>
+                 
+                </tr>
+
+
+               </tbody>
+            </table>
+           </td>
+
+
+            <td style="width: 50%; padding: 0px;height:180px;margin:0px;" class="checkin" >
+            <table width="100%" style="border-spacing: 0;font-family: Georgia, Times, serif; color: #333333;">
+               <tbody>
+                <tr >
+                  <td style="font-family: Georgia, Times, serif; font-size: 11px;text-align: right;">                    
+                    <p style="font-family: Georgia, Times, serif; font-size: 11px;margin: 0px;padding:0px 5px 3px 0px;text-align: right"><b>Check IN:</b><span style="    color: #D56100;" th:text="${#dates.format(hotelorder.checkInDate, 'dd-MMM-yyyy')}">Not available  </span></p>
+                    <p style="font-family: Georgia, Times, serif; font-size: 11px;margin: 0px;padding:0px 5px 3px 0px;text-align: right"><b>Check Out:</b><span style="    color: #D56100;"  th:text="${#dates.format(hotelorder.checkOutDate, 'dd-MMM-yyyy')}">Not available  </span></p>
+                  </td>
+                </tr> 
+                <tr style="background-color: #fff;">
+                  <td style="border-top: 1px solid #ccc;padding: 0px;height: 90px;text-align: right;">
+                  
+                  <div>
+                  
+                  </div>
+
+<p style="font-family: Georgia, Times, serif; font-size: 11px;margin: 0px;padding:0px 5px 3px 0px;text-align: right;"><b>Hotel Confirmation No:</b><span style="color: #D56100;" th:text="${hotelorder.confirmationNo}"> Not available</span></p>
+ <p style="font-family: Georgia, Times, serif; font-size: 11px;margin: 0px;padding:0px 5px 3px 0px;text-align: right"><b>Booking Ref No: </b><span style="color: #D56100;" th:text="${hotelorder.orderReference}">Not available</span></p>
+ <p style="font-family: Georgia, Times, serif; font-size: 11px;margin: 0px;padding:0px 5px 3px 0px;text-align: right"><b>Room Type: </b>
+ 
+ <span th:each="roomDetails,iterationStatus  : ${session.roomDeatailsList}" style="background-color: #fff;">
+  <span style="color: #D56100;" th:if="${session.combinationType}  == 'OpenCombination'" th:text="${iterationStatus.count + ' . '+ roomDetails.name}">Not available</span>
+ <span style="color: #D56100;" th:if="${session.combinationType}  == 'FixedCombination'" th:text="${roomDetails.name}">Not available</span>
+ </span>
+  </p>  
+  <p style="font-family: Georgia, Times, serif; font-size: 11px;margin: 0px;padding:0px 5px 3px 0px;text-align: right"><b>Inclusions: </b>
+  <span th:each="roomDetails,iterationStatus  : ${session.roomDeatailsList}" style="background-color: #fff;">
+  <span style="color: #D56100;" th:if="${session.combinationType}  == 'OpenCombination'" th:text="${iterationStatus.count + ' . '+ roomDetails.inclusions}">Not available</span>
+ <span style="color: #D56100;" th:if="${session.combinationType}  == 'FixedCombination'" th:text="${roomDetails.inclusions}">Not available</span>
+ </span> </p>
+                  
+                    
+                  </td>
+                 
+                </tr>
+                
+<!--                 <tr >
+                  <td style="border: 1px solid #ccc;font-family: Georgia, Times, serif; font-size: 12px;margin: 0px;padding:7px 5px 7px 0px;text-align: right;background-color: #D6F2FF;">
+
+                    <b>Booking Ref No:</b><span style="color: #D56100;" th:text="${hotelorder.invoiceNo}"> Not available</span>
+                     </td>
+                     </tr>
+                     <tr >
+                  <td style="border: 1px solid #ccc;font-family: Georgia, Times, serif; font-size: 12px;margin: 0px;padding:7px 5px 7px 0px;text-align: right;background-color: #D6F2FF;">
+                     
+ <b>Hotel Ref No: </b><span style="color: #D56100;" th:text="${hotelorder.orderReference}">Not available</span>
+ </td>
+                     </tr>
+                     <tr >
+                  <td style="border: 1px solid #ccc;font-family: Georgia, Times, serif; font-size: 12px;margin: 0px;padding:7px 5px 7px 0px;text-align: right;background-color: #D6F2FF;">
+   <div style="background-color: #D6F2FF;width: 100%; border-bottom-color: Black;
+border-bottom-width : 1px;
+border-bottom-style : solid;">    
+<hr></hr>           
+ <b>Room Type: </b>
+
+ 
+ <span th:each="roomDetails,iterationStatus  : ${session.roomDeatailsList}" style="background-color: RED;width: 100%;">
+ <span style="color: #D56100;" th:text="${iterationStatus.count + ' . '+ roomDetails.mealType}">Not available</span>
+ </span>
+ </div>   
+ </td>
+                     </tr> -->
+                  
+                 
+                
+                 <tr style="background-color: #fff;">
+                  <td style="border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;padding:0px;"><b>Guests</b>
+                   
+                  </td>
+                 
+                </tr>
+                  <tr style="background-color: #fff;padding:5px 5px 3px 0px;text-align: right">
+                  <td style=" padding: 1px;padding-top: 3px;" th:text="${hotelorder.totalGuest + ' Guests'}">Not available
+                   
+                  </td>
+                 
+                </tr>
+               </tbody>
+            </table>
+            
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+    </td>
+</tr>
+
+<tr style="background-color: #fff;">
+    <td style="padding: 0;margin: 0;font-size: 12px;border-top: 1px solid #ddd ">
+    <div style="background: #eee;color: #000;width: 100%;">
+        <h2 style="padding: 3px 0px;margin: 0px;border-bottom: 1px solid #ddd;background: #eee;color: #000;font-size: 13px;">Pricing Details</h2>
+        </div>
+
+         <table width="100%" style="border-spacing: 0;font-family: Georgia, Times, serif; color: #333333;">
+      <tbody>
+        <tr>
+          <td style="padding: 0px;">
+            <table width="100%" style="border-spacing: 0;font-family: Georgia, Times, serif; color: #333333;text-align: right;">
+              <tr style="background-color: #fff;padding:5px 5px 3px 0px;text-align: right">
+                <td  style="font-family: Georgia, Times, serif; font-size: 12px;margin: 0px;padding:0px 5px 3px 0px;text-align: right;border-bottom: 1px solid #ccc;padding-bottom: 3px;padding-top: 3px;"><b>Basic Price  :</b><span  th:text="${session.basefare} +' '+ ${hotelorder.bookedCurrency}"> No info</span></td>                
+              </tr>
+              <tr>
+                <td style="font-family: Georgia, Times, serif; font-size: 12px;margin: 0px;padding:0px 5px 3px 0px;text-align: right;border-bottom: 1px solid #ccc;padding-bottom: 3px;padding-top: 3px;"><b>Taxes &amp; Service Charges :</b><span th:text="${hotelorder.taxes} +' '+ ${hotelorder.bookedCurrency}"> No info</span></td>
+                                             </tr>
+              <tr>
+                <td style="font-family: Georgia, Times, serif; font-size: 12px;margin: 0px;padding:0px 5px 3px 0px;text-align: right;border-bottom: 1px solid #ccc;padding-bottom: 3px;padding-top: 3px;"><b>Total Room Tariff :</b><span th:text="${hotelorder.finalPrice} +' '+ ${hotelorder.bookedCurrency}"> No info</span></td>                
+              </tr>
+              <!--  <tr>
+                <td style="font-family: Georgia, Times, serif; font-size: 12px;margin: 0px;padding:0px 5px 3px 0px;text-align: right;padding-bottom: 3px;padding-top: 3px;"><b>Total Price (Rs) :</b><span>74,675</span></td>                
+              </tr> -->
+            </table>
+          </td>
+         
+        </tr>
+      </tbody>
+    </table>        
+    </td>
+</tr>
+
+<tr style="background-color: #fff;">
+    <td style="padding: 0;margin: 0;font-size: 12px;border-top: 1px solid #ddd ">
+    <div style="background: #eee;color: #fff;width: 100%;">
+        <h2 style="padding: 3px 0px;margin: 0px;border-bottom: 1px solid #ddd;background: #eee;color: #000;font-size: 13px; ">Cancelation Policy</h2>
+        </div>
+
+              <table width="100%" style="border-spacing: 0;font-family: Georgia, Times, serif; color: #333333;">
+              <tr>
+              <td>
+             <!--   <ul> -->
+             
+              <span th:each="roomDetails,iterationStatus  : ${session.roomDeatailsList}" style="background-color: #fff;">
+ 				<!-- <p><span style="color: #D56100;" th:text="${' &nbsp; Room '+iterationStatus.count + ' . '+ roomDetails.name +' :-'}">Not available</span></p>
+ 				 -->
+ 				 <p><span style="color: #D56100;" th:if="${session.combinationType}  == 'OpenCombination'" th:text="${' &nbsp; Room '+iterationStatus.count + ' :-'}">Not available</span></p>
+ 				 
+ 				 <span th:each="cancelpolicy,iterationStatusCancellation  : ${roomDetails.hotelOrderCancellationPolicies}" >
+ 				 
+ 				 
+                                     	<span th:switch="${cancelpolicy.feeType}">
+ 											<p th:case="'Amount'"> <span  th:text="${cancelpolicy.feeAmountRoundOff2Dec+' '+cancelpolicy.currency+' will be charged, if cancelled between  '+ #dates.format(cancelpolicy.fromDate, 'dd-MMM-yyyy')  +' and '+#dates.format(cancelpolicy.endDate, 'dd-MMM-yyyy')+'. &nbsp;'}" >Not available</span></p>
+  											<p th:case="'Percentage'"> <span  th:text="${cancelpolicy.feeAmountRoundOff2Dec+' % of the total amount will be charged, if cancelled between  '+ #dates.format(cancelpolicy.fromDate, 'dd-MMM-yyyy') +' and '+#dates.format(cancelpolicy.endDate, 'dd-MMM-yyyy')+'. &nbsp;'}" >Not available</span></p>
+  											<p th:case="'Nights'"> <span  th:text="${cancelpolicy.feeAmountRoundOff+' nights amount will be charged, cancelled between  '+ #dates.format(cancelpolicy.fromDate, 'dd-MMM-yyyy') +' and '+#dates.format(cancelpolicy.endDate, 'dd-MMM-yyyy')}+'. &nbsp;'" >Not available</span></p>
+  										</span> 
+  										
+  									<!-- 	<span th:if="${roomDetails.hotelOrderCancellationPolicies[ iterationStatusCancellation +1 ] != null}">, &nbsp;</span>
+ 				 						<span th:if="${roomDetails.hotelOrderCancellationPolicies[ iterationStatusCancellation +1 ] == null}">. &nbsp; &nbsp;</span>
+ 				 -->
+  										<!-- <span th:if="${#((roomDetails.hotelOrderCancellationPolicies.length -1) > iterationStatusCancellation)}">, &nbsp;</span>
+ 				 						<span th:if="${#((roomDetails.hotelOrderCancellationPolicies.length -1) = iterationStatusCancellation)}">. &nbsp; &nbsp;</span>
+ 				 -->
+  										
+  										
+  				</span>
+  				
+  				
+  			<!-- 	<span th:if="${session.roomDeatailsList[ iterationStatus +1 ] != null}">, &nbsp;</span>
+ 				<span th:if="${session.roomDeatailsList[ iterationStatus +1 ] == null}">. &nbsp; &nbsp;</span>
+ 			 -->	
+  				<!-- <span th:if="${#((session.roomDeatailsList.length -1) > iterationStatus)}">, &nbsp;</span>
+ 				<span th:if="${#((session.roomDeatailsList.length -1) = iterationStatus)}">. &nbsp; &nbsp;</span>
+ 				 -->
+  		
+ 				
+ 				
+ 				
+ 				</span>
+                                    
+                                     
+ 										
+                                    <!--  </li>
+                                     </ul> -->
+              </td>
+              </tr>
+
+              </table>
+    </td>
+</tr>          
+
+    <tr style="background-color: #fff;">
+    <td style="padding: 0;margin: 0;font-size: 12px;border-top: 1px solid #ddd ">
+    <div style="background: #eee;color: #fff;width: 100%;">
+        <h2 style="padding: 3px 0px;margin: 0px;border-bottom: 1px solid #ddd;background: #eee;color: #000;  font-size: 13px; ">Important Notice</h2>
+        </div>
+
+              <table width="100%" style="border-spacing: 0;font-family: Georgia, Times, serif; color: #333333;">
+              <tr style="background-color: #fff;">
+              <td style="background-color: #fff;text-align: left;font-family: Georgia, Times, serif; padding:5px;margin: 0px; color: red;font-size: 12px;">
+              
+              
+&#042; This is a prepaid booking, for any payment related issues Hotel should contact on 080-42855555.
+
+</td>
+</tr>
+
+<tr style="background-color: #fff;">
+              <td style="background-color: #fff;text-align: left;font-family: Georgia, Times, serif; padding:5px;margin: 0px; color: #555;font-size: 12px;">
+              
+       &#042; The primary guest must be at least 18 years of age to check into this hotel        
+
+
+</td>
+</tr>
+
+<tr style="background-color: #fff;">
+              <td style="background-color: #fff;text-align: left;font-family: Georgia, Times, serif; padding:5px;margin: 0px; color: #555;font-size: 12px;">           
+     &#042; All hotels are pre-paid for room rates. As per the confirmation voucher the pre-payment may also include breakfast, wi fi etc. We mention that clearly in the voucher. All additional charges other than the room charges and inclusions as mentioned in the booking voucher are to be borne and paid separately during check-out. Please make sure that you are aware of all such charges that may come as extras. Some of them can be Mini Bar, Laundry Expenses, Telephone calls, Room Service, Snacks etc. 
+    </td>
+    </tr>  
+    
+    <tr style="background-color: #fff;">
+              <td style="background-color: #fff;text-align: left;font-family: Georgia, Times, serif; padding:5px;margin: 0px; color: #555;font-size: 12px;">               
+      &#042; Guest must be over 18 years of age to check-in to this hotel. 
+     </td>
+     </tr>
+     <tr style="background-color: #fff;">
+              <td style="background-color: #fff;text-align: left;font-family: Georgia, Times, serif; padding:5px;margin: 0px; color: #555;font-size: 12px;">                 
+      &#042; As per Government regulations, it is mandatory for all guests above 18 years of age to carry a valid photo identity card and address proof at the time of check-in. Please note that failure to abide by this can result with the hotel denying a check-in. Hotels normally do not provide any refund for such cancellations.
+     </td>
+     </tr>
+     
+     <tr style="background-color: #fff;">
+              <td style="background-color: #fff;text-align: left;font-family: Georgia, Times, serif; padding:5px;margin: 0px; color: #555;font-size: 12px;">                 
+
+      &#042; The standard check-in and check-out times are 12 noon. Early check-in or late check-out is subject to hotel availability and may also be chargeable by the hotel. Any early check-in or late check-out request must be directed to and reconfirmed with the hotel directly.
+     </td>
+     </tr> 
+     
+     <tr style="background-color: #fff;">
+              <td style="background-color: #fff;text-align: left;font-family: Georgia, Times, serif; padding:5px;margin: 0px; color: #555;font-size: 12px;">                
+
+      &#042; Failure to check-in to the hotel, will attract the full cost of stay or penalty as per the hotel cancellation policy. 
+     
+     </td>
+     </tr>  
+     
+     <tr style="background-color: #fff;">
+              <td style="background-color: #fff;text-align: left;font-family: Georgia, Times, serif; padding:5px;margin: 0px; color: #555;font-size: 12px;">               
+      &#042; Hotels charge a compulsory Gala Dinner Supplement during Christmas, New Year's eve, Diwali, Dusshera or other special events and festivals. These additional charge are not included in the booking amount and will be collected directly by the hotel during check-out.
+     </td>
+     </tr>
+     <tr style="background-color: #fff;">
+              <td style="background-color: #fff;text-align: left;font-family: Georgia, Times, serif; padding:5px;margin: 0px; color: #555;font-size: 12px;">                 
+      &#042; Some hotels may have policies that do not allow unmarried / unrelated couples or certain foreign nationalities to check-in without the correct documentation. No refund will be applicable in case the hotel denies check-in under such circumstances. If you have any doubts on this, do call us for any assistance.
+     </td>
+     </tr>
+     
+     <tr style="background-color: #fff;">
+              <td style="background-color: #fff;text-align: left;font-family: Georgia, Times, serif; padding:5px;margin: 0px; color: #555;font-size: 12px;">           
+
+             &#042; Any changes or booking modifications are subject to availability and charges may apply as per the hotel policies. 
+            
+            </td>
+            </tr>
+            <tr style="background-color: #fff;">
+              <td style="background-color: #fff;text-align: left;font-family: Georgia, Times, serif; padding:5px;margin: 0px; color: #555;font-size: 12px;">              
+             &#042; Tayyarah will not be responsible for any service issues at the hotel. 
+            </td>
+            </tr>
+            <tr style="background-color: #fff;">
+              <td style="background-color: #fff;text-align: left;font-family: Georgia, Times, serif; padding:5px;margin: 0px; color: #555;font-size: 12px;">                
+             &#042; All refund requests must occur within 60 days of hotel check-out. Any refund for checking out early or for no shows will be given at our sole discretion.
+            </td>
+            </tr>
+            <tr style="background-color: #fff;">
+              <td style="background-color: #fff;text-align: left;font-family: Georgia, Times, serif; padding:5px;margin: 0px; color: #555;font-size: 12px;">            
+
+                 &#042; All refund requests must occur within 60 days of hotel check-out. Any refund for checking out early or for no shows will be given at our sole discretion. 
+                
+                </td>
+                </tr>
+                
+                <tr style="background-color: #fff;">
+              <td style="background-color: #fff;text-align: left;font-family: Georgia, Times, serif; padding:5px;margin: 0px; color: #555;font-size: 12px;">            
+
+                  &#042;If you wish to book multiple rooms, you must use a different name for each room or the duplicate reservation MAY be cancelled by the hotel 
+                 
+                 </td>
+                 </tr>
+                
+              </table>
+    </td>
+</tr>          
+
+            </table>
+
+   <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+    </div>
+      
+     
+        
+    </body>
+</html>

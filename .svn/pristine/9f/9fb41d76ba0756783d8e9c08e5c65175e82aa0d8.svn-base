@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<title>Flight Offline Voucher </title>
+<meta name="description" content="tayyarah" />
+<meta name="author" content="see humans.txt"/>
+
+
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+ <style type="text/css">
+
+     body {
+            margin: 0;
+                padding: 0;
+                min-width: 100%;
+                background-color: #ffffff;
+            }
+            table {
+                border-spacing: 0;
+                font-family: sans-serif;
+                color: #333333;
+            }
+            td {
+                padding: 0;
+                font-size: 13px;
+                    text-align: center;
+            }
+            img {
+                border: 0;
+            }
+            .wrapper {
+                width: 100%;
+                table-layout: fixed;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+            }
+            .webkit {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            .outer {
+                margin: 10px auto;
+                    width: 100%;
+                    max-width: 600px;                    
+                    background-color: #f9f9f9;    
+                    border: 1px solid #ddd;
+                }
+                .text-left{
+                    text-align: left;
+                }
+                .text-right{
+                    text-align: right;
+                }
+                .inner {
+                width: 40%               
+                 }
+                 .inner img{
+                    padding: 10px;
+                    width: 80%;
+                 }
+                 .in-no-date{
+                    width: 60%        
+                 }
+
+                 .main-head{
+                    background-color: #000;
+                    
+                }
+
+
+                .invoicefrom-address{
+                    width: 60%;
+                }
+                .invoicefrom-address h4{
+                        margin: 4px;
+                }
+                .invoice-no p{
+                        font-size: 13px;
+                        font-family: Georgia, Times, serif;
+                        line-height: 0px;  
+                        color: #fff;              
+                }
+                .invoice-no .h2no p{
+                    font-size: 18px;
+                }
+                .to-from{
+                    background-color: #f1f1f1;
+                }
+                .to-from h2{
+                    background-color: #ccc;
+                    padding: 2px;
+                    margin: 3px;
+
+                }
+                .to-from h4{
+                    font-size: 14px;
+                    margin: 3px;
+                    text-align: left;
+                }
+                .to-from p{
+                    font-size: 13px;
+                    text-align: left;
+                }
+                .from{
+                    padding-right: 5px;
+                }
+                .heading{
+                    padding: 10px;
+                }
+
+                .invoice-no{
+                        width: 80%;
+                }
+.gst-table table tr td{
+        border-bottom: 1px solid #ccc;
+        
+}
+.gst-table table tr th.hed{
+    background-color: #D9EDF7;
+    text-align: center;
+    padding-left: 0px;
+    border-right: 1px solid #fff;
+    font-size: 13px;
+}
+.info th{
+    font-size: 12px;
+}
+.gst-table-summ{
+    padding: 10px;
+    width: 65%;
+
+}
+
+.total-am{
+    width: 33%;
+}
+.gst-summary{
+    vertical-align: top;
+}
+.gst-totals td{
+font-size: 13px;
+}
+.gst-totals td p{
+    margin: 0px 0px 5px;
+}
+.gst-totals td h4{
+    text-align: right;
+}
+
+.gst-tot h4{
+   margin: 0px;
+}
+
+
+.col-3{
+    margin-bottom: 10px;
+}
+
+/*.payment, .details{
+        padding: 10px;
+}*/
+
+.payment > h4, .details > h4{
+        text-align: left;
+}
+
+.payment > h4 span, .details > h4 span{
+        border-bottom: 1px solid #555;
+        padding-bottom: 5px;
+}
+
+/*.payment table, .details table{
+        border: 1px solid #ccc;
+}
+*/
+/*.payment table tr td, .details table tr td{
+    border: 1px solid #ccc;
+}
+
+.payment table tr th, .details table tr th{
+    border: 1px solid #ccc;
+}*/
+
+
+.please-check{
+    text-align: left;
+    padding: 0px 10px;
+}
+
+.please-check h4{
+    margin: 3px 0px;
+}
+
+.signature{
+    padding: 0px 10px;
+}
+
+                /*Media Queries*/
+@media screen and (max-width: 400px) {
+
+    .inner, .in-no-date,.from, .to{
+    width: 100% !important;   
+    display: block !important;            
+    }
+    .invoicefrom-address{
+        width: 100% !important;
+        display: block !important; 
+    }
+    .invoice-no{
+        width: 100% !important;
+        display: block !important; 
+                }
+
+ .to-from h2{
+font-size: 16px !important;
+ }
+ .to-from h4 {font-size: 12px !important;}
+
+.to-from p {
+    font-size: 12px !important;
+
+}
+
+.gst-table table tr th.hed h4{
+    font-size: 12px !important;
+}
+
+.total-am,.gst-summary{
+display: block !important;
+    width: 100% !important;
+}
+
+.info th{
+    font-size: 11px !important;
+}
+.please-check h4{
+font-size: 12px !important;
+}
+.please-check table td{
+ display: block !important;
+    width: 100% !important;   
+}
+
+
+}
+
+       
+    </style>
+   
+
+</head>
+
+
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" yahoo="fix" style="font-family: Georgia, Times, serif;margin: 0;padding: 0;min-width: 100%;background-color: #ffffff;">
+    <div th:object="${hotelorder}">
+  <!-- <p>Name: <span th:text="${hotelorder.markupAmount}">Mark Up Amount</span>.</p> -->
+</div>
+    
+    <div th:class="wrapper" style="width: 100%;table-layout: fixed;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;">
+        <div th:class="webkit" style="max-width: 600px;margin: 0 auto;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table width="600" align="center">
+            <tr>
+            <td>
+            <![endif]-->
+            
+            
+            <table th:class="outer" align="center" style="border-spacing: 0;font-family: sans-serif;color: #333333;margin: 10px auto;width: 100%;max-width: 600px;background-color: #fff;">
+                <tr th:class="main-head" style="background-color: #fff;">
+                    <td style="padding: 0;font-size: 13px;text-align: center;">
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+                            <tr>
+                                <td th:class="inner" style="padding: 0;font-size: 13px;text-align: center;width: 40%;">
+                                   <img th:object="${user}"  th:src="${user.logoDisplayable}" width="150" height="100"  /> 
+                                </td>
+                                <td th:class="in-no-date" align="right" style="padding: 0;font-size: 13px;text-align: left;width: 60%;">
+
+                                      <address style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;margin-bottom: 20px;font-style: normal;line-height: 1.42857143;float: right;">
+                                        www.tayyarah.com
+                                        <span style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;display: block;"># 19 "The Oyster",2nd floor,</span>
+                                        <span style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;display: block;">Nandi durga road, Jaymahal extension,</span>
+                                        <span style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;display: block;">Bengaluru-560046</span>
+                                        <span style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;display: block;">Office: +91-080-42855555</span>
+                                        <span style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;display: block;">Mobile: +91-98545103992</span>
+                                    </address>
+                                </td>
+                            </tr>
+                        </table>                       
+                    </td>
+                </tr>
+               
+            <tr th:class="to-from" style="background-color: #fff;">
+                <td th:class="heading" style="padding: 10px 0px;font-size: 12px;text-align: left;">
+                                    
+                                   <div class=" clearfix emergency-contact borderr" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;border: 1px solid #ccc;margin-bottom: 5px;">
+                                <div class="borderb" style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;border-bottom: 1px solid #ccc;">
+                                    <strong style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;font-weight: bold;font-size: 11px;font-family: Arial,sans-serif;">Travel Consultant Information.</strong>
+                                </div>
+                                <div style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;">
+                                    <p style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;orphans: 3;widows: 3;margin: 0 0 10px;margin-bottom: 0px;padding: 2px 10px 5px;color: #d56100;font-size: 11px;font-family: Arial,sans-serif">Name :  Fahad   Mohd / Tel : +917022797009 / Email : mohammed@tayyarah.com</p>
+                                   <!--  <p style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;orphans: 3;widows: 3;margin: 0 0 10px;margin-bottom: 0px;padding: 2px 10px;color: #d56100;font-size: 11px;font-family: Arial,sans-serif">Tel : +917022797009 </p>
+                                    <p style="-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;orphans: 3;widows: 3;margin: 0 0 10px;margin-bottom: 0px;padding: 2px 10px;color: #d56100;font-size: 11px;font-family: Arial,sans-serif">Email : mohammed@tayyarah.com
+ </p> -->
+                                </div>
+                            </div>
+                                     
+                               
+                    </td>
+                </tr>
+                
+                
+                
+                <tr th:class="col-3" style="margin-bottom: 10px;">
+                    <td th:class="payment" style="font-size: 13px;padding-bottom: 20px;">
+                       
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+                                <thead>
+                                    <tr th:class="info">
+                                        <th style="font-size: 12px;border: 1px solid #ccc;border-left: 0px; text-align: left;
+    									border-right: 0px;background-color: #d56100;color: #fff;"  colspan="5"><p style="margin: 5px 0px;"><strong><span style="font-size: 13px;font-family:Arial,sans-serif">Booking Reference</span> </strong>
+    									<span style="font-size: 12px;background-color: #1594D3;color: #fff;padding: 2px"> Airline PNR : 9W CHLYQW</span>
+    										</p></th>
+                                        
+                                    </tr>
+                                    <!-- <tr th:class="info" style="background-color: #daeef3;">
+                                        <th style="font-size: 12px;background-color: #daeef3;" colspan="1">Airline PNR
+                                        </th>
+                                        <th style="font-size: 12px;background-color: #daeef3;" colspan="1">Status
+                                         </th>
+                                         <th style="font-size: 12px;background-color: #daeef3;" colspan="1">Stops
+										 </th>
+										 
+										 <th style="font-size: 12px;background-color: #daeef3;" colspan="1">Guest Type
+										 </th>
+										 
+										  <th style="font-size: 12px;background-color: #daeef3;" colspan="1">Reference number
+										 </th>
+										 
+										 
+                                    </tr> -->
+                                </thead>
+                               <!--  <tbody>
+                                    <tr style="background-color: #edf6f9;">
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: center;border-bottom: 1px solid #fff;"><span>1</span></td>
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: center;border-bottom: 1px solid #fff;">
+                                         <span>MR. VENKATESH KODUGENAHALLI CHIDAMBAR</span>
+                                        </td>
+                                       <td style="padding: 2px 0px;font-size: 11px;text-align: center;border-bottom: 1px solid #fff;"><span>1</span></td>
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: center;border-bottom: 1px solid #fff;"><span>Adult</span></td>
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: center;border-bottom: 1px solid #fff;"><span>TY68893199</span></td>
+                                       
+                                    </tr>
+                                    
+                                    <tr style="background-color: #edf6f9;">
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: center;border-bottom: 1px solid #fff;"><span>1</span></td>
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: center;border-bottom: 1px solid #fff;">
+                                         <span>MR. VENKATESH KODUGENAHALLI CHIDAMBAR</span>
+                                        </td>
+                                       <td style="padding: 2px 0px;font-size: 11px;text-align: center;border-bottom: 1px solid #fff;"><span>1</span></td>
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: center;border-bottom: 1px solid #fff;"><span>Adult</span></td>
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: center;border-bottom: 1px solid #fff;"><span>TY68893199</span></td>
+                                       
+                                    </tr>
+                                    
+                                  
+                           
+                                </tbody> -->
+                        </table>
+                    </td>
+                </tr>
+
+
+          <tr th:class="col-3" style="margin-bottom: 10px;">
+                    <td th:class="payment" style="font-size: 13px;padding-bottom: 20px;">
+                       
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+                                <thead>
+                                    <tr th:class="info">
+                                        <th style="font-size: 12px;border: 1px solid #ccc;border-left: 0px; text-align: left;
+    									border-right: 0px;background-color: #d56100;color: #fff;"  colspan="5"><p style="margin: 5px 0px;"><strong><span style="font-size: 13px;font-family:Arial,sans-serif">Flight Details
+</span> </strong>
+    									
+    										</p></th>
+                                        
+                                    </tr>
+                                    
+                                    <tr th:class="info" style="background-color: #daeef3;">
+                                        <th style="font-size: 12px;background-color: #daeef3;text-align: left;" colspan="1">From
+                                        </th>
+                                        <th style="font-size: 12px;background-color: #daeef3;text-align: left;" colspan="1">To
+                                         </th>
+                                    </tr>
+                                    
+                                </thead>
+                                
+                                
+                            <tbody>
+                               
+                               <tr th:class="info" style="background-color: #edf6f9;">
+                                        <td style="font-size: 12px;background-color: #edf6f9;text-align: left;" colspan="1">Bangalore (Sat, 29 October 2016)
+		                                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+		                                       
+		                                        <tr>
+		                                        <td style="font-size: 12px;background-color: #edf6f9;text-align: left;" colspan="1">
+		                                        05:50 PM
+		                                        </td>
+		                                        
+		                                        <td style="font-size: 12px;background-color: #edf6f9;text-align: left;" colspan="1">
+		                                         Bangalore Terminal	                                        </td>
+		                                        	
+		                                        </tr>
+		                                        </table>
+                                        
+                                        
+                                        
+                                        </td>
+                                       
+                                         <td style="font-size: 12px;background-color: #edf6f9;text-align: left;" colspan="1">Thiruvananthapuram (Sat, 29 October 2016)
+                                         
+                                         <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+		                                       
+		                                        <tr>
+		                                        <td style="font-size: 12px;background-color: #edf6f9;text-align: left;" colspan="1">
+		                                        05:50 PM
+		                                        </td>
+		                                        
+		                                        <td style="font-size: 12px;background-color: #edf6f9;text-align: left;" colspan="1">
+		                                         Bangalore Terminal	                                        </td>
+		                                        	
+		                                        </tr>
+		                                        </table> 
+										 </td>
+                                    </tr>
+                           
+                                </tbody> 
+                        </table>
+                    </td>
+                </tr>
+                
+                <tr th:class="col-3" style="margin-bottom: 10px;">
+                    <td th:class="payment" style="font-size: 13px;padding-bottom: 20px;">
+                       
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+                               
+                            <tbody>
+                               
+                               <tr th:class="info" style="background-color: #edf6f9;">
+                                        <td style="font-size: 11px;background-color: #edf6f9;text-align: left;" colspan="1">
+
+		                                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+		                                       
+		                                        <tr>
+		                                        <td style="font-size: 11px;background-color: #edf6f9;text-align: left;padding-left: 5px; " colspan="1">
+		                                        Jet Airways 9W823
+		                                        </td>
+		                                        </tr>
+		                                        
+		                                        <tr>
+		                                       
+		                                        
+		                                      <td style="font-size: 11px;background-color: #edf6f9;text-align: left;padding-left: 5px;" colspan="1">
+		                                        Confirmed | Non Stop  </td> 
+		                                        	
+		                                        </tr>
+		                                        
+		                                        </table>
+                                        </td>
+                                       
+                                         <td style="font-size: 11px;background-color: #edf6f9;text-align: left;" colspan="1">
+                                         
+                                         <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+		                                       
+		                                        <tr>
+		                                        <td style="font-size: 11px;background-color: #edf6f9;text-align: left;" colspan="1">
+		                                        <strong>Duration : </strong> 1:10 Hrs
+		                                        </td>
+		                                        </tr>
+		                                        
+		                                        <tr>
+		                                        <td style="font-size: 11px;background-color: #edf6f9;text-align: left;" colspan="1">
+		                                        <strong>Aircraft : </strong> BOEING 737­800 (WINGLETS)­73H
+		                                        </td>
+		                                        </tr>
+		                                        
+		                                        
+		                                        
+		                                        </table> 
+										 </td>
+										 
+										 <td style="font-size: 11px;background-color: #edf6f9;text-align: left;" colspan="1">
+                                         
+                                         <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+		                                       
+		                                        <tr>
+		                                        
+		                                        
+		                                        <td style="font-size: 11px;background-color: #edf6f9;text-align: left;" colspan="1">
+		                                         <strong>Cabin : </strong> Economy  </td>
+		                                        </tr>
+		                                        
+		                                        <tr>  
+		                                        <td style="font-size: 12px;background-color: #edf6f9;text-align: left;" colspan="1">
+		                                         <strong>Class : </strong> K  </td>
+		                                        </tr>
+		                                        </table> 
+										 </td>
+                                    </tr>
+                                    
+                                    
+                                    
+                                </tbody> 
+                        </table>
+                    </td>
+                </tr>
+                
+                <tr th:class="col-3" style="margin-bottom: 10px;">
+                    <td th:class="payment" style="font-size: 13px;padding-bottom: 20px;">
+                       
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+                        <thead>
+                        
+                                 <tr th:class="info" style="background-color: #daeef3;">
+                                        <th style="font-size: 12px;background-color: #daeef3;text-align: left;" colspan="1">Passenger Name
+                                        </th>
+                                        <th style="font-size: 12px;background-color: #daeef3;text-align: left;" colspan="1">E­Ticket Numbers
+                                         </th>
+                                         
+                                         <th style="font-size: 12px;background-color: #daeef3;text-align: left;" colspan="1">Baggage
+                                         </th>
+                                    </tr>
+                                    
+                                </thead>
+                               
+                            <tbody>
+                               
+                               <tr th:class="info" style="background-color: #edf6f9;">
+                                        <td style="font-size: 11px;background-color: #edf6f9;text-align: left;" colspan="1">
+MR RAJESH P SARATHY
+		                                       
+                                        </td>
+                                       
+                                         <td style="font-size: 11px;background-color: #edf6f9;text-align: left;" colspan="1">
+                                         589­1123133194
+										 </td>
+										 
+										 <td style="font-size: 11px;background-color: #edf6f9;text-align: left;" colspan="1">
+                                         15 Kilograms 
+										 </td>
+                                    </tr>
+                                    
+                                    
+                                    
+                                </tbody> 
+                        </table>
+                    </td>
+                </tr>
+                
+                <tr th:class="col-3" style="margin-bottom: 10px;">
+                    <td th:class="payment" style="font-size: 13px;padding-bottom: 20px;">
+                       
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+                                <thead>
+                                    <tr th:class="info">
+                                        <th style="font-size: 12px;border: 1px solid #ccc;border-left: 0px; text-align: left;
+    									border-right: 0px;background-color: #d56100;color: #fff;"  colspan="5"><p style="margin: 5px 0px;"><strong><span style="font-size: 13px;font-family:Arial,sans-serif">ETicket Details</span></strong>
+    									
+    										</p></th>
+                                        
+                                    </tr>
+                                    
+                                    <tr th:class="info" style="background-color: #daeef3;">
+                                        <th style="font-size: 12px;text-align: left;" colspan="1">Name
+                                        </th>
+                                        <th style="font-size: 12px;text-align: left;" colspan="1">Ticket Number
+                                         </th>
+                                         <th style="font-size: 12px;text-align: left;" colspan="1">DoTI
+										 </th>
+                                    </tr>
+                                   
+                                </thead>
+                                <tbody>
+                                    <tr style="border: 1px solid #ccc;">
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>MR RAJESH P SARATHY</span></td>
+                                        
+                                       <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>589­1123133194</span></td>
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>21­Oct­2016</span></td>
+                                        
+                                    </tr>
+                                    
+                                    
+                                  
+                           
+                                </tbody>
+                        </table>
+                    </td>
+                </tr>
+                
+                 <tr th:class="col-3" style="margin-bottom: 10px;">
+                    <td th:class="payment" style="font-size: 13px;padding-bottom: 20px;">
+                       
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+                                <thead>
+                                                                      
+                                    <tr th:class="info" style="background-color: #daeef3;">
+                                        <th style="font-size: 11px;text-align: left;" colspan="1">Airline
+                                        </th>
+                                        <th style="font-size: 11px;text-align: left;" colspan="1">Sector
+                                         </th>
+                                         <th style="font-size: 11px;text-align: left;" colspan="1">Departure Date
+										 </th>
+										 
+										 <th style="font-size: 11px;text-align: left;" colspan="1">Fare Basis
+                                        </th>
+                                        <th style="font-size: 11px;text-align: left;" colspan="1"> Not Valid After 
+                                         </th>
+                                         <th style="font-size: 11px;text-align: left;" colspan="1"> Not Valid Before 
+										 </th>
+                                    </tr>
+                                   
+                                </thead>
+                                <tbody>
+                                    <tr style="border: 1px solid #ccc;">
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>Jet Airways | 9W823 </span></td>
+                                        
+                                       <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span> Bangalore­Thiruvananthapuram </span></td>
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span> 29­OCT­2016 </span></td>
+                                        
+                                         <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span> K2IPO </span></td>
+                                         <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span> -- </span></td>
+                                         <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span> -- </span></td>
+                                        
+                                    </tr>
+                                    
+                                    
+                                  
+                           
+                                </tbody>
+                        </table>
+                    </td>
+                </tr>
+                
+                
+                <tr th:class="col-3" style="background-color: #fff;">
+                      <td style="padding: 0;font-size: 11px;text-align: center;">
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+                            <tbody><tr>
+                                <td th:class="inner" style="padding: 0;font-size: 13px;text-align: center;width: 50%;">
+                                 <table style="border-spacing: 0;font-family: sans-serif;color: #333333;width: 100%;">
+                                <thead>
+                                                                      
+                                    <tr th:class="info" style="background-color: #daeef3;">
+                                        <th style="font-size: 11px;text-align: left;" colspan="1">Fare Details 
+                                        </th>
+                                        <th style="font-size: 11px;text-align: left;" colspan="1">Currency
+                                         </th>
+                                         <th style="font-size: 11px;text-align: left;" colspan="1"> Amount 
+										 </th>
+                                    </tr>
+                                   
+                                </thead>
+                                <tbody>
+                                    <tr style="border: 1px solid #ccc;">
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>Base Fare </span></td>
+                                        
+                                       <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>  INR  </span></td>
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>  5790.00   </span></td>
+                                        
+                                       
+                                    </tr>
+                                    <tr style="border: 1px solid #ccc;">
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>Base Fare </span></td>
+                                        
+                                       <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>  INR  </span></td>
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>  5790.00   </span></td>
+                                        
+                                       
+                                    </tr>
+                                    <tr style="border: 1px solid #ccc;">
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>Base Fare </span></td>
+                                        
+                                       <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>  INR  </span></td>
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>  5790.00   </span></td>
+                                        
+                                       
+                                    </tr>
+                                    <tr style="border: 1px solid #ccc;">
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>Base Fare </span></td>
+                                        
+                                       <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>  INR  </span></td>
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>  5790.00   </span></td>
+                                        
+                                       
+                                    </tr>
+                                </tbody>
+                        </table>
+                                  
+                                </td>
+                                <td th:class="in-no-date" align="right" style="padding: 0;font-size: 13px;text-align: center;width: 50%;">
+                                       <table width="100%" th:class="invoice-no" style="border-spacing: 0;font-family: sans-serif;color: #333333;width: 100%;">
+                                        <tbody>
+                                          <tr th:class="h2no">
+                                            <td style="padding: 0;font-size: 10px;text-align: left; padding-right: 10px;">
+                                            <strong>Fare Calculation:  </strong>  </td>
+                                             <td style="padding: 0;font-size: 10px;text-align: left; padding-right: 10px;">
+                                             BLR 9W TRV5790INR5790END </td>
+                                                  
+                                          </tr>     
+                                          
+                                            <tr th:class="h2no">
+                                           
+                                            <td style="padding: 0;font-size: 10px;text-align: left; padding-right: 10px;"><strong>Form of Payment:</strong>  
+                                       </td>        
+                                       
+                                       <td style="padding: 0;font-size: 10px;text-align: left; padding-right: 10px;"> PAX CCCAXXXXXXXXXXXX9009/0420/A759904
+                                       </td>                                                                        
+                                          </tr>                                          
+                                      </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody></table> 
+                        
+                                              
+                    </td>
+                </tr>
+                
+                
+                <!-- <tr th:class="col-3" style="margin-bottom: 10px;">
+                    <td th:class="payment" style="font-size: 13px;padding-bottom: 20px;width: 55%;">
+                       
+                        <table style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+                                <thead>
+                                                                      
+                                    <tr th:class="info" style="background-color: #daeef3;">
+                                        <th style="font-size: 11px;text-align: left;" colspan="1">Fare Details 
+                                        </th>
+                                        <th style="font-size: 11px;text-align: left;" colspan="1">Currency
+                                         </th>
+                                         <th style="font-size: 11px;text-align: left;" colspan="1"> Amount 
+										 </th>
+                                    </tr>
+                                   
+                                </thead>
+                                <tbody>
+                                    <tr style="border: 1px solid #ccc;">
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>Base Fare </span></td>
+                                        
+                                       <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>  INR  </span></td>
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><span>  5790.00   </span></td>
+                                        
+                                       
+                                    </tr>
+                                </tbody>
+                        </table>
+                        
+                       
+                    </td>
+                    
+                   <td th:class="payment" style="font-size: 13px;padding-bottom: 20px;width:40%;">
+                       
+                         <table style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+                               
+                                <tbody>
+                                    <tr style="border: 1px solid #ccc;">
+                                        <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><strong>Fare Calculation:  </strong>  BLR 9W TRV5790INR5790END </td>
+                                        
+                                       <td style="padding: 2px 0px;font-size: 11px;text-align: left;border-bottom: 1px solid #fff;"><strong>Form of Payment :  </strong>  PAX CCCAXXXXXXXXXXXX9009/0420/A759904
+                                       </td>
+                                    </tr>
+                                </tbody>
+                        </table>
+                    </td>  
+                </tr> -->
+                
+                
+                
+                
+            
+            </table>
+         
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+    </div>
+</body>
+<!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+</html>

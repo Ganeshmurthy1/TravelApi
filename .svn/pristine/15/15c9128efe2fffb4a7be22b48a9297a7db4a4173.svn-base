@@ -1,0 +1,70 @@
+package com.tayyarah.flight.util;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.Callable;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.soap.SOAPException;
+
+import org.apache.log4j.Logger;
+
+import com.tayyarah.apiconfig.model.BluestarConfig;
+import com.tayyarah.common.dao.MoneyExchangeDao;
+import com.tayyarah.common.exception.ErrorCodeCustomerEnum;
+import com.tayyarah.company.dao.CompanyDao;
+import com.tayyarah.flight.dao.FlightTempAirSegmentDAO;
+import com.tayyarah.flight.exception.FlightErrorMessages;
+import com.tayyarah.flight.exception.FlightException;
+import com.tayyarah.flight.model.FlightMarkUpConfig;
+import com.tayyarah.flight.model.Flightsearch;
+import com.tayyarah.flight.model.SearchFlightResponse;
+import com.tayyarah.flight.util.api.bluestar.BluestarServiceCall;
+
+
+public class BlueStarFlightSearchExecutorServiceTask implements Callable<SearchFlightResponse>{
+	private Flightsearch flightsearch;
+	private  Map<String,List<FlightMarkUpConfig>> markupMap;
+	private Map<String, String> airlineNameMap;
+	private ArrayList<Map<String, String>> airportMapList;
+	private MoneyExchangeDao moneydao=null;
+	static final Logger logger = Logger.getLogger(BlueStarFlightSearchExecutorServiceTask.class);
+	private FlightTempAirSegmentDAO flightTempAirSegmentDAO;
+	private BluestarConfig bluestarConfig;
+	private CompanyDao companyDao;
+	public BlueStarFlightSearchExecutorServiceTask(Flightsearch flightsearch,
+			 Map<String,List<FlightMarkUpConfig>> markupMap,
+			Map<String, String> airlineNameMap,
+			ArrayList<Map<String, String>> airportMapList, MoneyExchangeDao moneydao,FlightTempAirSegmentDAO flightTempAirSegmentDAO,BluestarConfig bluestarConfig,CompanyDao companyDao){
+		this.flightsearch = flightsearch;
+		this.markupMap = markupMap;
+		this.airlineNameMap = airlineNameMap;
+		this.airportMapList = airportMapList;
+		this.moneydao = moneydao;
+		this.flightTempAirSegmentDAO = flightTempAirSegmentDAO;
+		this.bluestarConfig = bluestarConfig;
+		this.companyDao = companyDao;
+	}
+
+	@Override
+	public SearchFlightResponse call() throws Exception {
+		SearchFlightResponse searchFlightResponse = null;
+		try{
+			logger.info("Searching Bluestar Flights");
+			searchFlightResponse = BluestarServiceCall.callSearchService(flightsearch,markupMap,airlineNameMap,airportMapList,moneydao,flightTempAirSegmentDAO,bluestarConfig);
+		}
+		 catch (ClassNotFoundException  e) {logger.error("ClassNotFoundException",e);
+			throw new FlightException(ErrorCodeCustomerEnum.ClassNotFoundException,FlightErrorMessages.NO_FLIGHT);
+		}
+		catch(SOAPException e){logger.error("SOAPException",e);
+			throw new FlightException(ErrorCodeCustomerEnum.SOAPException,FlightErrorMessages.NO_FLIGHT);
+		}catch(JAXBException  e){logger.error("JAXBException",e);
+			throw new FlightException(ErrorCodeCustomerEnum.JAXBException,FlightErrorMessages.NO_FLIGHT);
+		}
+		catch(Exception  e){logger.error("Exception",e);
+			throw new FlightException(ErrorCodeCustomerEnum.Exception,FlightErrorMessages.NO_FLIGHT);
+		}
+		return searchFlightResponse;
+	}
+}

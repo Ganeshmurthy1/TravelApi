@@ -1,0 +1,259 @@
+#Activate lintas configs
+cc.is_lintas_enabled =false
+
+#Activate tayyarah configs
+cc.is_tayyarah_enabled =true
+
+#Activate tayyarah configs
+cc.is_dev_mode = false
+
+cc.max_email_attempts =1
+cc.max_email_queue_size =10
+
+#common dir path configs live server
+cc.server_ip_address =139.59.5.54
+
+#common dir path configs dev server
+#cc.server_ip_address =122.166.233.133
+
+#common dir path configs live server
+cc.log_location =/opt/travelapi/common
+cc.log_location_linux =/opt/travelapi/provider_req_res
+cc.log_location_windows =/opt/travelapi/provider_req_res
+
+#common dir path configs locat tomcat server
+#cc.log_location =D:/Apache Server For devtayyarahapi/logs/opt/devtayyarah/common
+#cc.log_location_linux =D:/Apache Server For devtayyarahapi/logs/opt/devtayyarah/provider_req_res
+#cc.log_location_windows =D:/Apache Server For devtayyarahapi/logs/opt/devtayyarah/provider_req_res
+
+#common dir path configs dev server
+#cc.log_location =/opt/devtravelapi/common
+#cc.log_location_linux =/opt/devtravelapi/provider_req_res
+#cc.log_location_windows =/opt/devtravelapi/provider_req_res
+
+#common dir path configs dev server
+#cc.log_location =/opt/devtravelapidev/common
+#cc.log_location_linux =/opt/devtravelapidev/provider_req_res
+#cc.log_location_windows =/opt/devtravelapidev/provider_req_res
+
+#activate flight cahce here 
+cc.flight_cache_enable=true
+
+
+############################################################
+######## TAYYARAH #########
+
+######## Common Config  for tayyarah live Start TayyarahLiveAPI HTTPS #########
+cc.system_model = CUTANDPAY
+cc.invoice_hotel_prefix =TYH-
+cc.invoice_flight_prefix =TYF
+cc.image_iamge_Path=https://admin.tayyarah.com/ImageAction.action?imageId=
+cc.mail.admin =no-reply@tayyarah.com
+cc.mail.support =support@tayyarah.com
+cc.mail.booking =care@tayyarah.com
+bcc.mail.support =yogiwebs@gmail.com
+cc.default_image_path=https://admin.tayyarah.com/ImageAction.action
+cc.care_mail=care@tayyarah.com
+cc.admin_url=https://admin.tayyarah.com/
+cc.ibe_url=https://tayyarah.com/
+cc.api_url =https://api.tayyarah.com/tayyarahapi/
+cc.flight_rounding_mode = UP
+cc.hotel_rounding_mode = UP
+cc.bus_rounding_mode = UP
+
+
+
+#############previous live configs######################
+#cc.email_service_url =https://api.tayyarah.com/tayyarahapi/Email/sendMails
+#cc.email_service_Flight_pending_payment_url=https://api.tayyarah.com/tayyarahapi/Email/flightTicket
+#cc.email_service_Hotel_pending_payment_url=https://api.tayyarah.com/tayyarahapi/Email/hotelTicket
+#cc.email_service_Flight_Sendholdticket_url=https://api.tayyarah.com/tayyarahapi/Email/holdflightTicket
+#cc.email_service_Flight_Autorelease_holdbooking_url=https://api.tayyarah.com/tayyarahapi/Email/expireflightTicket
+#cc.bug_service_url = https://api.tayyarah.com/tayyarahapi/bug/sendBugPendingMails
+#cc.email_verify_url =https://api.tayyarah.com/tayyarahapi/verifyemail/
+#cc.send_all_email_notification=https://api.tayyarah.com/tayyarahapi/Email/notificationEmail/
+#cc.allHotelFlightCustomerPartialPayment=https://api.tayyarah.com/tayyarahapi/Email/getAllHotelFlightCustomerPayment
+#cc.corporate_agrement_expiry_mail_url=https://api.tayyarah.com/tayyarahapi/Email/sendCorporateAgreementExpiryMail
+#cc.flight_mail_before_departure_url=https://api.tayyarah.com/tayyarahapi/Email/sendFlightMailBeforeDeparture
+#cc.flight_mail_before_oneday_url=https://api.tayyarah.com/tayyarahapi/Email/sendFlightMailBeforeOneDay
+#cc.reset_all_b2c_ip=https://api.tayyarah.com/tayyarahapi/reset/ipStatusForB2C
+######### END Config #########
+
+
+######## Common Config  for tayyarah dev INTERNAL Start #########
+#cc.system_model = CUTANDPAY
+#cc.invoice_hotel_prefix =TYH
+#cc.invoice_flight_prefix =TYF
+#cc.image_iamge_Path=https://dev.tayyarah.com/devadmin/ImageAction.action?imageId=
+#cc.mail.admin =no-reply@tayyarah.com
+#cc.mail.support =support@tayyarah.com
+#cc.mail.booking =yogiwebs@gmail.com
+#bcc.mail.support =yogiwebs@gmail.com
+#cc.default_image_path=https://dev.tayyarah.com/devadmin/ImageAction.action
+#cc.care_mail=care@tayyarah.com
+#cc.admin_url=https://dev.tayyarah.com/devadmin/
+#cc.ibe_url=https://dev.tayyarah.com/devtayyarah/
+#cc.api_url =https://dev.tayyarah.com/devtayyarahapidev/
+#cc.flight_rounding_mode = UP
+#cc.hotel_rounding_mode = UP
+#cc.bus_rounding_mode = UP
+
+
+
+
+#############previous dev configs######################
+
+#cc.email_service_url =https://dev.tayyarah.com/devtayyarahapidev/Email/sendMails
+#cc.email_service_Flight_pending_payment_url=https://dev.tayyarah.com/devtayyarahapidev/Email/flightTicket
+#cc.email_service_Hotel_pending_payment_url=https://dev.tayyarah.com/devtayyarahapidev/Email/hotelTicket
+#cc.email_service_Flight_Sendholdticket_url=https://dev.tayyarah.com/devtayyarahapidev/Email/holdflightTicket
+#cc.email_service_Flight_Autorelease_holdbooking_url=https://dev.tayyarah.com/devtayyarahapidev/Email/expireflightTicket
+#cc.bug_service_url = https://dev.tayyarah.com/devtayyarahapidev/bug/sendBugPendingMails
+#cc.email_verify_url =https://dev.tayyarah.com/devtayyarahapidev/verifyemail/
+#cc.send_all_email_notification=https://dev.tayyarah.com/devtayyarahapidev/Email/notificationEmail/
+#cc.allHotelFlightCustomerPartialPayment=https://dev.tayyarah.com/devtayyarahapidev/Email/getAllHotelFlightCustomerPayment
+#cc.corporate_agrement_expiry_mail_url=https://dev.tayyarah.com/devtayyarahapidev/Email/sendCorporateAgreementExpiryMail
+#cc.flight_mail_before_departure_url=https://dev.tayyarah.com/devtayyarahapidev/Email/sendFlightMailBeforeDeparture
+#cc.flight_mail_before_oneday_url=https://dev.tayyarah.com/devtayyarahapidev/Email/sendFlightMailBeforeOneDay
+#cc.reset_all_b2c_ip=https://dev.tayyarah.com/devtayyarahapidev/reset/ipStatusForB2C
+######### END Config #########
+
+
+
+######## Common Config  for tayyarah dev Start #########
+#cc.system_model = CUTANDPAY
+#cc.invoice_hotel_prefix =TYH
+#cc.invoice_flight_prefix =TYF
+#cc.image_iamge_Path=https://dev.tayyarah.com/tadmin/ImageAction.action?imageId=
+#cc.mail.admin =no-reply@tayyarah.com
+#cc.mail.support =support@tayyarah.com
+#cc.mail.booking =yogiwebs@gmail.com
+#bcc.mail.support =yogiwebs@gmail.com
+#cc.default_image_path=https://dev.tayyarah.com/tadmin/ImageAction.action
+#cc.care_mail=care@tayyarah.com
+#cc.admin_url=https://dev.tayyarah.com/tadmin/
+#cc.ibe_url=https://dev.tayyarah.com/tayyarah/
+#cc.api_url =https://dev.tayyarah.com/devtayyarahapi/
+#cc.flight_rounding_mode = UP
+#cc.hotel_rounding_mode = UP
+#cc.bus_rounding_mode = UP
+
+
+
+
+
+
+
+#############previous dev configs######################
+#cc.email_service_url =https://dev.tayyarah.com/devtayyarahapi/Email/sendMails
+#cc.email_service_Flight_pending_payment_url=https://dev.tayyarah.com/devtayyarahapi/Email/flightTicket
+#cc.email_service_Hotel_pending_payment_url=https://dev.tayyarah.com/devtayyarahapi/Email/hotelTicket
+#cc.email_service_Flight_Sendholdticket_url=https://dev.tayyarah.com/devtayyarahapi/Email/holdflightTicket
+#cc.email_service_Flight_Autorelease_holdbooking_url=https://dev.tayyarah.com/devtayyarahapi/Email/expireflightTicket
+#cc.bug_service_url = https://dev.tayyarah.com/devtayyarahapi/bug/sendBugPendingMails
+#cc.email_verify_url =https://dev.tayyarah.com/devtayyarahapi/verifyemail/
+#cc.send_all_email_notification=https://dev.tayyarah.com/devtayyarahapi/Email/notificationEmail/
+#cc.allHotelFlightCustomerPartialPayment=https://dev.tayyarah.com/devtayyarahapi/Email/getAllHotelFlightCustomerPayment
+#cc.corporate_agrement_expiry_mail_url=https://dev.tayyarah.com/devtayyarahapi/Email/sendCorporateAgreementExpiryMail
+#cc.flight_mail_before_departure_url=https://dev.tayyarah.com/devtayyarahapi/Email/sendFlightMailBeforeDeparture
+#cc.flight_mail_before_oneday_url=https://dev.tayyarah.com/devtayyarahapi/Email/sendFlightMailBeforeOneDay
+#cc.reset_all_b2c_ip=https://dev.tayyarah.com/devtayyarahapi/reset/ipStatusForB2C
+######### END Config #########
+######### end TAYYARAH #########
+##############################
+
+
+############################################################Local Tomcat server###########
+
+#cc.system_model = CUTANDPAY
+#cc.invoice_hotel_prefix =TYH
+#cc.invoice_flight_prefix =TYF
+#cc.image_iamge_Path=http://localhost:8080/TravelAdmin/ImageAction.action?imageId=
+#cc.mail.admin =no-reply@tayyarah.com
+#cc.mail.support =support@tayyarah.com
+#cc.mail.booking =yogiwebs@gmail.com
+#bcc.mail.support =yogiwebs@gmail.com
+#cc.default_image_path=http://localhost:8080/TravelAdmin/ImageAction.action
+#cc.care_mail=care@tayyarah.com
+#cc.admin_url=http://localhost:8080/TravelAdmin
+#cc.ibe_url=http://localhost:8070/tayyarahWhiteLabel/
+#cc.api_url =http://localhost:8060/TayyarahAPI/
+#cc.flight_rounding_mode = UP
+#cc.hotel_rounding_mode = UP
+#cc.bus_rounding_mode = UP
+
+
+
+
+
+
+
+
+
+
+
+#cc.email_service_url =http://localhost:8060/devtayyarahapi/Email/sendMails
+#cc.email_service_Flight_pending_payment_url=http://localhost:8060/devtayyarahapi/Email/flightTicket
+#cc.email_service_Hotel_pending_payment_url=http://localhost:8060/devtayyarahapi/Email/hotelTicket
+#cc.email_service_Flight_Sendholdticket_url=http://localhost:8060/devtayyarahapi/Email/holdflightTicket
+#cc.email_service_Flight_Autorelease_holdbooking_url=http://localhost:8060/devtayyarahapi/Email/expireflightTicket
+#cc.bug_service_url = http://localhost:8060/devtayyarahapi/bug/sendBugPendingMails
+#cc.email_verify_url =http://localhost:8060/devtayyarahapi/verifyemail/
+#cc.send_all_email_notification=http://localhost:8060/devtayyarahapi/Email/notificationEmail/
+#cc.allHotelFlightCustomerPartialPayment=http://localhost:8060/devtayyarahapi/Email/getAllHotelFlightCustomerPayment
+#cc.corporate_agrement_expiry_mail_url=http://localhost:8060/devtayyarahapi/Email/sendCorporateAgreementExpiryMail
+#cc.flight_mail_before_departure_url=http://localhost:8060/devtayyarahapi/Email/sendFlightMailBeforeDeparture
+#cc.flight_mail_before_oneday_url=http://localhost:8060/devtayyarahapi/Email/sendFlightMailBeforeOneDay
+#cc.reset_all_b2c_ip=http://localhost:8060/devtayyarahapi/reset/ipStatusForB2C
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+######## LOCAL HOST #########
+######## Common Config  for tayyarah live Start TayyarahLiveAPI HTTPS #########
+#cc.system_model = CUTANDPAY
+#cc.flight_rounding_mode = UP
+#cc.hotel_rounding_mode = UP
+#cc.bus_rounding_mode = UP
+#cc.email_service_url =http://localhost:8060/TayyarahAPI/Email/sendMails
+#cc.email_service_Flight_pending_payment_url=http://localhost:8060/TayyarahAPI/Email/flightTicket
+#cc.email_service_Hotel_pending_payment_url=http://localhost:8060/TayyarahAPI/Email/hotelTicket
+#cc.email_service_Flight_Sendholdticket_url=http://localhost:8060/TayyarahAPI/Email/holdflightTicket
+#cc.email_service_Flight_Autorelease_holdbooking_url=http://localhost:8060/TayyarahAPI/Email/expireflightTicket
+#cc.bug_service_url = http://localhost:8060/TayyarahAPI/bug/sendBugPendingMails
+#cc.invoice_hotel_prefix =TYH
+#cc.invoice_flight_prefix =TYF
+#cc.image_iamge_Path=http://dev.tayyarah.com/tadmin/ImageAction.action?imageId=
+#cc.mail.admin =no-reply@tayyarah.com
+#cc.mail.support =support@tayyarah.com
+#cc.mail.booking =yogiwebs@gmail.com
+#bcc.mail.support =yogiwebs@gmail.com
+#cc.default_image_path=http://dev.tayyarah.com/tAdmin/ImageAction.action
+#cc.care_mail=yogiwebs@gmail.com
+#cc.admin_url=http://localhost:8080/TravelAdmin/
+#cc.ibe_url=http://localhost:8070/tayyarahWhiteLabel/
+#cc.api_url =http://localhost:8060/TayyarahAPI/
+#cc.email_verify_url =http://localhost:8060/TayyarahAPI/verifyemail/
+#cc.send_all_email_notification=http://localhost:8060/TayyarahAPI/Email/notificationEmail/
+#cc.allHotelFlightCustomerPartialPayment=http://localhost:8060/TayyarahAPI/Email/getAllHotelFlightCustomerPayment
+#cc.corporate_agrement_expiry_mail_url=http://localhost:8060/TayyarahAPI/Email/sendCorporateAgreementExpiryMail
+#cc.flight_mail_before_departure_url=http://localhost:8060/TayyarahAPI/Email/sendFlightMailBeforeDeparture
+#cc.flight_mail_before_oneday_url=http://localhost:8060/TayyarahAPI/Email/sendFlightMailBeforeOneDay
+#cc.reset_all_b2c_ip=http://localhost:8060/TayyarahAPI/reset/ipStatusForB2C
+
+######### END Config #########
+
+
+

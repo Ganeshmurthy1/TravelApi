@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Car Invoice</title>
+    <meta name="description" content="Intellicomm" />
+    <meta name="author" content="see humans.txt" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style type="text/css">
+        .inner-padding {
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+        
+        table {
+            border-color: #fff;
+            border-spacing: 0px;
+            border-collapse: collapse;
+            border-top-color: #000;
+            border-top-width: 0px;
+            border-top-style: solid;
+            border-bottom-color: RED;
+            border-bottom-width: 0px;
+            border-bottom-style: solid;
+        }
+        
+        tr {
+            border-color: #000;
+            border-spacing: 0px;
+            border-collapse: collapse;
+            border-bottom-width: 0px;
+            border-top-color: #000;
+            border-top-width: 0px;
+            border-top-style: solid;
+        }
+        
+        td {
+            border-color: #000;
+            border-spacing: 0px;
+            border-collapse: collapse;
+            border-bottom-width: 0px;
+            border-top-color: #000;
+            border-top-width: 0px;
+            border-top-style: solid;
+        }
+        
+        th {
+            border-color: #000;
+            border-spacing: 0px;
+            border-collapse: collapse;
+            border-bottom-width: 0px;
+            border-top-color: #000;
+            border-top-width: 0px;
+            border-top-style: solid;
+        }
+        
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: Calibri
+        }
+        
+        code {
+            font-family: Calibri;
+        }
+        
+        body {
+            background-color: #FFFFFF;
+            font-family: Calibri;
+            font-size: 12px;
+        }
+        
+        p {
+            font-size: 11px;
+            font-family: Calibri;
+            color: #040404;
+            background-color: #FFFFFF;
+            margin-left: 10px;
+            margin-bottom: 0px;
+            margin-top: 0px;
+            margin-right: 5px;
+        }
+        
+        h1 {
+            font-size: 17px;
+            color: #FFA500;
+            margin-bottom: 5px;
+            background-color: #FFFFFF;
+            padding-top: 3px;
+            padding-bottom: 4px;
+            padding-left: 10px;
+        }
+        
+        h2 {
+            font-size: 15px;
+            color: #0055AA;
+            margin-bottom: 4x;
+            margin-top: 10px;
+            background-color: #FFFFFF;
+            padding-top: 0px;
+            padding-bottom: 1px;
+            padding-left: 10px;
+        }
+        
+        h3 {
+            font-size: 15px;
+            color: #660000;
+            margin-bottom: 8px;
+            margin-top: 15px;
+        }
+        
+        h4 {
+            font-size: 12px;
+            color: black;
+            margin-bottom: 8px;
+            margin-top: 15px;
+            margin-left: 8px;
+            font-style: normal;
+        }
+        
+        code {
+            font-size: 12px;
+            margin-left: 16px;
+            padding-left: 16px
+        }
+        
+        hr {
+            height: 0px;
+            noshade: true;
+            border: 1;
+            width: 100%;
+        }
+        
+        img {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div th:th:class="wrapper" style="width: 100%; table-layout: fixed; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;">
+        <div th:class="webkit" style="max-width: 100%; margin: 0 auto;">
+
+            <table th:class="outer" cellpadding='0' cellspacing='0' border='0' width='700px' style='max-width: 700px; margin: 0 auto;'>
+                <tr th:class="main-head" style="">
+                    <td style="text-align: center;">
+                        <table cellpadding='0' cellspacing='0' border='1px' width='100%' style='max-width: 100%;'>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <table cellpadding='0' cellspacing='0' border='0px' width='100%'>
+                                        <tr style="text-align: center;">
+
+                                            <td style="text-align: center; width: 34%; font-size: 12px; height: 32px; 	border-top-width : 1px; border-top-style : solid">
+                                                <p>
+                                                    <span style="font-size: 12px;">Original for
+														recipient</span>
+                                                </p>
+                                            </td>
+
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr th:class="main-head" style="">
+                    <td style="text-align: center;border-top-width : 1px;">
+                        <table th:class="outer" cellpadding='0' cellspacing='0' border='0' width='100%' style='max-width: 100%;'>
+                            <tr th:class="main-head" style="">
+                                <td style="text-align: center;">
+                                    <table cellpadding='0' cellspacing='0' border='1px' width='100%' style='max-width: 100%;'>
+                                        <tr>
+                                            <td th:class="inner-padding" align="center" valign="top" width="100%">
+                                                <table th:class="invoice-no" cellpadding='0' cellspacing='0' style="width: 100%">
+                                                    <tbody>
+
+                                                        <tr th:class="h2no" th:if="${session.isGstTax == true}">
+                                                            <td style="text-align: center;">
+                                                                <p>&nbsp;</p> <img src="https://tayyarah.com/images/t-n.png" width="100" height="60" />
+                                                                <p>&nbsp;</p>
+                                                                <p style="">
+                                                                    <font face="Calibri" size="2pt"> <b> <span>
+																				Tayyarah.com</span></b> <br /> <span style="">( A Unit
+																			of Intellicommsolutions &amp; Enterprises Pvt Ltd )</span><br />
+                                                                        <span style=""># 19 "The Oyster",2nd floor,
+																			Nandi durga road, Jaymahal extension,</span><br /> <span style="">Bengaluru-560046, State : Karnataka,
+																			India State Code : 29</span><br /> Phone : <span style="">+91-080-42855555</span><br /> Email : <span style=""> care@tayyarah.com</span><br />
+                                                                    </font>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table th:class="invoice-no" cellpadding='0' cellspacing='0' style="width: 100%;" th:if="${session.isGstTax == true}">
+                                                    <tbody>
+                                                        <tr th:class="h2no">
+                                                            <td style="text-align: center;">
+                                                                <p>&nbsp;</p>
+                                                                <p style="">
+                                                                    <font face="Calibri" size="2pt"> <b>GSTIN :
+																	</b><span> 29AABCI7895M1ZN</span>
+                                                                    </font>
+                                                                </p>
+                                                                <p>&nbsp;</p>
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <p>&nbsp;</p>
+                                                                <p style="">
+                                                                    <font face="Calibri" size="2pt"> <b>PAN No :
+																	</b><span> AABCI7895M </span>
+                                                                    </font>
+                                                                </p>
+                                                                <p>&nbsp;</p>
+                                                            </td>
+                                                            <td style="text-align: center;">
+                                                                <p>&nbsp;</p>
+                                                                <p style="">
+                                                                    <font face="Calibri" size="2pt"> <b>CIN : </b><span>
+																			U72900TN2007PTC065077 </span>
+                                                                    </font>
+                                                                </p>
+                                                                <p>&nbsp;</p>
+                                                            </td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </td>
+
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr th:class="main-head" style="">
+                    <td style="text-align: center;border-top-width : 1px;">
+                        <table width="100%" style="" cellpadding='0' cellspacing='0' border='0'>
+                            <tr th:class="main-head" style="">
+                                <td style="text-align: center;">
+                                    <table width="100%" style="" cellpadding='0' cellspacing='0' border='1px'>
+                                        <tr style="text-align: center;">
+
+                                            <td style="text-align: center; width: 34%; font-size: 12px; height: 32px;">
+                                                <p>
+                                                    <span style="font-size: 12px;"><b> Tax Invoice </b>
+													</span>
+                                                </p>
+                                            </td>
+
+                                        </tr>
+
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr th:class="main-head" style="">
+                    <td style="text-align: center;border-top-width : 1px;">
+                        <table th:class="outer" cellpadding='0' cellspacing='0' border='0' width='100%' style='max-width: 100%;'>
+                            <tr th:class="main-head" style="">
+                                <td style="text-align: center;">
+                                    <table cellpadding='0' cellspacing='0' border='1px' width='100%' style='max-width: 100%;'>
+                                        <tr>
+
+                                            <td th:class="inner-padding" align="center" valign="top" width="70%">
+                                                <table th:class="invoice-no" cellpadding='0' cellspacing='0' border='0' style="width: 100%">
+                                                    <tbody>
+                                                        <tr th:class="h2no">
+                                                            <td th:if="${companyEntity != null} " style="text-align: left; width: 50%; vertical-align: top;">
+    <p style="">
+        <font face="Calibri" size="2pt"> <b>Bill To : <span
+																			th:text="${companyEntity.CompanyEntityName}">
+																				Quest</span>
+																	</b> <br /> <span style=""></span> <span th:text="${companyEntity.Address1}" style="">xyz
+																			company</span>, <span th:text="${companyEntity.City}" style="">Bengaluru</span>, <span th:text="${companyEntity.State}" style="">Karanataka</span>,
+            <span style=""> Country : </span> <br /> <span th:text="${companyEntity.Countryname}" style="">India</span>
+            <br /> <span style="">Phone :</span> <span style="" th:text="${companyEntity.PhoneNo}">895368975678</span>, &nbsp; <span th:if="${session.isGstTax == true}" style="">Email : </span><span style="" th:text="${companyEntity.Email}">some@gmail.com</span><br />
+            <span th:if="${session.isGstTax == true}" style="">State
+																			Code : </span><span style="" th:text="${companyEntity.StateCode}">31</span>, <span th:if="${session.isGstTax == true and session.IGST != 0.0}" style="">Place of supply : <span style=""
+																			th:text="${companyEntity.State}">Kerala</span></span> <br />
+            <span th:if="${session.isGstTax == true}" style="">GSTIN
+																			: </span><span style="" th:text="${companyEntity.companyEntityGstIn}">1XXXX435</span>
+        </font>
+    </p>
+</td>
+                                                            <td th:if="${companyEntity == null} " style="text-align: left; width: 50%; vertical-align: top;">
+                                                                <p style="">
+                                                                    <font face="Calibri" size="2pt" > <b>Bill To : <span
+																			th:text="${company.Companyname}">
+																				Quest</span>
+																	</b> <br /> <span style=""></span> <span th:text="${company.Address}" style="">xyz
+																			company</span>, <span th:text="${company.City}" style="">Bengaluru</span>, <span th:text="${company.Billingstate}" style="">Karanataka</span>,
+                                                                        <br /> <span style="">Phone :</span> <span style="" th:text="${company.Phone}">895368975678</span>, &nbsp; <span style="">Email : </span><span style="" th:text="${company.Email}">some@gmail.com</span><br />
+                                                                        <span th:if="${session.isGstTax == true}" style="">State
+																			Code : </span><span style="" th:text="${company.stateCode}">31</span>, <span th:if="${session.isGstTax == true and session.IGST != 0.0}" style="">Place of supply : <span style=""
+																			th:text="${company.Billingstate}">Kerala</span></span> <br />
+                                                                        <span th:if="${session.isGstTax == true}" style="">GSTIN
+																			: </span><span style="" th:text="${company.companyGstIn}">1XXXX435</span>
+                                                                    </font>
+                                                                </p>
+                                                            </td>
+
+                                                            <td style="text-align: left; width: 20%; vertical-align: top;">
+                                                                <p style="">
+                                                                    <font face="Calibri" size="2pt" >
+                                                                        <span style="">
+																Booking Ref No : </span>
+                                                                        <br />
+                                                                        <span style="">
+																Invoice No : </span> <br />
+                                                                        <span style=""> Booking
+																Date : </span> <br />
+                                                                        <span style=""> Invoice Date :
+																</span> <br />
+                                                                        <span style=""> Reverse Charge : </span>
+                                                                        <br />
+                                                                        <span style=""> SAC : </span> <br />
+                                                                        <br />
+                                                                    </font>
+                                                                </p>
+                                                            </td>
+                                                            <td style="text-align: left; width: 30%; vertical-align: top;">
+                                                                <p style="">
+                                                                    <font face="Calibri" size="2pt" >
+
+                                                                        <span th:text="${carOrderRow.orderId}">NA</span><br /> <span th:text="${carOrderRow.invoiceNo}">NA</span><br /> <span th:text="${#dates.format(carOrderRow.bookingDate, 'dd-MMM-yyyy')}">30-Jun-2017</span><br />
+                                                                        <span th:text="${#dates.format(carOrderRow.invoiceDate, 'dd-MMM-yyyy')}">20-May-2017</span><br />
+                                                                        <span>N</span><br /> <span>9985</span><br /> <br />
+                                                                    </font>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- itinerary details -->
+                <tr th:class="main-head" style="">
+                    <td style="text-align: center;border-top-width : 1px;">
+                        <table width="100%" style="" cellpadding='0' cellspacing='0' border='0'>
+                            <tr th:class="main-head" style="">
+                                <td style="text-align: center;">
+                                    <table width="100%" style="" cellpadding='0' cellspacing='0' border='1px'>
+                                        <tr style="text-align: center;">
+
+                                            <td style="text-align: center; width: 34%; font-size: 12px; height: 32px;">
+                                                <p>
+                                                    <span style="font-size: 12px;"><b> Description
+															(Product Type : Car) </b> </span>
+                                                </p>
+                                            </td>
+
+                                        </tr>
+
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+
+
+                <tr th:class="main-head" th:if="${session.isCorporate == true and session.isGstTax == true}">
+                    <td style="text-align: center;border-top-width : 1px;">
+                        <table cellpadding='0' cellspacing='0' border='1px' width="100%">
+                            <tr th:class="h2no">
+                                <td width="25%" style="height: 32px; border-bottom-width : 2px; border-bottom-style : solid;">
+                                    <p>
+                                        <b style="text-align: left; width: 100%;">Passenger Name</b>
+                                    </p>
+                                </td>
+                                <td width="15%" style="height: 32px; border-bottom-width : 2px; border-bottom-style : solid;">
+                                    <p>
+                                        <b style="text-align: left; width: 100%;">Sector</b>
+                                    </p>
+                                </td>
+                                <td width="15%" style="height: 32px; border-bottom-width : 2px; border-bottom-style : solid;">
+                                    <p>
+                                        <b style="text-align: left; width: 100%;">Travel Date</b>
+                                    </p>
+                                </td>
+                                <td width="15%" style="height: 32px; border-bottom-width : 2px; border-bottom-style : solid;">
+                                    <p>
+                                        <b style="text-align: left; width: 100%;">Cab Details</b>
+                                    </p>
+                                </td>
+                                <td width="15%" style="height: 32px; border-bottom-width : 2px; border-bottom-style : solid;">
+                                    <p>
+                                        <b style="text-align: left; width: 100%;">Confirmation No.</b>
+                                    </p>
+                                </td>
+                                <td width="15%" style="height: 32px; border-bottom-width : 2px; border-bottom-style : solid;">
+                                    <p>
+                                        <b style="text-align: left; width: 100%;">Amount (INR)</b>
+                                    </p>
+                                </td>
+
+                            </tr>
+
+					<!-- <tr > --> 
+                            <tr th:class="h2no" th:if="${iscarOrderList}" th:each="customerDetails,iterationStatus :${carOrderRow.carOrderCustomerList}">
+                                <td width="25%" style="">
+                                    <table cellpadding='0' cellspacing='0' border='0px' width='100%' style='max-width: 100%;'>
+                                        <tr th:class="h2no">
+                                            <td class="inner-padding" colspan="2" style="text-align: left; width: 45%; height: 20px; vertical-align: top;">
+
+                                                <table cellpadding='0' cellspacing='0' border='0px' width="100%">
+                                                    <tr th:class="h2no">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="text-align: left;">
+                                                                <span style="text-align: left;"> Name : </span>
+                                                            </p>
+                                                        </td>
+                                                         <td class="inner-padding" style="text-align: left; width: 60%; height: 20px;">
+                                                            <p> <span>
+														<span th:text="${customerDetails.title}">MR</span>
+                                                    <span th:text="${customerDetails.firstName}">Vimal</span>
+                                                    <span th:text="${customerDetails.lastName}">Susai Raj</span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+												 
+ 												 <tr  th:class="h2no"  th:if="${isRmStruct and  customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.empCode != null and customerDetails.rmConfigTripDetailsModel.empCode != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 40%; height: 20px;">
+
+
+                                                            <p th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.empCode != null and customerDetails.rmConfigTripDetailsModel.empCode != '' and session.isCorporate == true}">
+														<span> Emp Code : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 60%; height: 20px;">
+                                                            <p> <span th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.empCode != null and customerDetails.rmConfigTripDetailsModel.empCode != '' and session.isCorporate == true}">
+														<span style="" th:text="${customerDetails.rmConfigTripDetailsModel.empCode}">
+															1012973</span> 
+                                                    </span> 
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr   th:class="h2no" th:if="${ isRmStruct and  customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.department != null and customerDetails.rmConfigTripDetailsModel.department != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 40%; height: 20px;">
+
+
+                                                            <p style="" th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.department != null and customerDetails.rmConfigTripDetailsModel.department != '' and session.isCorporate == true}">
+														<span> Department: </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 60%; height: 20px;">
+                                                            <p> <span style="" th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.department != null and customerDetails.rmConfigTripDetailsModel.department != '' and session.isCorporate == true}">
+														<span style="" th:text="${customerDetails.rmConfigTripDetailsModel.department}">
+															45884 </span> 
+                                                    </span> 
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                     <tr    th:class="h2no" th:if="${ isRmStruct and customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.trNumber != null and customerDetails.rmConfigTripDetailsModel.trNumber != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 40%; height: 20px;">
+
+
+                                                            <p style="" th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.trNumber != null and customerDetails.rmConfigTripDetailsModel.trNumber != '' and session.isCorporate == true}">
+														<span> Tr No : </span> 
+                                                    </p> 
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 60%; height: 20px;">
+                                                            <p> <span style="" th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.trNumber != null and customerDetails.rmConfigTripDetailsModel.trNumber != '' and session.isCorporate == true}">
+														<span style="" th:text="${customerDetails.rmConfigTripDetailsModel.trNumber}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr th:class="h2no"  th:if="${ isRmStruct and customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.costCenter != null and customerDetails.rmConfigTripDetailsModel.costCenter != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 40%; height: 20px;">
+
+
+                                                            <p style="" th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.costCenter != null and customerDetails.rmConfigTripDetailsModel.costCenter != '' and session.isCorporate == true}">
+														<span> Cost Center : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 60%; height: 20px;">
+                                                            <p> <span style="" th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.costCenter != null and customerDetails.rmConfigTripDetailsModel.costCenter != '' and session.isCorporate == true}">
+														<span style="" th:text="${customerDetails.rmConfigTripDetailsModel.costCenter}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     <tr   th:class="h2no" th:if="${isRmStruct and customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.projectCode != null and customerDetails.rmConfigTripDetailsModel.projectCode != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 40%; height: 20px;">
+
+
+                                                            <p style="" th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.projectCode != null and customerDetails.rmConfigTripDetailsModel.projectCode != '' and session.isCorporate == true}">
+														<span> Project Code : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 60%; height: 20px;">
+                                                            <p> <span style="" th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.projectCode != null and customerDetails.rmConfigTripDetailsModel.projectCode != '' and session.isCorporate == true}">
+														<span style="" th:text="${customerDetails.rmConfigTripDetailsModel.projectCode}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     <tr   th:class="h2no" th:if="${isRmStruct and customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.bussinessUnit != null and customerDetails.rmConfigTripDetailsModel.bussinessUnit != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 40%; height: 20px;">
+
+
+                                                            <p style="" th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.bussinessUnit != null and customerDetails.rmConfigTripDetailsModel.bussinessUnit != '' and session.isCorporate == true}">
+														<span> Business Unit : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 60%; height: 20px;">
+                                                            <p> <span style="" th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.bussinessUnit != null and customerDetails.rmConfigTripDetailsModel.bussinessUnit != '' and session.isCorporate == true}">
+														<span style="" th:text="${customerDetails.rmConfigTripDetailsModel.bussinessUnit}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+ 
+ 
+ 
+                                                    <tr   th:class="h2no" th:if="${isRmStruct and customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.location != null and customerDetails.rmConfigTripDetailsModel.location != '' and session.isCorporate == true}"> 
+                                                        <td class="inner-padding" style="text-align: left; width: 40%; height: 20px;">
+
+
+                                                            <p style="" th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.location != null and customerDetails.rmConfigTripDetailsModel.location != '' and session.isCorporate == true}">
+														<span> Location : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 60%; height: 20px;">
+                                                            <p> <span style="" th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.location != null and customerDetails.rmConfigTripDetailsModel.location != '' and session.isCorporate == true}">
+														<span style="" th:text="${customerDetails.rmConfigTripDetailsModel.location}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+ 
+                                                     <tr   th:class="h2no"  th:if="${isRmStruct and customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.billNonBill != null and customerDetails.rmConfigTripDetailsModel.billNonBill != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 40%; height: 20px;">
+
+
+                                                            <p style="" th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.billNonBill != null and customerDetails.rmConfigTripDetailsModel.billNonBill != '' and session.isCorporate == true}">
+														<span> Billable : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 60%; height: 20px;">
+                                                            <p> <span style="" th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.billNonBill != null and customerDetails.rmConfigTripDetailsModel.billNonBill != '' and session.isCorporate == true}">
+														<span style="" th:text="${customerDetails.rmConfigTripDetailsModel.billNonBill}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                     <tr   th:class="h2no" th:if="${isRmStruct and customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.approverName != null and customerDetails.rmConfigTripDetailsModel.approverName != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 40%; height: 20px;">
+
+
+                                                            <p style="" th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.approverName != null and customerDetails.rmConfigTripDetailsModel.approverName != '' and session.isCorporate == true}">
+														<span> Approver : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 60%; height: 20px;">
+                                                            <p> <span style="" th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.approverName != null and customerDetails.rmConfigTripDetailsModel.approverName != '' and session.isCorporate == true}">
+														<span style="" th:text="${customerDetails.rmConfigTripDetailsModel.approverName}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     <tr   th:class="h2no" th:if="${isRmStruct and customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.reasonForTravel != null and customerDetails.rmConfigTripDetailsModel.reasonForTravel != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 40%; height: 20px;">
+
+
+                                                            <p style="" th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.reasonForTravel != null and customerDetails.rmConfigTripDetailsModel.reasonForTravel != '' and session.isCorporate == true}">
+														<span> Reason : </span>  
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 60%; height: 20px;">
+                                                            <p> <span style="" th:if="${customerDetails.rmConfigTripDetailsModel != null and customerDetails.rmConfigTripDetailsModel.reasonForTravel != null and customerDetails.rmConfigTripDetailsModel.reasonForTravel != '' and session.isCorporate == true}">
+														<span style="" th:text="${customerDetails.rmConfigTripDetailsModel.reasonForTravel}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>  
+                                                     <tr   th:class="h2no" th:if="${isRmStruct and session.manualfield1 != null and customerDetails.rmConfigTripDetailsModel!=null  and  customerDetails.rmConfigTripDetailsModel.manualField1!=null}">
+                                                        <td class="inner-padding" style="text-align: left; width: 40%; height: 20px;">
+
+
+                                                            <p style="" th:if="${session.manualfield1 != null and customerDetails.rmConfigTripDetailsModel!=null and  customerDetails.rmConfigTripDetailsModel.manualField1!=null}">
+														<span th:text="${session.manualfield1}"> manualfield 1 : </span> <span>:</span>
+                                                    </p >
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 60%; height: 20px;">
+                                                            <p> <span style="" th:if="${session.manualfield1 != null and customerDetails.rmConfigTripDetailsModel!=null and  customerDetails.rmConfigTripDetailsModel.manualField1!=null}">
+														<span th:text="${customerDetails.rmConfigTripDetailsModel.manualField1}"> value 1  </span>  
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>  
+                                                     <tr  th:class="h2no" th:if="${isRmStruct and session.manualfield2 != null and customerDetails.rmConfigTripDetailsModel!=null and  customerDetails.rmConfigTripDetailsModel.manualField2!=null}">
+                                                        <td class="inner-padding" style="text-align: left; width: 40%; height: 20px;">
+
+
+                                                            <p style="" th:if="${session.manualfield2 != null and customerDetails.rmConfigTripDetailsModel!=null and  customerDetails.rmConfigTripDetailsModel.manualField2!=null}">
+														<span th:text="${session.manualfield2}"> manualfield 2 :</span> <span>:</span>
+                                                    </p >
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 60%; height: 20px;">
+                                                            <p> <span style="" th:if="${session.manualfield2 != null and customerDetails.rmConfigTripDetailsModel!=null and  customerDetails.rmConfigTripDetailsModel.manualField2!=null}">
+														<span th:text="${customerDetails.rmConfigTripDetailsModel.manualField2}"> value 2  </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     <tr   th:class="h2no" th:if="${isRmStruct and session.manualfield3 != null and customerDetails.rmConfigTripDetailsModel!=null and  customerDetails.rmConfigTripDetailsModel.manualField3!=null}">
+                                                        <td class="inner-padding" style="text-align: left; width: 40%; height: 20px;">
+
+
+                                                            <p style="" th:if="${session.manualfield3 != null and customerDetails.rmConfigTripDetailsModel!=null and  customerDetails.rmConfigTripDetailsModel.manualField3!=null}">
+														<span th:text="${session.manualfield3}"> manualfield 3 : </span> <span>:</span>
+                                                    </p >
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 60%; height: 20px;">
+                                                            <p> <span style="" th:if="${session.manualfield3 != null and customerDetails.rmConfigTripDetailsModel!=null and  customerDetails.rmConfigTripDetailsModel.manualField3!=null}">
+														<span th:text="${customerDetails.rmConfigTripDetailsModel.manualField3}"> value 3  </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     <tr   th:class="h2no" th:if="${isRmStruct and session.manualfield4 != null   and customerDetails.rmConfigTripDetailsModel!=null and  customerDetails.rmConfigTripDetailsModel.manualField4!=null}">
+                                                        <td class="inner-padding" style="text-align: left; width: 40%; height: 20px;">
+
+
+                                                            <p style="" th:if="${session.manualfield4 != null and customerDetails.rmConfigTripDetailsModel!=null and  customerDetails.rmConfigTripDetailsModel.manualField4!=null}">
+														<span th:text="${session.manualfield4}"> manualfield 4 :</span>   <span>:</span>
+                                                    </p >
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 60%; height: 20px;">
+                                                            <p> <span style="" th:if="${session.manualfield4 != null and customerDetails.rmConfigTripDetailsModel!=null and  customerDetails.rmConfigTripDetailsModel.manualField4!=null}">
+														<span th:text="${customerDetails.rmConfigTripDetailsModel.manualField4}"> value 4  </span>  
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     <tr    th:class="h2no" th:if="${isRmStruct and session.manualfield5 != null   and customerDetails.rmConfigTripDetailsModel!=null and  customerDetails.rmConfigTripDetailsModel.manualField5!=null}">
+                                                        <td class="inner-padding" style="text-align: left; width: 40%; height: 20px;">
+
+
+                                                            <p style="" th:if="${session.manualfield5 != null and   customerDetails.rmConfigTripDetailsModel!=null and  customerDetails.rmConfigTripDetailsModel.manualField5!=null}">
+														<span th:text="${session.manualfield5}"> manualfield 5 : </span>  <span>:</span>
+                                                    </p >
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 60%; height: 20px;">
+                                                            <p> <span style="" th:if="${session.manualfield5 != null   and customerDetails.rmConfigTripDetailsModel!=null and  customerDetails.rmConfigTripDetailsModel.manualField5!=null}">
+														<span th:text="${customerDetails.rmConfigTripDetailsModel.manualField5}"> value 5  </span>  
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr> 
+														 
+                                                     
+                                                    <tr    th:class="h2no" th:if="${ isRmStruct==false and   rmdetail != null and rmdetail.empCode != null and rmdetail.empCode != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p th:if="${rmdetail != null and rmdetail.empCode != null and rmdetail.empCode != '' and session.isCorporate == true}">
+														<span> Emp Code : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span th:if="${rmdetail != null and rmdetail.empCode != null and rmdetail.empCode != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.empCode}">
+															1012973</span> 
+                                                    </span> 
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr   th:class="h2no" th:if="${isRmStruct==false and rmdetail != null and rmdetail.department != null and rmdetail.department != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${rmdetail != null and rmdetail.department != null and rmdetail.department != '' and session.isCorporate == true}">
+														<span> Department: </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${rmdetail != null and rmdetail.department != null and rmdetail.department != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.department}">
+															45884 </span> 
+                                                    </span> 
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                     <tr   th:class="h2no" th:if="${isRmStruct==false and rmdetail != null and rmdetail.trNumber != null and rmdetail.trNumber != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${rmdetail != null and rmdetail.trNumber != null and rmdetail.trNumber != '' and session.isCorporate == true}">
+														<span> Tr No : </span> 
+                                                    </p> 
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${rmdetail != null and rmdetail.trNumber != null and rmdetail.trNumber != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.trNumber}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr     th:class="h2no"  th:if="${isRmStruct==false and rmdetail != null and rmdetail.costCenter != null and rmdetail.costCenter != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${rmdetail != null and rmdetail.costCenter != null and rmdetail.costCenter != '' and session.isCorporate == true}">
+														<span> Cost Center : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${rmdetail != null and rmdetail.costCenter != null and rmdetail.costCenter != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.costCenter}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     <tr     th:class="h2no" th:if="${isRmStruct==false and rmdetail != null and rmdetail.projectCode != null and rmdetail.projectCode != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${rmdetail != null and rmdetail.projectCode != null and rmdetail.projectCode != '' and session.isCorporate == true}">
+														<span> Project Code : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${rmdetail != null and rmdetail.projectCode != null and rmdetail.projectCode != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.projectCode}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     <tr   th:class="h2no" th:if="${isRmStruct==false and rmdetail != null and rmdetail.bussinessUnit != null and rmdetail.bussinessUnit != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${rmdetail != null and rmdetail.bussinessUnit != null and rmdetail.bussinessUnit != '' and session.isCorporate == true}">
+														<span> Business Unit : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${rmdetail != null and rmdetail.bussinessUnit != null and rmdetail.bussinessUnit != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.bussinessUnit}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+ 
+ 
+ 
+                                                    <tr    th:class="h2no" th:if="${isRmStruct==false and rmdetail != null and rmdetail.location != null and rmdetail.location != '' and session.isCorporate == true}"> 
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${rmdetail != null and rmdetail.location != null and rmdetail.location != '' and session.isCorporate == true}">
+														<span> Location : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${rmdetail != null and rmdetail.location != null and rmdetail.location != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.location}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+ 
+                                                     <tr    th:class="h2no"  th:if="${isRmStruct==false and rmdetail != null and rmdetail.billNonBill != null and rmdetail.billNonBill != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${rmdetail != null and rmdetail.billNonBill != null and rmdetail.billNonBill != '' and session.isCorporate == true}">
+														<span> Billable : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${rmdetail != null and rmdetail.billNonBill != null and rmdetail.billNonBill != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.billNonBill}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                     <tr    th:class="h2no" th:if="${isRmStruct==false and rmdetail != null and rmdetail.approverName != null and rmdetail.approverName != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${rmdetail != null and rmdetail.approverName != null and rmdetail.approverName != '' and session.isCorporate == true}">
+														<span> Approver : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${rmdetail != null and rmdetail.approverName != null and rmdetail.approverName != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.approverName}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     <tr    th:class="h2no" th:if="${isRmStruct==false and rmdetail != null and rmdetail.reasonForTravel != null and rmdetail.reasonForTravel != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${rmdetail != null and rmdetail.reasonForTravel != null and rmdetail.reasonForTravel != '' and session.isCorporate == true}">
+														<span> Reason : </span>  
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${rmdetail != null and rmdetail.reasonForTravel != null and rmdetail.reasonForTravel != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.reasonForTravel}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr> 
+                                                     <tr     th:class="h2no" th:if="${isRmStruct==false and session.manualfield1 != null and manualrmfield1!=null}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${session.manualfield1 != null and manualrmfield1!=null}">
+														<span th:text="${session.manualfield1}"> manualfield 1 : </span> <span>:</span>
+                                                    </p >
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${session.manualfield1 != null and manualrmfield1!=null}">
+														<span th:text="${manualrmfield1}"> value 1  </span>  
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>  
+                                                     <tr   th:class="h2no" th:if="${isRmStruct==false and session.manualfield2 != null and manualrmfield2!=null}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${session.manualfield2 != null and manualrmfield2!=null}">
+														<span th:text="${session.manualfield2}"> manualfield 2 :</span> <span>:</span>
+                                                    </p >
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${session.manualfield2 != null and manualrmfield2!=null}">
+														<span th:text="${manualrmfield2}"> value 2  </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     <tr    th:class="h2no" th:if="${isRmStruct==false and session.manualfield3 != null and manualrmfield3!=null}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${session.manualfield3 != null and manualrmfield3!=null}">
+														<span th:text="${session.manualfield3}"> manualfield 3 : </span> <span>:</span>
+                                                    </p >
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${session.manualfield3 != null and manualrmfield3!=null}">
+														<span th:text="${manualrmfield3}"> value 3  </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     <tr    th:class="h2no" th:if="${isRmStruct==false and session.manualfield4 != null and manualrmfield4!=null}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${session.manualfield4 != null and manualrmfield4!=null}">
+														<span th:text="${session.manualfield4}"> manualfield 4 :</span> <span>:</span> 
+                                                    </p >
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${session.manualfield4 != null and manualrmfield4!=null}">
+														<span th:text="${manualrmfield4}"> value 4  </span>  
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     <tr    th:class="h2no" th:if="${isRmStruct==false and session.manualfield5 != null and manualrmfield5!=null}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${session.manualfield5 != null and manualrmfield5!=null}">
+														<span th:text="${session.manualfield5}"> manualfield 5 : </span> <span>:</span>
+                                                    </p >
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${session.manualfield5 != null and manualrmfield5!=null}">
+														<span th:text="${manualrmfield5}"> value 5  </span>  
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     
+                                                </table>
+                                            </td>
+											 
+                                        </tr>
+
+                                    </table>
+                                </td>
+                                <td width="15%" style="width: 15%; vertical-align: top;">
+                                    <p>
+                                        <span style="text-align: left; width: 100%;"><b>From :</b> <span th:text="${carTravelRequestQuotation.pickUp}">Koramangala</span>
+                                        </span> <br /> <span style="text-align: left; width: 100%;"><b>To : </b><span th:text="${carTravelRequestQuotation.dropOff}">Shivajinagar</span>
+                                        </span> <br />
+                                    </p>
+                                </td>
+                                <td width="15%" style="width: 15%; vertical-align: top;">
+                                    <p>
+                                        <span style="text-align: left; width: 100%;" th:text="${#dates.format(carOrderRow.travelDate, 'dd-MMM-yyyy')}">29-Jul-17</span>
+                                        <br /> <br />
+                                    </p>
+                                </td>
+                                <td width="15%" style="width: 15%; vertical-align: top;">
+                                    <p>
+                                        <b> Car Type :</b>
+                                        <span style="text-align: left; width: 100%;" th:text="${carOrderRow.carCompanyName}">Sedan </span><br />
+                                        <b> City :</b>
+                                        <span style="text-align: left; width: 100%;" th:text="${carOrderRow.location}">Bangalore</span>
+                                        <br />
+
+                                    </p>
+                                </td>
+                                <td width="15%" style="width: 15%; vertical-align: top;">
+                                    <p>
+                                        <span style="text-align: left; width: 100%;" th:text="${carOrderRow.confirmationNumber}">HK4608323521</span><br />
+                                        <br />
+                                    </p>
+                                </td>
+                                <td width="15%" style="width: 15%; vertical-align: top;text-align: right;">
+                                    <p>
+                                        <span style="text-align: right; width: 100%;" th:text="${session.basewithtax}">2000</span> <br />
+                                        <br />
+                                    </p>
+                                </td>
+
+                            </tr>
+                            <!--  </tr> -->
+                            
+                            <!-- <tr > -->
+                                <tr th:class="h2no" th:if="${iscarOrderList==false}">
+                                <td width="25%" style="">
+                                    <table cellpadding='0' cellspacing='0' border='0px' width='100%' style='max-width: 100%;'>
+                                        <tr th:class="h2no">
+                                            <td class="inner-padding" colspan="2" style="text-align: left; width: 45%; height: 20px; vertical-align: top;">
+
+                                                <table cellpadding='0' cellspacing='0' border='0px' width="100%">
+                                                    <tr th:class="h2no">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p style="text-align: left;">
+                                                                <span style="text-align: left;"> Name : </span>
+                                                            </p>
+                                                        </td>
+                                                         <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span>
+              										<span th:text="${carOrderRow.empNmae}">MR</span>
+                                                     
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr th:class="h2no" th:if="${rmdetail != null and rmdetail.empCode != null and rmdetail.empCode != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p th:if="${rmdetail != null and rmdetail.empCode != null and rmdetail.empCode != '' and session.isCorporate == true}">
+														<span> Emp Code : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span th:if="${rmdetail != null and rmdetail.empCode != null and rmdetail.empCode != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.empCode}">
+															1012973</span> 
+                                                    </span> 
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr th:class="h2no" th:if="${rmdetail != null and rmdetail.department != null and rmdetail.department != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${rmdetail != null and rmdetail.department != null and rmdetail.department != '' and session.isCorporate == true}">
+														<span> Department: </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${rmdetail != null and rmdetail.department != null and rmdetail.department != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.department}">
+															45884 </span> 
+                                                    </span> 
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                     <tr th:class="h2no" th:if="${rmdetail != null and rmdetail.trNumber != null and rmdetail.trNumber != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${rmdetail != null and rmdetail.trNumber != null and rmdetail.trNumber != '' and session.isCorporate == true}">
+														<span> Tr No : </span> 
+                                                    </p> 
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${rmdetail != null and rmdetail.trNumber != null and rmdetail.trNumber != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.trNumber}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr th:class="h2no"  th:if="${rmdetail != null and rmdetail.costCenter != null and rmdetail.costCenter != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${rmdetail != null and rmdetail.costCenter != null and rmdetail.costCenter != '' and session.isCorporate == true}">
+														<span> Cost Center : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${rmdetail != null and rmdetail.costCenter != null and rmdetail.costCenter != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.costCenter}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     <tr th:class="h2no" th:if="${rmdetail != null and rmdetail.projectCode != null and rmdetail.projectCode != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${rmdetail != null and rmdetail.projectCode != null and rmdetail.projectCode != '' and session.isCorporate == true}">
+														<span> Project Code : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${rmdetail != null and rmdetail.projectCode != null and rmdetail.projectCode != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.projectCode}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     <tr th:class="h2no" th:if="${rmdetail != null and rmdetail.bussinessUnit != null and rmdetail.bussinessUnit != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${rmdetail != null and rmdetail.bussinessUnit != null and rmdetail.bussinessUnit != '' and session.isCorporate == true}">
+														<span> Business Unit : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${rmdetail != null and rmdetail.bussinessUnit != null and rmdetail.bussinessUnit != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.bussinessUnit}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+ 
+ 
+ 
+                                                    <tr th:class="h2no" th:if="${rmdetail != null and rmdetail.location != null and rmdetail.location != '' and session.isCorporate == true}"> 
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${rmdetail != null and rmdetail.location != null and rmdetail.location != '' and session.isCorporate == true}">
+														<span> Location : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${rmdetail != null and rmdetail.location != null and rmdetail.location != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.location}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+ 
+                                                     <tr th:class="h2no"  th:if="${rmdetail != null and rmdetail.billNonBill != null and rmdetail.billNonBill != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${rmdetail != null and rmdetail.billNonBill != null and rmdetail.billNonBill != '' and session.isCorporate == true}">
+														<span> Billable : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${rmdetail != null and rmdetail.billNonBill != null and rmdetail.billNonBill != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.billNonBill}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                     <tr th:class="h2no" th:if="${rmdetail != null and rmdetail.approverName != null and rmdetail.approverName != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${rmdetail != null and rmdetail.approverName != null and rmdetail.approverName != '' and session.isCorporate == true}">
+														<span> Approver : </span> 
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${rmdetail != null and rmdetail.approverName != null and rmdetail.approverName != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.approverName}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     <tr th:class="h2no" th:if="${rmdetail != null and rmdetail.reasonForTravel != null and rmdetail.reasonForTravel != '' and session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${rmdetail != null and rmdetail.reasonForTravel != null and rmdetail.reasonForTravel != '' and session.isCorporate == true}">
+														<span> Reason : </span>  
+                                                    </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${rmdetail != null and rmdetail.reasonForTravel != null and rmdetail.reasonForTravel != '' and session.isCorporate == true}">
+														<span style="" th:text="${rmdetail.reasonForTravel}">
+															45884 </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr> 
+                                                     <tr th:class="h2no" th:if="${session.manualfield1 != null and manualrmfield1!=null}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${session.manualfield1 != null and manualrmfield1!=null}">
+														<span th:text="${session.manualfield1}"> manualfield 1 : </span> <span>:</span>
+                                                    </p >
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${session.manualfield1 != null and manualrmfield1!=null}">
+														<span th:text="${manualrmfield1}"> value 1  </span>  
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>  
+                                                     <tr th:class="h2no" th:if="${session.manualfield2 != null and manualrmfield2!=null}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${session.manualfield2 != null and manualrmfield2!=null}">
+														<span th:text="${session.manualfield2}"> manualfield 2 :</span> <span>:</span>
+                                                    </p >
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${session.manualfield2 != null and manualrmfield2!=null}">
+														<span th:text="${manualrmfield2}"> value 2  </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     <tr th:class="h2no" th:if="${session.manualfield3 != null and manualrmfield3!=null}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${session.manualfield3 != null and manualrmfield3!=null}">
+														<span th:text="${session.manualfield3}"> manualfield 3 : </span> <span>:</span>
+                                                    </p >
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${session.manualfield3 != null and manualrmfield3!=null}">
+														<span th:text="${manualrmfield3}"> value 3  </span> 
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     <tr th:class="h2no" th:if="${session.manualfield4 != null and manualrmfield4!=null}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${session.manualfield4 != null and manualrmfield4!=null}">
+														<span th:text="${session.manualfield4}"> manualfield 4 :</span> <span>:</span> 
+                                                    </p >
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${session.manualfield4 != null and manualrmfield4!=null}">
+														<span th:text="${manualrmfield4}"> value 4  </span>  
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                     <tr th:class="h2no" th:if="${session.manualfield5 != null and manualrmfield5!=null}">
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+
+
+                                                            <p style="" th:if="${session.manualfield5 != null and manualrmfield5!=null}">
+														<span th:text="${session.manualfield5}"> manualfield 5 : </span> <span>:</span>
+                                                    </p >
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: left; width: 50%; height: 20px;">
+                                                            <p> <span style="" th:if="${session.manualfield5 != null and manualrmfield5!=null}">
+														<span th:text="${manualrmfield5}"> value 5  </span>  
+                                                    </span>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+											 
+                                        </tr>
+
+                                    </table>
+                                </td>
+                                <td width="15%" style="width: 15%; vertical-align: top;">
+                                    <p>
+                                        <span style="text-align: left; width: 100%;"><b>From :</b> <span th:text="${carTravelRequestQuotation.pickUp}">Koramangala</span>
+                                        </span> <br /> <span style="text-align: left; width: 100%;"><b>To : </b><span th:text="${carTravelRequestQuotation.dropOff}">Shivajinagar</span>
+                                        </span> <br />
+                                    </p>
+                                </td>
+                                <td width="15%" style="width: 15%; vertical-align: top;">
+                                    <p>
+                                        <span style="text-align: left; width: 100%;" th:text="${#dates.format(carOrderRow.travelDate, 'dd-MMM-yyyy')}">29-Jul-17</span>
+                                        <br /> <br />
+                                    </p>
+                                </td>
+                                <td width="15%" style="width: 15%; vertical-align: top;">
+                                    <p>
+                                        <b> Car Type :</b>
+                                        <span style="text-align: left; width: 100%;" th:text="${carOrderRow.carCompanyName}">Sedan </span><br />
+                                        <b> City :</b>
+                                        <span style="text-align: left; width: 100%;" th:text="${carOrderRow.location}">Bangalore</span>
+                                        <br />
+
+                                    </p>
+                                </td>
+                                <td width="15%" style="width: 15%; vertical-align: top;">
+                                    <p>
+                                        <span style="text-align: left; width: 100%;" th:text="${carOrderRow.confirmationNumber}">HK4608323521</span><br />
+                                        <br />
+                                    </p>
+                                </td>
+                                <td width="15%" style="width: 15%; vertical-align: top;text-align: right;">
+                                    <p>
+                                        <span style="text-align: right; width: 100%;" th:text="${session.basewithtax}">2000</span> <br />
+                                        <br />
+                                    </p>
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </td>
+                </tr>
+
+
+                <tr th:class="main-head" style="" th:if="${session.isCorporate == true and session.isServiceTax == true}">
+                    <td style="text-align: center;border-top-width : 1px;">
+                        <table cellpadding='0' cellspacing='0' border='0' width="100%" style="">
+                            <tr>
+                                <td th:class="inner" style="text-align: left; width: 100%;" valign="top">
+                                    <table cellpadding='0' cellspacing='0' border='1px' width="100%" th:class="invoice-no" style="width: 100%;">
+                                        <tr th:class="h2no">
+                                            <td class="inner-padding" style="text-align: center; width: 55.1%; height: 32px; border-bottom-width : 2px; border-bottom-style : solid;">
+                                                <p>
+                                                    <b style="font-size: 12px;">Terms and Conditions</b>
+                                                </p>
+                                            </td>
+                                            <td class="inner-padding" colspan="0" style="text-align: center; width: 30.1%; height: 32px; border-bottom-width : 2px; border-bottom-style : solid;">
+                                                <p>
+                                                    <b style="text-align: left; font-size: 12px;">Total
+														Fare</b>
+                                                </p>
+                                            </td>
+                                            <td class="inner-padding" style="text-align: right; width: 14.9%; height: 32px; border-bottom-width : 2px; border-bottom-style : solid;">
+                                                <p>
+                                                    <b style="text-align: right; font-size: 12px;" th:text="${session.totWithGst}"> 43566 </b>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                        <tr th:class="h2no">
+                                            <td class="inner-padding" style="text-align: left; width: 55%; height: 20px;">
+
+                                                <table cellpadding='0' cellspacing='0' border='0px' width="100%">
+                                                    <tr th:class="h2no">
+
+                                                        <td class="inner-padding" style="text-align: left; width: 70%; height: 20px;">
+
+                                                            <p>&nbsp;</p>
+                                                            <p>
+                                                                <b style="text-align: left; text-align: left;"> </b><span>
+																	All Cheques/demand drafts in payment of bills must be
+																	crossed "A/C Payee Only" and drawn in favour of
+																	'Intellicomm Solutions &amp; Enterprices Pvt Ltd'." Any
+																	disputes should be informed and clarified within 48
+																	hours of invoice submission. All taxes charged on
+																	Actual basis on the Tayyarah T. fee (net of discount,
+																	if any). Total Fare inclusive of all supplier taxes. </span>
+                                                            </p>
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr th:class="h2no">
+                                                        <td class="inner-padding" style="text-align: left; width: 70%; height: 20px;">
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr th:class="h2no">
+                                                        <td class="inner-padding" style="text-align: left; width: 70%; height: 20px;">
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr th:class="h2no">
+                                                        <td class="inner-padding" style="text-align: left; width: 70%; height: 20px;">
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr th:class="h2no">
+                                                        <td class="inner-padding" style="text-align: left; width: 70%; height: 20px;">
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr th:class="h2no">
+                                                        <td class="inner-padding" style="text-align: left; width: 70%; height: 20px;">
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr th:class="h2no">
+                                                        <td class="inner-padding" style="text-align: left; width: 70%; height: 20px;">
+                                                        </td>
+                                                    </tr>
+                                                    <tr th:class="h2no">
+                                                        <td class="inner-padding" style="text-align: left; width: 70%; height: 20px;">
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td class="inner-padding" colspan="2" style="text-align: left; width: 45%; height: 20px;">
+
+                                                <table cellpadding='0' cellspacing='0' border='0px' width="100%">
+                                                    <tr th:class="h2no">
+                                                        <td class="inner-padding" style="text-align: left; width: 66.5%; height: 20px;">
+
+
+                                                            <p style="text-align: left;">
+                                                                <b style="text-align: left;"> Base Fare </b>
+                                                            </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: right; width: 33.5%; height: 20px;">
+                                                            <p>
+                                                                <b style="text-align: right;" th:text="${carOrderRow.basePrice}"> 43566 </b>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr th:class="h2no">
+
+                                                        <td class="inner-padding" style="text-align: left; width: 70%; height: 20px;">
+                                                            <p>
+                                                                <b style="text-align: left; text-align: left;">Airline
+																	Taxes and Fees</b><span> - ( <span style=""
+																	th:if="${session.YQTax != 0.00}">YQ: <span
+																		style="" th:text="${session.YQTax}"> 3,5456</span></span> <span style="" th:if="${session.YRTax != 0.00}"> YR:<span
+																		style="" th:text="${session.YRTax}"> 3,5456</span></span> <span style="" th:if="${session.WOTax != 0.00}">WO: <span
+																		style="" th:text="${session.WOTax}"> 3,5456</span>
+                                                                </span> <span style="" th:if="${session.INTax != 0.00}">
+																		IN: <span style="" th:text="${session.INTax}">
+																			3,5456</span>
+                                                                </span> <span style="" th:if="${session.JNTax != 0.00}">
+																		JN: <span style="" th:text="${session.JNTax}">
+																			3,5456</span>
+                                                                </span> <span style="" th:if="${session.PSFTax != 0.00}">
+																		PSF: <span style="" th:text="${session.PSFTax}">
+																			3,5456</span>
+                                                                </span> <span style="" th:if="${session.UDFTax != 0.00}">
+																		UDF: <span style="" th:text="${session.UDFTax}">
+																			3,5456</span>
+                                                                </span> <span style="" th:if="${session.K3Tax != 0.00}">
+																		K3: <span style="" th:text="${session.K3Tax}">
+																			3,5456</span>
+                                                                </span> <span style="" th:if="${session.OtherTax != 0.00}">
+																		Other Taxes: <span style=""
+																		th:text="${session.OtherTax}"> 3,5456</span>
+                                                                </span> )
+                                                                </span>
+                                                            </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: right; width: 30%; height: 20px;">
+                                                            <p>
+                                                                <b style=""> <span th:text="${session.TaxinBooking}">
+																		65,783</span>
+																</b>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr th:class="h2no" th:if="${session.ExtraMealPrice != 0.00 and session.isCorporate == true}">
+
+                                                        <td class="inner-padding" style="text-align: left; width: 70%; height: 20px;">
+                                                            <p>
+                                                                <b style="text-align: left;">Extra Meal</b>
+                                                            </p>
+
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: right; width: 30%; height: 20px;">
+                                                            <p>
+                                                                <b style="" th:text="${session.ExtraMealPrice}">
+																	3456</b>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr th:class="h2no" th:if="${session.ExtraBaggagePrice != 0.00 and session.isCorporate == true}">
+
+                                                        <td class="inner-padding" style="text-align: left; width: 70%; height: 20px;">
+                                                            <p>
+                                                                <b style="text-align: left;">Extra Baggage</b>
+                                                            </p>
+
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: right; width: 30%; height: 20px;">
+                                                            <p>
+                                                                <b style="" th:text="${session.ExtraBaggagePrice}">
+																	3456</b>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr th:class="h2no" th:if="${session.ManagementFee != 0.00 and session.isCorporate == true}">
+
+                                                        <td class="inner-padding" style="text-align: left; width: 70%; height: 20px;">
+                                                            <p>
+                                                                <b style="text-align: left;">Management Fee</b>
+                                                            </p>
+
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: right; width: 30%; height: 20px;">
+                                                            <p>
+                                                                <b style="" th:text="${session.ManagementFee}"> 3456</b>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr th:class="h2no" th:if="${flightorder.processingFees != 0.00 and session.isCorporate == true}">
+
+                                                        <td class="inner-padding" style="text-align: left; width: 70%; height: 20px;">
+                                                            <p>
+                                                                <b style="text-align: left;">Convenience Fee</b>
+                                                            </p>
+
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: right; width: 30%; height: 20px;">
+                                                            <p>
+                                                                <b style="" th:text="${flightorder.processingFees}">
+																	569</b>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr th:class="h2no">
+                                                        <td class="inner-padding" style="text-align: right; width: 70%; height: 20px; font-size: 12px;">
+                                                            <b style="text-align: right; font-size: 12px;"><font
+																face="Calibri" size="2pt">Taxes</font></b>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: right; width: 30%; height: 20px;">
+
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr th:class="h2no" th:if="${session.isCorporate == true}">
+                                                        <td class="inner-padding" style="text-align: left; width: 70%; height: 20px;">
+                                                            <p>
+                                                                <b style="">Service Tax </b> – ( <span style="">Service
+																	Tax Base: <span style=""
+																	th:text="${session.BaseServiceTax}"> 3,5456</span>
+                                                                </span> <span style=""> Swachh Bharat Cess:<span
+																	style="" th:text="${session.SBC}"> 3,5456</span>
+                                                                </span> <span style="">Krishi Kalyan Cess: <span
+																	style="" th:text="${session.KKC}"> 3,5456</span>
+                                                                </span> )
+                                                            </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: right; width: 30%; height: 20px;">
+                                                            <p>
+                                                                <b style="" th:text="${session.TotalServiceTax}">
+																	345667</b>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr th:class="h2no">
+                                                        <td class="inner-padding" style="text-align: left; width: 70%; height: 20px;">
+                                                            <p>
+                                                                <b style="">Total Invoice Amount</b>
+                                                            </p>
+                                                        </td>
+                                                        <td class="inner-padding" style="text-align: right; width: 30%; height: 20px;">
+                                                            <p>
+                                                                <b style="font-size: 12px;" th:text="${session.totWithGst}"> 5723498</b>
+                                                            </p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+
+
+                    </td>
+                </tr>
+
+                <!-- GST -->
+                <tr th:class="main-head" style="" th:if="${session.isCorporate == true and session.isGstTax == true}">
+                    <td style="text-align: center;border-top-width : 1px;">
+                        <table cellpadding='0' cellspacing='0' border='0' width="100%" style="">
+                            <tr>
+                                <td th:class="inner" style="text-align: left; width: 100%;" valign="top">
+                                    <table cellpadding='0' cellspacing='0' border='1px' width="100%" th:class="invoice-no" style="width: 100%;">
+                                        <thead>
+                                            <tr th:class="h2no">
+
+                                                <td class="inner-padding" style="text-align: left; width: 55.1%; height: 32px; border-bottom-width : 1px; border-bottom-style : solid;">
+                                                    <p>
+                                                        <b style="font-size: 11px; padding: 0px; margin: 0px; text-align: left;">
+														Fare Break Up </b> <span> (<span
+														style="font-size: 10px; padding: 0px; margin: 0px;">Basic:
+															<span style="font-size: 10px; padding: 0px; margin: 0px;"
+															th:text="${carOrderRow.basePrice}"> 3,5456</span>
+                                                        </span> <span style="font-size: 10px; padding: 0px; margin: 0px;" th:if="${carOrderRow.extraKM != 0.00}">Extra KM: <span
+															style="font-size: 10px; padding: 0px; margin: 0px;"
+															th:text="${carOrderRow.extraKM}"> 3,5456</span></span> <span style="font-size: 10px; padding: 0px; margin: 0px;" th:if="${carOrderRow.extraHours != 0.00}">Extra
+															Hours: <span
+															style="font-size: 10px; padding: 0px; margin: 0px;"
+															th:text="${carOrderRow.extraHours}"> 3,5456</span>
+                                                        </span> <span style="font-size: 10px; padding: 0px; margin: 0px;" th:if="${carOrderRow.tollOrParkingCharges != 0.00}">Toll
+															/ Parking Charges: <span
+															style="font-size: 10px; padding: 0px; margin: 0px;"
+															th:text="${carOrderRow.tollOrParkingCharges}">
+																3,5456</span>
+                                                        </span> <span style="font-size: 10px; padding: 0px; margin: 0px;" th:if="${carOrderRow.driverAllowanceDay != 0.00}">Driver
+															Allowance Day: <span
+															style="font-size: 10px; padding: 0px; margin: 0px;"
+															th:text="${carOrderRow.driverAllowanceDay}">
+																3,5456</span>
+                                                        </span> <span style="font-size: 10px; padding: 0px; margin: 0px;" th:if="${carOrderRow.driverAllowanceNight != 0.00}">Driver
+															Allowance Night: <span
+															style="font-size: 10px; padding: 0px; margin: 0px;"
+															th:text="${carOrderRow.driverAllowanceNight}">
+																3,5456</span>
+                                                        </span> <span style="font-size: 10px; padding: 0px; margin: 0px;" th:if="${carOrderRow.otherTaxes != 0.00}">Other
+															Taxes: <span
+															style="font-size: 10px; padding: 0px; margin: 0px;"
+															th:text="${carOrderRow.otherTaxes}"> 3,5456</span>
+                                                        </span> )
+                                                        </span>
+                                                    </p>
+
+                                                </td>
+                                                <td class="inner-padding" style="text-align: center; font-size: 12px; width: 30.05%; height: 32px; border-bottom-width : 1px; border-bottom-style : solid;">
+                                                    <p>
+                                                        <b style="font-size: 12px;">Total Amount</b>
+                                                    </p>
+                                                </td>
+                                                <td class="inner-padding" style="text-align: right; font-size: 12px; width: 14.85%; height: 32px; border-bottom-width : 1px; border-bottom-style : solid;">
+                                                    <p>
+                                                        <b style="text-align: right; font-size: 12px;" th:text="${session.basewithtax}"> 2000  </b>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:class="h2no">
+                                                <td class="inner-padding" style="text-align: left; width: 55.1%; height: 20px; border-top-width : 1px; border-top-style : solid;">
+                                                    <table cellpadding='0' cellspacing='0' border='0px' width="100%">
+                                                        <tr th:class="h2no">
+                                                            <td class="inner-padding" style="text-align: left; width: 55%; height: 20px; vertical-align: top;">
+                                                                &nbsp;</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+
+                                                <td class="inner-padding" colspan="2" style="text-align: left; width: 44.9%; height: 20px; border-top-width : 1px; border-top-style : solid;">
+                                                    <table cellpadding='0' cellspacing='0' border='0px' width="100%" th:class="invoice-no" style="width: 100%;">
+
+                                                        <tr th:class="h2no" th:if="${carOrderRow.convenienceFee != 0.00 and session.isCorporate == true}">
+
+                                                            <td class="inner-padding" style="text-align: right; width: 67%; height: 20px;vertical-align: top;border-right-width : 2px; border-right-style : solid;">
+                                                                <p>
+                                                                    Convenience Fee
+                                                                </p>
+                                                            </td>
+                                                            <td class="inner-padding" style="text-align: right; width: 33%; height: 20px; vertical-align: top;">
+                                                                <p>
+                                                                    <span style="" th:text="${carOrderRow.convenienceFee}">
+																		569</span>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr th:class="h2no" th:if="${session.isCorporate == true}">
+                                                            <td class="inner-padding" style="text-align: right; width: 67%; height: 20px; vertical-align: top; border-right-width : 2px; border-right-style : solid;">
+                                                                <p>
+                                                                    Tayyarah Service Charges (Taxable Value)
+                                                                </p>
+                                                            </td>
+                                                            <td class="inner-padding" style="text-align: right; width: 33%; height: 20px; vertical-align: top; ">
+                                                                <p>
+                                                                    <span style="" th:text="${session.ManagementFee}">
+																		3456</span>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr th:class="h2no">
+
+                                                            <td class="inner-padding" style="text-align: right; width: 67%; height: 20px; font-size: 12px; vertical-align: top; border-right-width : 2px; border-right-style : solid;"><b style="text-align: right; font-size: 12px;"><font
+																	face="Calibri" size="2pt">Taxes&nbsp;&nbsp;&nbsp;&nbsp;</font></b></td>
+                                                            <td class="inner-padding" style="text-align: right; width: 33%; height: 20px;  vertical-align: top;">
+                                                                <p>&nbsp;</p>
+                                                                <p></p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr th:class="h2no" th:if="${session.isCorporate == true}">
+                                                            <td class="inner-padding" style="text-align: right; width: 67%; height: 20px;  vertical-align: top; border-right-width : 2px; border-right-style : solid;">
+                                                                <p>
+                                                                    CGST @ <span th:text="${session.CGSTPercentage}"></span>
+                                                                </p>
+                                                            </td>
+                                                            <td class="inner-padding" style="text-align: right; width: 33%; height: 20px; vertical-align: top;">
+                                                                <p>
+                                                                    <span style="" th:text="${session.CGST}"> 3456</span>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr th:class="h2no" th:if="${session.isCorporate == true}">
+                                                            <td class="inner-padding" style="text-align: right; width: 67%; height: 20px; vertical-align: top; border-right-width : 2px; border-right-style : solid;">
+                                                                <p>
+                                                                    SGST @ <span th:text="${session.SGSTPercentage}"></span>
+                                                                </p>
+                                                            </td>
+                                                            <td class="inner-padding" style="text-align: right; width: 33%; height: 20px; vertical-align: top;">
+                                                                <p>
+                                                                    <span style="" th:text="${session.SGST}"> 3456</span>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr th:class="h2no" th:if="${session.isCorporate == true and session.IGSTPercentage != 0.0}">
+                                                            <td class="inner-padding" style="text-align: right; width: 67%; height: 20px; vertical-align: top; border-right-width : 2px; border-right-style : solid;">
+                                                                <p>
+                                                                    IGST @ <span th:text="${session.IGSTPercentage}"></span>
+                                                                </p>
+                                                            </td>
+                                                            <td class="inner-padding" style="text-align: right; width: 33%; height: 20px; vertical-align: top;">
+                                                                <p>
+                                                                    <span style="" th:text="${session.IGST}"> 569</span>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr th:class="h2no" th:if="${session.isCorporate == true and session.UGSTPercentage != 0.0}">
+                                                            <td class="inner-padding" style="text-align: right; width: 67%; height: 20px; vertical-align: top; border-right-width : 2px; border-right-style : solid;">
+                                                                <p>
+                                                                    UGST @ <span th:text="${session.UGSTPercentage}"></span>
+                                                                </p>
+                                                            </td>
+                                                            <td class="inner-padding" style="text-align: right; width: 33%; height: 20px; vertical-align: top;">
+                                                                <p>
+                                                                    <span style="" th:text="${session.UGST}"> 569</span>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- GST ENDS -->
+                <tr th:class="main-head" style="">
+                    <td style="text-align: center;">
+                        <table cellpadding='0' cellspacing='0' border='0' width="100%">
+                            <tr th:class="main-head" style="">
+                                <td style="text-align: center;border-top-width : 1px;">
+                                    <table cellpadding='0' cellspacing='0' border='1px' width="100%">
+                                        <tr th:class="h2no">
+                                            <td class="inner-padding" style="text-align: left; width: 55.2%; height: 32px;">
+                                                <p>
+                                                    <b style="font-size: 12px;">Amount In Words: <span
+														style="" th:text="${session.amountinwords}">Fifty
+															thousand and eigthy five only</span>
+													</b>
+                                                </p>
+                                            </td>
+                                            <td class="inner-padding" style="text-align: center; width: 30%; height: 32px;">
+                                                <p>
+                                                    <b style="font-size: 12px;"> Total Payable </b>
+                                                </p>
+                                            </td>
+                                            <td class="inner-padding" style="text-align: right; width: 14.8%; height: 32px; font-size: 12px;">
+                                                <p>
+                                                    <b style="font-size: 12px;" th:text="${session.TotalAmount}">
+														5723498</b>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- GST ENDS -->
+                <tr th:class="main-head" style="" th:if="${session.isCorporate == true and session.isServiceTax == true}">
+                    <td style="text-align: center;border-top-width : 1px;">
+                        <table cellpadding='0' cellspacing='0' border='1px' width="100%">
+                            <tr th:class="h2no">
+                                <td class="inner-padding" style="text-align: left; width: 55%; height: 20px;">
+                                    <p>&nbsp;</p>
+                                    <p>
+                                        <font face="Calibri" size="3"> <b style="font-size: 18px;">Note</b>
+                                        </font>
+                                    </p>
+                                </td>
+                                <td class="inner-padding" style="text-align: right; width: 45%; height: 20px;">
+                                    <p>&nbsp;</p>
+                                    <p>
+                                        <font face="Calibri" size="3"> <b style="font-size: 18px;"></b>
+                                        </font>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr th:class="h2no">
+                                <td class="inner-padding" style="text-align: left; width: 55%; height: 20px;">
+                                    <p>&nbsp;</p>
+                                    <p style="text-align: left; width: 100%;">This is system generated invoice hence it does not require any signature.</p>
+                                    <p style="text-align: left; width: 100%;">All cheques should be in favour of "Intellicommsolutions &amp; Enterprises Pvt Ltd"</p>
+                                </td>
+                                <td class="inner-padding" style="text-align: right; width: 45%; height: 20px;"></td>
+                            </tr>
+
+                            <tr th:class="h2no">
+                                <td class="inner-padding" style="text-align: left; width: 55%; height: 20px;">
+                                    <p>&nbsp;</p>
+                                    <p>
+                                        <font face="Calibri" size="3"> <b style="font-size: 18px;">Service Tax Calculation</b>
+                                        </font>
+                                    </p>
+                                </td>
+                                <td class="inner-padding" style="text-align: right; width: 45%; height: 20px;">
+                                    <p>&nbsp;</p>
+                                    <p>
+                                        <font face="Calibri" size="3"> <b style="font-size: 18px;"></b>
+                                        </font>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr th:class="h2no">
+                                <td class="inner-padding" style="text-align: left; width: 55%; height: 20px;">
+                                    <p>&nbsp;</p>
+                                    <p style="text-align: left; width: 100%;">AirTickets: Govt.Service Tax at 0.7% on Basic and YQ for Domestic and 1.4% on Basic and YQ for International ticket. Swatchh Bharat Cess &amp; Krishi Kalyan cess at 0.025% on Basic and YQ for Domestic and 0.050% on Basic and YQ for International ticket.
+                                    </p>
+                                </td>
+                                <td class="inner-padding" style="text-align: right; width: 45%; height: 20px;"></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- GST ENDS -->
+                <tr th:class="main-head" th:if="${session.isCorporate == true and session.isGstTax == true}">
+                    <td style="text-align: center;border-top-width : 1px;">
+                        <table cellpadding='0' cellspacing='0' border='1px' width="100%">
+                            <tr th:class="main-head" style="">
+                                <td style="text-align: center;  width: 55%;  border-right-width : 0px; border-right-style : solid">
+                                    <p>&nbsp;</p>
+                                    <p style="margin-bottom: 10px;">
+                                        <font face="Calibri" size="4pt"> <span style="text-align: left; font-size: 12px;"> <b>
+													Terms and Conditions </b>
+										</span>
+                                        </font>
+                                    </p>
+
+                                    <p style="text-align: left; vertical-align: top;" th:utext="${#strings.replace(#strings.escapeJava(company.temsandcondtions),'\n','&lt;br /&gt;')}">
+                                    </p>
+                                </td>
+                                <td class="inner-padding" style="text-align: center; width: 45%; height: 20px; border-left-width : 0px; border-left-style : solid">
+                                    <p>&nbsp;</p>
+                                    <p>
+                                        <img src="https://www.tayyarah.com/images/seal-sm.png" width="70" height="80" />
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr th:class="main-head" th:if="${session.isCorporate == true and session.isGstTax == true}">
+                    <td style="text-align: center;border-top-width : 1px;">
+                        <table cellpadding='0' cellspacing='0' border='1px' width="100%">
+                            <tr th:class="main-head" style="">
+                                <td class="inner-padding" style="text-align: center; width: 30%; height: 32px; border-bottom-width : 1px; border-bottom-style : solid">
+                                    <p>
+                                        <b style="font-size: 12px;"><u>
+								 Remittance Details </u></b>
+                                    </p>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td th:class="inner-padding" align="center" valign="top" width="100%" style="border-bottom-width : 1px; border-bottom-style : solid; border-top-width : 1px; border-top-style : solid">
+                                    <table th:class="invoice-no" cellpadding='0' cellspacing='0' border='0' style="width: 100%">
+                                        <tbody>
+                                            <tr th:class="h2no">
+                                                <td style="text-align: left; width: 15%;vertical-align: top;">
+                                                    <p style="font-size: 12px;">
+                                                        <font face="Calibri" size="2pt"> <span style="">
+																A/c Name : </span> <br />
+                                                        </font>
+                                                    </p>
+                                                </td>
+                                                <td style="text-align: left; width: 35%;vertical-align: top;">
+                                                    <p style="font-size: 12px;">
+                                                        <font face="Calibri" size="2pt"> <span>Intellicomm
+																Solutions And Enterprises Pvt Ltd</span><br />
+                                                        </font>
+                                                    </p>
+                                                </td>
+                                                <td style="text-align: left; width: 15%;vertical-align: top;">
+                                                    <p style="font-size: 12px;">
+                                                        <font face="Calibri" size="2pt"> <span style="">
+																Bank Name : </span> <br />
+                                                        </font>
+                                                    </p>
+                                                </td>
+                                                <td style="text-align: left; width: 35%;vertical-align: top;">
+                                                    <p style="font-size: 12px;">
+                                                        <font face="Calibri" size="2pt"> <span>HDFC
+																Bank, Hallasuru, Bangalore</span><br />
+                                                        </font>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            <tr th:class="h2no">
+                                                <td style="text-align: left; width: 15%;vertical-align: top;">
+                                                    <p style="font-size: 12px;">
+                                                        <font face="Calibri" size="2pt"> <span style="">
+																A/C Number : </span> <br />
+                                                        </font>
+                                                    </p>
+                                                </td>
+                                                <td style="text-align: left; width: 35%;vertical-align: top;">
+                                                    <p style="font-size: 12px;">
+                                                        <font face="Calibri" size="2pt"> <span>50200000674779</span><br />
+                                                        </font>
+                                                    </p>
+                                                </td>
+                                                <td style="text-align: left; width: 15%;vertical-align: top;">
+                                                    <p style="font-size: 12px;">
+                                                        <font face="Calibri" size="2pt"> <span style="">
+																IFSC : </span> <br />
+                                                        </font>
+                                                    </p>
+                                                </td>
+                                                <td style="text-align: left; width: 35%;vertical-align: top;">
+                                                    <p style="font-size: 12px;">
+                                                        <font face="Calibri" size="2pt"> <span>HDFC0000286</span><br />
+                                                        </font>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>Flight E-Ticket</title>
+<meta name="description" content="Intellicomm" />
+<meta name="author" content="see humans.txt" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style type="text/css">
+/* Some resets and issue fixes */
+#outlook a {
+	padding: 0;
+}
+
+body {
+	width: 100% !important; -webkit-text;
+	size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.ReadMsgBody {
+	width: 100%;
+}
+
+.ExternalClass {
+	width: 100%;
+}
+
+.backgroundTable {
+	margin: 0 auto;
+	padding: 0;
+	width: 100%;
+	!
+	important;
+}
+
+table td {
+	border-collapse: collapse;
+}
+
+.ExternalClass * {
+	line-height: 115%;
+}
+/* End reset */
+body {
+	margin: 0;
+	padding: 0;
+	min-width: 100%;
+	background-color: #ffffff;
+}
+
+table {
+	border-spacing: 0;
+	font-family: sans-serif;
+	color: #333333;
+}
+
+td {
+	padding: 0;
+	font-size: 13px;
+	text-align: center;
+}
+
+img {
+	border: 0;
+}
+
+.wrapper {
+	width: 100%;
+	table-layout: fixed;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+.webkit {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.outer {
+	margin: 10px auto;
+	width: 100%;
+	max-width: 600px;
+	background-color: #f9f9f9;
+	border: 1px solid #ddd;
+}
+</style>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0"	yahoo="fix"
+	style="font-family: Georgia, Times, serif; margin: 0; padding: 0; min-width: 100%; background-color: #ffffff;">
+	<div th:th:class="wrapper"
+		style="width: 100%; table-layout: fixed; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;">
+		<div th:class="webkit" style="max-width: 600px; margin: 0 auto;">
+			<!--[if (gte mso 9)|(IE)]>
+            <table width="600" align="center">
+            <tr>
+            <td>
+            <![endif]-->
+			<table th:class="outer"
+				style="border-spacing: 0; font-family: sans-serif; color: #333333; margin: 10px auto; width: 100%; max-width: 600px; background-color: #f9f9f9; border: 2px solid #eee;">
+				<tr th:class="main-head" style="background-color: #fff;">
+					<td style="padding: 0; font-size: 13px; text-align: center;">
+						<table width="100%"
+							style="border-spacing: 0; font-family: sans-serif; color: #333333;">
+							<tr>
+								<td th:class="inner"
+									style="padding: 0; font-size: 13px; text-align: center; width: 40%;">
+									<!--  <img src="http://dev.tayyarah.com/images/t-n.png" style="border: 0;padding: 10px;width: 80%;"/> -->
+									<img th:object="${user}" th:src="${user.logoDisplayable}" width="150" height="100" /> <!--  <img src="http://dev.tayyarah.com/images/t-n.png" style="border: 0;padding: 10px;width: 80%;" th:attr="src=@{${companylogo}}"/> -->
+
+								</td>
+								<td th:class="in-no-date" align="right"
+									style="padding: 0; font-size: 13px; text-align: center; width: 60%;">
+									<table width="100%" th:class="invoice-no"
+										style="border-spacing: 0; font-family: sans-serif; color: #333333; width: 100%;">
+										<tbody>
+											<tr th:class="h2no">
+												<td
+													style="padding: 0; font-size: 13px; text-align: right; padding-right: 10px;">
+													<!-- <p style="font-size: 18px;font-family: Georgia, Times, serif;line-height: 0px;color: #fff;">E-Ticket No:</p> -->
+													<address class="text-right"
+														style="font-size: 13px; font-style: normal; font-family: Georgia, Times, serif; line-height: 18px; color: #000;">
+														<b>Client Name:<span th:text="${company.Companyname}"></span></b>
+														<br /> Address : <span th:text="${company.Address}"></span><br />
+														City : <span th:text="${company.City}"></span><br />
+														Country : <span th:text="${company.Countryname}"></span><br />
+														Phone : <span th:text="${company.Phone}"></span><br />
+														Email : <span th:text="${company.Email}"></span><br />
+													</address>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</table>
+
+
+					</td>
+				</tr>
+
+				<!--  <tr style="border-top: 1px solid #ddd;background-color: #fff;">
+                <td style="padding: 0;,margin: 0px;font-size: 12px;border-top: 1px solid #ddd;background-color: #fff;">
+                    Please carry a print out of this page along with a valid identity proof to be presented at the hotel desk at the time of check in
+                </td>
+            </tr> -->
+
+
+				<tr style="background-color: #fff;">
+					<td
+						style="padding: 0; margin: 0; font-size: 12px; border-top: 1px solid #ddd">
+						<div style="background: #eee; color: #fff; width: 100%;">
+							<h2
+								style="padding: 3px 0px; margin: 0px; border-bottom: 1px solid #ddd; background: #eee; color: #000; font-size: 13px;">Booking
+								Details</h2>
+						</div>
+						<table width="100%"
+							style="border-spacing: 0; font-family: Georgia, Times, serif; color: #333333;">
+							<thead>
+								<tr style="background-color: #fff;">
+									<th
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"><b>Status</b></th>
+									<th
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"><b>Confirmation
+											No</b></th>
+									<th
+										style="border-bottom: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"><b>PNR</b></th>
+									<th
+										style="border-bottom: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"
+										th:if="${flightorder.statusAction} == Holded"><b>Last
+											Ticketing Date</b></th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td></td>
+								</tr>
+
+								<tr>
+									<td
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"><span
+										th:text="${flightorder.statusAction}"></span></td>
+									<td
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"><span
+										th:text="${flightorder.invoiceNo}"></span></td>
+									<td
+										style="border-bottom: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"><span
+										th:text="${flightorder.pnr}"></span></td>
+									<td
+										style="border-bottom: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"
+										th:if="${flightorder.statusAction} == Holded"><span
+										th:text="${session.lastTicketDate}"></span></td>
+
+								</tr>
+
+							</tbody>
+						</table>
+					</td>
+				</tr>
+
+				<tr style="background-color: #fff;">
+					<td
+						style="padding: 0; margin: 0; font-size: 12px; border-top: 1px solid #ddd">
+						<div style="background: #eee; color: #fff; width: 100%;">
+							<h2
+								style="padding: 3px 0px; margin: 0px; border-bottom: 1px solid #ddd; background: #eee; color: #000; font-size: 13px;">Flight
+								Details</h2>
+						</div>
+						<table width="100%"
+							style="border-spacing: 0; font-family: Georgia, Times, serif; color: #333333;">
+							<thead>
+								<tr style="background-color: #fff;">
+									<th
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"><b>Airline</b></th>
+									<th
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"><b>Flight</b></th>
+									<th
+										style="border-bottom: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"><b>From</b></th>
+									<th
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"><b>To</b></th>
+									<th
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"><b>Departs</b></th>
+									<th
+										style="border-bottom: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"><b>Arrival</b></th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td></td>
+								</tr>
+
+								<tr
+									th:each="tripDetails,iterationStatus  : ${session.tripDeatailsList}"
+									style="background-color: #fff;">
+
+									<td
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"><span
+										th:text="${flightorder.airline}">Air India</span></td>
+									<td
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"><span
+										th:text="${tripDetails.flightNumber}">flightNumber</span></td>
+									<td
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"><span
+										th:text="${tripDetails.originCode}">Origin</span></td>
+									<td
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"><span
+										th:text="${tripDetails.destinationCode}">Destination</span></td>
+									<td
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"><span
+										th:text="${tripDetails.depDate}"></span></td>
+									<td
+										style="border-bottom: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"><span
+										th:text="${tripDetails.arrDate}"></span></td>
+
+								</tr>
+
+							</tbody>
+						</table>
+					</td>
+				</tr>
+
+
+				<tr style="background-color: #fff;">
+					<td
+						style="padding: 0; margin: 0; font-size: 12px; border-top: 1px solid #ddd">
+						<div style="background: #eee; color: #fff; width: 100%;">
+							<h2
+								style="padding: 3px 0px; margin: 0px; border-bottom: 1px solid #ddd; background: #eee; color: #000; font-size: 13px;">Passenger
+								Details</h2>
+						</div>
+						<table width="100%"
+							style="border-spacing: 0; font-family: Georgia, Times, serif; color: #333333;">
+							<thead>
+								<tr style="background-color: #fff;">
+									<th
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"><b>S.No</b></th>
+
+									<th
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"><b>Title</b></th>
+									<th
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"><b>Given
+											Name</b></th>
+									<th
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"><b>Sur
+											Name</b></th>
+									<th
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"><b>Type</b></th>
+
+									<!-- <th style="border-bottom: 1px solid #ddd;font-size: 12px;font-family: Georgia, Times, serif;"><b>Gender</b></th> -->
+									<th
+										style="border-bottom: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"
+										th:if="${flightorder.statusAction} == Confirmed"><b>Ticket
+											No</b></th>
+
+									<th
+										style="border-bottom: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"
+										th:if="${session.isMealAvailable}  == true"><b>Meal
+											Name</b></th>
+									<th
+										style="border-bottom: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"
+										th:if="${session.isReturnMealAvailable} == true"><b>Return
+											Meal Name</b></th>
+									<th
+										style="border-bottom: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"
+										th:if="${session.isBaggageAvailable}  == true"><b>Baggage
+											Weight (KG)</b></th>
+									<th
+										style="border-bottom: 1px solid #ddd; font-size: 12px; font-family: Georgia, Times, serif;"
+										th:if="${session.isReturnBaggageAvailable} == true"><b>Return
+											Baggage Weight (KG)</b></th>
+
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td></td>
+								</tr>
+
+								<tr
+									th:each="invoicePriceDetails ,iterationStatus : ${session.flightInvoiceList}"
+									style="background-color: #fff;">
+									<td
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"><span
+										th:text="${iterationStatus.count}">1</span></td>
+
+									<td
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"><span
+										th:text="${invoicePriceDetails.title}">MR</span></td>
+									<td
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"><span
+										th:text="${invoicePriceDetails.firstName}">First Name</span></td>
+									<td
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"><span
+										th:text="${invoicePriceDetails.lastName}">Surname</span></td>
+									<td
+										style="border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"><span
+										th:text="${invoicePriceDetails.passengerType}">Adt</span></td>
+									<!--   <td style="border-bottom: 1px solid #ddd;font-family: Georgia, Times, serif;padding-bottom: 3px;padding-top: 3px;font-size: 11px;"><span  th:text="${invoicePriceDetails.gender}" ></span></td> -->
+									<td
+										style="border-bottom: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"
+										th:if="${invoicePriceDetails.eticketnumber}  != null"><span
+										th:text="${invoicePriceDetails.eticketnumber}"></span></td>
+									<td
+										style="border-bottom: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"
+										th:if="${session.isMealAvailable}  == true"><span
+										th:text="${invoicePriceDetails.mealName}"></span></td>
+									<td
+										style="border-bottom: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"
+										th:if="${session.isReturnMealAvailable} == true"><span
+										th:text="${invoicePriceDetails.returnMealName}"></span></td>
+									<td
+										style="border-bottom: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"
+										th:if="${session.isBaggageAvailable}  == true"><span
+										th:text="${invoicePriceDetails.baggageweight}"></span></td>
+									<td
+										style="border-bottom: 1px solid #ddd; font-family: Georgia, Times, serif; padding-bottom: 3px; padding-top: 3px; font-size: 11px;"
+										th:if="${session.isReturnBaggageAvailable} == true"><span
+										th:text="${invoicePriceDetails.returnbaggageweight}"></span></td>
+
+								</tr>
+
+							</tbody>
+						</table>
+					</td>
+				</tr>
+
+
+				<tr style="background-color: #fff;">
+					<td
+						style="padding: 0; margin: 0; font-size: 12px; border-top: 1px solid #ddd">
+						<div style="background: #eee; color: #fff; width: 100%;">
+							<h2
+								style="padding: 3px 0px; margin: 0px; border-bottom: 1px solid #ddd; background: #eee; color: #000; font-size: 13px;">Pricing
+								Details</h2>
+						</div>
+
+						<table width="100%"
+							style="border-spacing: 0; font-family: Georgia, Times, serif; color: #333333;">
+							<tbody>
+								<tr>
+									<td style="padding: 0px;">
+										<table width="100%"
+											style="border-spacing: 0; font-family: Georgia, Times, serif; color: #333333; text-align: right;">
+											<tr
+												style="background-color: #fff; padding: 5px 5px 3px 0px; text-align: right">
+												<td
+													style="font-family: Georgia, Times, serif; font-size: 12px; margin: 0px; padding: 0px 5px 3px 0px; text-align: right; border-bottom: 1px solid #ccc; padding-bottom: 3px; padding-top: 3px;"><b>Base
+														fare :</b><span th:text="${session.baseFareinBooking}">
+														No info</span></td>
+											</tr>
+											<tr>
+												<td
+													style="font-family: Georgia, Times, serif; font-size: 12px; margin: 0px; padding: 0px 5px 3px 0px; text-align: right; border-bottom: 1px solid #ccc; padding-bottom: 3px; padding-top: 3px;"><b>Tax
+														:</b><span th:text="${session.TaxinBooking}"> No info</span></td>
+											</tr>
+											<tr th:if="${session.ExtraMealPrice != '0.00'} ">
+												<td
+													style="font-family: Georgia, Times, serif; font-size: 12px; margin: 0px; padding: 0px 5px 3px 0px; text-align: right; border-bottom: 1px solid #ccc; padding-bottom: 3px; padding-top: 3px;"><b>Extra
+														MealPrice :</b><span th:text="${session.ExtraMealPrice}">
+														No info</span></td>
+											</tr>
+											<tr th:if="${session.ExtraBaggagePrice != '0.00'} ">
+												<td
+													style="font-family: Georgia, Times, serif; font-size: 12px; margin: 0px; padding: 0px 5px 3px 0px; text-align: right; border-bottom: 1px solid #ccc; padding-bottom: 3px; padding-top: 3px;"><b>Extra
+														BaggagePrice :</b><span th:text="${session.ExtraBaggagePrice}">
+														No info</span></td>
+											</tr>
+											<tr>
+												<td
+													style="font-family: Georgia, Times, serif; font-size: 12px; margin: 0px; padding: 0px 5px 3px 0px; text-align: right; border-bottom: 1px solid #ccc; padding-bottom: 3px; padding-top: 3px;"><b>Total
+														:</b><span th:text="${session.totWithGst}"> No info</span></td>
+											</tr>
+											<!--  <tr>
+                <td style="font-family: Georgia, Times, serif; font-size: 12px;margin: 0px;padding:0px 5px 3px 0px;text-align: right;padding-bottom: 3px;padding-top: 3px;"><b>Total Price (Rs) :</b><span>74,675</span></td>                
+              </tr> -->
+										</table>
+									</td>
+
+								</tr>
+							</tbody>
+						</table>
+
+					</td>
+				</tr>
+
+				<tr>
+
+					<td>
+						<table
+							style="border-spacing: 0; font-family: sans-serif; color: #333333; text-align: center; margin: 0 auto; margin-bottom: 15px"
+							width="100%">
+
+							<tbody>
+								<tr>
+									<td>
+
+
+										<div style="background: #eee; color: #000; width: 100%;">
+											<h2
+												style="padding: 3px 0px; margin: 0px; border-bottom: 1px solid #ddd; background: #eee; color: #000; font-size: 13px;">Important
+												Note:-</h2>
+										</div>
+									</td>
+								</tr>
+
+
+								<tr>
+									<td
+										style="padding: 0; font-size: 13px; text-align: left; padding-bottom: 10px; padding-left: 10px;">All
+										passengers are required to carry valid proof of
+										identification, including for children and infants. For all
+										international flights, only acceptable proof of identification
+										will be passport which must be valid for at least 6 months
+										from the date of travel. Indian nationals travelling to and
+										from Nepal are required to carry either Passport or Voter's ID
+										card only as proof of identification.For children and infants,
+										Birth Certificate or School ID Card (as may be applicable)
+										will be accepted as proof of identification</td>
+								</tr>
+								<tr>
+									<td
+										style="padding: 0; font-size: 13px; text-align: left; padding-bottom: 10px; padding-left: 10px;">Please
+										treat this as a valid invoice for the purpose of service tax.
+									</td>
+
+								</tr>
+								<tr>
+									<td
+										style="padding: 0; font-size: 13px; text-align: left; padding-bottom: 10px; padding-left: 10px;">Changes/cancellation
+										in the bookings can be made only up to 4 hour prior to
+										scheduled departure time ( 6 hours in case of international
+										travel) upon payment of a change/cancellation fee (amount
+										depends on the type of far e purchased, as advised at the time
+										of booking) along with difference in fare.</td>
+								</tr>
+								<tr>
+									<td
+										style="padding: 0; font-size: 13px; text-align: left; padding-bottom: 10px; padding-left: 10px;">PSF/UDF/ADF
+										are collected on behalf of the Airport Authority of India
+										(AAI).</td>
+								</tr>
+								<tr>
+									<td
+										style="padding: 0; font-size: 13px; text-align: left; padding-bottom: 10px; padding-left: 10px;">International
+										: Tax on passenger transport is collected @ 12.36 % with an
+										abatement of 60% (inclusive of education cess and secondary
+										and higher education cess). In case of a continuous journey,
+										applicable service tax is collected on the whole journey, if
+										the passenger embarks from India.</td>
+								</tr>
+								<tr>
+									<td
+										style="padding: 0; font-size: 13px; text-align: left; padding-bottom: 10px; padding-left: 10px;">Domestic:
+										Tax on passenger transport is collected @ 12.36 % with an
+										abatement of 60% (inclusive of education cess and secondary
+										and higher education cess). On other services, service tax is
+										collected @ 12.36 % with an abatement of 60% (inclusive of
+										education cess and secondary and higher education cess).</td>
+								</tr>
+								<tr>
+									<td
+										style="padding: 0; font-size: 13px; text-align: left; padding-bottom: 10px; padding-left: 10px;">Airfare
+										Charges include Base Fare, Fuel Charge, CUTE Charge and Agency
+										Commission payable to travel agents (if applicable).</td>
+
+								</tr>
+								<tr>
+									<td
+										style="padding: 0; font-size: 13px; text-align: left; padding-bottom: 10px; padding-left: 10px;">W.e.f
+										5th Nov 2015, on behalf of GMR Hyderabad International Airport
+										Limited, we will be collecting a User Development Fee (UDF) of
+										Rs 490/Rs 1938 per passenger for domestic/international
+										departure ex- Hyderabad. In addition, the Passenger Service
+										Fee (PSF) has been revised to Rs 228 per departing passenger.</td>
+
+								</tr>
+								<tr>
+									<td
+										style="padding: 0; font-size: 13px; text-align: left; padding-bottom: 10px; padding-left: 10px;">Swachh
+										Bharat Cess: W.e.f. 15th November 2015, the Swachh Bharat Cess
+										@0.5% with an abatement of 60% (wherever applicable), is
+										collected on passenger transport and other services (if any).</td>
+
+								</tr>
+								<tr>
+									<td
+										style="padding: 0; font-size: 13px; text-align: left; padding-bottom: 10px; padding-left: 10px; color: red">Changes/cancellation
+										in the bookings to be done directly from airline in case its
+										upto 4 hour prior to scheduled departure time ( 6 hours in
+										case of international travel)</td>
+
+
+
+								</tr>
+
+							</tbody>
+						</table>
+					</td>
+				</tr>
+
+
+
+			</table>
+
+			<!-- <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;text-align: center;    margin: 0 auto;">
+
+                <tr>
+                                <td th:class="from" style="padding: 0;font-size: 13px;text-align: center;padding-right: 5px;">
+                                         <span style="font-family: Helvetica, Georgia, Times, serif;font-size: 13px;text-align: left;">
+                                        <b>Intellicomm Solutions Limited</b></span>
+                                        <span style="font-family: Helvetica, Georgia, Times, serif;font-size: 13px;text-align: left;">
+                                        <b># 19 "The Oyster",2nd floor, </b></span>
+                                        <span style="font-family: Helvetica, Georgia, Times, serif;font-size: 13px;text-align: left;">
+                                        <b>Nandi durga road, Jaymahal extension,</b></span>
+                                        <span style="font-family: Helvetica, Georgia, Times, serif;font-size: 13px;text-align: left;">
+                                        <b>Bengaluru-560046</b></span><span>|</span><span style="font-family: Helvetica, Georgia, Times, serif;font-size: 13px;text-align: left;">
+                                        <b>Tel:</b>+91-080-42855555</span>
+                                        
+                                        
+                                </td>
+                            </tr>
+            
+                           
+                            <tr>
+                            
+                            
+                                <td th:class="from" style="padding: 0;font-size: 13px;text-align: center;padding-right: 5px;">
+                                         
+                                          <span style="font-family: Helvetica, Georgia, Times, serif;font-size: 13px;text-align: left;">
+                                         <b>Email:</b>care@tayyarah.com</span>
+                                         <span>|</span>
+                                        <span style="font-family: Helvetica, Georgia, Times, serif;font-size: 13px;text-align: left;">
+                                         <b>Website:</b> <a href="https://www.tayyarah.com/">www.tayyarah.com</a></span>
+                                </td>
+                                
+                                
+                            </tr>
+                            
+            </table> -->
+			<!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+		</div>
+	</div>
+
+
+
+</body>
+</html>

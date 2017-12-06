@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<title>Flight Invoice others</title>
+<meta name="description" content="HTML5 Spring Roo Thymeleaf Demo Contact Form" />
+<meta name="author" content="see humans.txt"/>
+
+
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+ <style type="text/css">
+
+ /* Some resets and issue fixes */
+        #outlook a { padding:0; }
+        body{ width:100% !important; -webkit-text; size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0; }     
+        .ReadMsgBody { width: 100%; }
+        .ExternalClass {width:100%;} 
+        .backgroundTable {margin:0 auto; padding:0; width:100%;!important;} 
+        table td {border-collapse: collapse;}
+        .ExternalClass * {line-height: 115%;}           
+        /* End reset */
+
+     body {
+            margin: 0;
+                padding: 0;
+                min-width: 100%;
+                background-color: #ffffff;
+            }
+            table {
+                border-spacing: 0;
+                font-family: sans-serif;
+                color: #333333;
+            }
+            td {
+                padding: 0;
+                font-size: 13px;
+                    text-align: center;
+            }
+            img {
+                border: 0;
+            }
+            .wrapper {
+                width: 100%;
+                table-layout: fixed;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+            }
+            .webkit {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            .outer {
+                margin: 10px auto;
+                    width: 100%;
+                    max-width: 600px;                    
+                    background-color: #f9f9f9;    
+                    border: 1px solid #ddd;
+                }
+                .text-left{
+                    text-align: left;
+                }
+                .text-right{
+                    text-align: right;
+                }
+                .inner {
+                width: 40%               
+                 }
+                 .inner img{
+                    padding: 10px;
+                    width: 80%;
+                 }
+                 .in-no-date{
+                    width: 60%        
+                 }
+
+                 .main-head{
+                    background-color: #000;
+                    
+                }
+
+
+                .invoicefrom-address{
+                    width: 60%;
+                }
+                .invoicefrom-address h4{
+                        margin: 4px;
+                }
+                .invoice-no p{
+                        font-size: 13px;
+                        font-family: Georgia, Times, serif;
+                        line-height: 0px;  
+                        color: #fff;              
+                }
+                .invoice-no .h2no p{
+                    font-size: 18px;
+                }
+                .to-from{
+                    background-color: #f1f1f1;
+                }
+                .to-from h2{
+                    background-color: #ccc;
+                    padding: 2px;
+                    margin: 3px;
+
+                }
+                .to-from h4{
+                    font-size: 14px;
+                    margin: 3px;
+                    text-align: left;
+                }
+                .to-from p{
+                    font-size: 13px;
+                    text-align: left;
+                }
+                .from{
+                    padding-right: 5px;
+                }
+                .heading{
+                    padding: 10px;
+                }
+
+                .invoice-no{
+                        width: 80%;
+                }
+.gst-table table tr td{
+        border-bottom: 1px solid #ccc;
+        
+}
+.gst-table table tr th.hed{
+    background-color: #D9EDF7;
+    text-align: center;
+    padding-left: 0px;
+    border-right: 1px solid #fff;
+    font-size: 13px;
+}
+.info th{
+    font-size: 12px;
+}
+.gst-table-summ{
+    padding: 10px;
+    width: 65%;
+
+}
+
+.total-am{
+    width: 33%;
+}
+.gst-summary{
+    vertical-align: top;
+}
+.gst-totals td{
+font-size: 13px;
+}
+.gst-totals td p{
+    margin: 0px 0px 5px;
+}
+.gst-totals td h4{
+    text-align: right;
+}
+
+.gst-tot h4{
+   margin: 0px;
+}
+
+
+.col-3{
+    margin-bottom: 10px;
+}
+
+.payment, .details{
+        padding: 10px;
+}
+
+.payment > h4, .details > h4{
+        text-align: left;
+}
+
+.payment > h4 span, .details > h4 span{
+        border-bottom: 1px solid #555;
+        padding-bottom: 5px;
+}
+
+.payment table, .details table{
+        border: 1px solid #ccc;
+}
+
+.payment table tr td, .details table tr td{
+    border: 1px solid #ccc;
+}
+
+.payment table tr th, .details table tr th{
+    border: 1px solid #ccc;
+}
+
+
+.please-check{
+    text-align: left;
+    padding: 0px 10px;
+}
+
+.please-check h4{
+    margin: 3px 0px;
+}
+
+.signature{
+    padding: 0px 10px;
+}
+
+                /*Media Queries*/
+@media screen and (max-width: 400px) {
+
+    .inner, .in-no-date,.from, .to{
+    width: 100% !important;   
+    display: block !important;            
+    }
+    .invoicefrom-address{
+        width: 100% !important;
+        display: block !important; 
+    }
+    .invoice-no{
+        width: 100% !important;
+        display: block !important; 
+                }
+
+ .to-from h2{
+font-size: 16px !important;
+ }
+ .to-from h4 {font-size: 12px !important;}
+
+.to-from p {
+    font-size: 12px !important;
+
+}
+
+.gst-table table tr th.hed h4{
+    font-size: 12px !important;
+}
+
+.total-am,.gst-summary{
+display: block !important;
+    width: 100% !important;
+}
+
+.info th{
+    font-size: 11px !important;
+}
+.please-check h4{
+font-size: 12px !important;
+}
+.please-check table td{
+ display: block !important;
+    width: 100% !important;   
+}
+
+
+}
+       
+    </style>
+
+
+       </head>
+    <body  leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" yahoo="fix" style="font-family: Georgia, Times, serif; margin: 0;padding: 0;min-width: 100%;background-color: #ffffff;">
+        
+        
+        <div th:object="${flightorder}"></div>
+<!--   <p>Name: <span th:text="${flightorder.airline}">order id</span>.</p>
+   <p>origin: <span th:text="${flightorder.origin}">order id</span>.</p>
+    <p>destination: <span th:text="${flightorder.destination}">order id</span>.</p> -->
+   <div th:object="${OrderCustomer}">
+  
+</div>
+<div th:object="${userid}">
+  
+</div>
+
+     <div th:object="${company}">
+  
+</div>
+    
+    
+       <div th:th:class="wrapper" style="width: 100%;table-layout: fixed;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;">
+        <div th:class="webkit" style="max-width: 600px;margin: 0 auto;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table width="600" align="center">
+            <tr>
+            <td>
+            <![endif]-->
+            <table th:class="outer" align="center" style="border-spacing: 0;font-family: sans-serif;color: #333333;margin: 10px auto 0px;width: 100%;max-width: 600px;background-color: #f9f9f9;border: 1px solid #1595D3;">
+                <tr th:class="main-head" style="background-color: #fff;">
+                    <td style="padding: 0;font-size: 13px;text-align: center;">
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+                            <tr>
+                                <td th:class="inner" style="padding: 0;font-size: 13px;text-align: center;width: 40%;">
+                            
+                               <p><img th:object="${user}"  th:src="${user.Imagepath}" width="150" height="100"  /> </p>
+                                
+                                </td>
+                                <td th:class="in-no-date" align="right" style="padding: 0;font-size: 13px;text-align: center;width: 60%;">
+
+                                       <table width="100%" th:class="invoice-no" style="border-spacing: 0;font-family: sans-serif;color: #333333;width: 80%;">
+
+                                        <tbody>
+                                          <tr th:class="h2no" >
+                                            <td style="padding: 0;font-size: 13px;text-align: center;"><p style="font-size: 18px;font-family: Georgia, Times, serif;line-height: 0px;color: #333;">Airline PNR:</p></td>
+                                            <td style="padding: 0;font-size: 13px;text-align: center;"><p style="font-size: 18px;font-family: Georgia, Times, serif;line-height: 0px;color: #333;" ><span th:text="${flightorder.invoiceNo}"></span></p></td>
+                                          </tr>                                        
+                                      </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>                       
+                    </td>
+                </tr>
+
+           
+                 <tr th:class="gst">
+                <td th:class="gst-table" style="padding: 0;font-size: 13px;text-align: center;">
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;    border: 1px solid #1595D3;">
+
+                            <thead>
+                              <tr th:class="info">
+                              
+                                <th th:class="hed" style="font-size: 13px;background-color: #1595D3;text-align: center;padding-left: 0px;border-right: 1px solid #fff;color: #fff"><h4 >  Date   </h4></th>
+                                 <th th:class="hed" style="font-size: 13px;background-color: #1595D3;text-align: center;padding-left: 0px;border-right: 1px solid #fff;color: #fff"><h4>Flight No</h4></th>
+                                
+                                <th th:class="hed" style="font-size: 13px;background-color: #1595D3;text-align: center;padding-left: 0px;border-right: 1px solid #fff;color: #fff" ><h4>From</h4></th> 
+
+                                <th th:class="hed" style="font-size: 13px;background-color: #1595D3;text-align: center;padding-left: 0px;border-right: 1px solid #fff;color: #fff"><h4>To</h4></th>
+                                <th th:class="hed" style="font-size: 13px;background-color: #1595D3;text-align: center;padding-left: 0px;border-right: 1px solid #fff;color: #fff"><h4>Departs Time</h4></th> 
+                                
+                                  <th th:class="hed" style="font-size: 13px;background-color: #1595D3;text-align: center;padding-left: 0px;color: #fff"><h4>Arrival Time</h4></th>
+                              
+                              </tr>
+                            </thead>
+                        <tbody>
+
+                            
+                            
+                            <tr  th:each="tripDetails,iterationStatus  : ${session.tripDeatailsList}">
+                            <td style="padding: 0;font-size: 13px;text-align: center;border-right: 1px solid #ccc;background-color: #F1F1F1;border-bottom: 1px solid #ccc;padding-top:5px;padding-bottom:5px;font-weight: bold;">
+                               
+                                 <span th:text="${#dates.format(tripDetails.departureDate, 'dd-MMM-yyyy')}"></span>
+                                </td>
+                          <td style="padding: 0;font-size: 13px;text-align: center;border-right: 1px solid #ccc;background-color: #F1F1F1;border-bottom: 1px solid #ccc;padding-top:5px;padding-bottom:5px;font-weight: bold;">
+                                      <span  th:text="${tripDetails.flightNumber}" ></span>
+                                </td>
+                       		
+                                 	<td  style="padding: 0;font-size: 13px;text-align: center;border-right: 1px solid #ccc; background-color: #F1F1F1;border-bottom: 1px solid #ccc;padding-top:5px;padding-bottom:5px;font-weight: bold;">
+                                         <span th:text="${tripDetails.originCode}" ></span>
+                                </td>
+                                <td 
+                                style="padding: 0;font-size: 13px;text-align: center;border-right: 1px solid #ccc;background-color: #F1F1F1;border-bottom: 1px solid #ccc;padding-top:5px;padding-bottom:5px;font-weight: bold;">
+                                      <span th:text="${tripDetails.destinationCode}" ></span>
+                                </td>
+                                <td style="padding: 0;font-size: 13px;text-align: center;border-right: 1px solid #ccc;background-color: #F1F1F1;border-bottom: 1px solid #ccc;padding-top:5px;padding-bottom:5px;font-weight: bold;">
+                                 
+                                   <span th:text="${#dates.format(tripDetails.departureTime, 'hh:mm')}"></span>
+                                </td>
+
+                                <td style="padding: 0;font-size: 13px;text-align: center;border-bottom: 1px solid #ccc;background-color: #F1F1F1; padding-top:5px;padding-bottom:5px;font-weight: bold;">
+                                     
+                                      <span th:text="${#dates.format(tripDetails.arrivalTime, 'hh:mm')}"></span>
+                                </td>
+                             
+                            </tr>
+
+
+
+
+                             </tbody>
+                           </table> 
+                    </td>
+                </tr>
+
+                 <tr th:class="gst">
+                <td th:class="gst-table" style="padding: 0;font-size: 13px;text-align: center;">
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;    border: 1px solid #1595D3;">
+
+                            <thead>
+
+
+                          <tr th:class="info">
+                                <th colspan="2" th:class="hed" style="font-size: 13px;text-align: left;padding: 10px;color: #555"><h4 style="font-size: 13px;text-align: left;margin: 0px;"> Passenger Details:  </h4></th>
+                                
+                              </tr>
+
+                              <tr th:class="info">
+
+
+                                <th th:class="hed" style="font-size: 13px;background-color: #1595D3;text-align: center;padding-left: 0px;border-right: 1px solid #fff;color: #fff"><h4 style="margin: 0px;"> Name   </h4></th>
+                                 <th th:class="hed" style="font-size: 13px;background-color: #1595D3;text-align: center;padding-left: 0px;color: #fff"><h4 style="margin: 0px;">E-Ticket No</h4></th>
+                              </tr>
+                            </thead>
+                        <tbody>
+
+                            
+                            
+                            <tr  th:each="invoicePriceDetails ,iterationStatus : ${session.flightInvoiceList}">
+                            <td style="padding: 0;font-size: 13px;text-align: center;border-right: 1px solid #ccc;background-color: #F1F1F1;border-bottom: 1px solid #ccc;">
+                               
+                         <!--  <span  th:text="${invoicePriceDetails.firstName} +' '+ ${invoicePriceDetails.lastName}" ></span> -->
+                              
+                             <!--   <span  th:text="${invoicePriceDetails.title} +' '+ ${invoicePriceDetails.firstName}+' '+ ${invoicePriceDetails.lastName}" ></span> -->
+                              <span  th:text="${invoicePriceDetails.title} +' '+ ${invoicePriceDetails.firstName}+' '+ ${invoicePriceDetails.lastName}"  th:remove="tag" ></span>
+         <!--                          <span  th:text="${flightorder.flightCustomer.title} +' '+ ${flightorder.flightCustomer.firstName}+' '+ ${flightorder.flightCustomer.lastName}"  th:remove="tag" ></span> -->
+                                </td>
+                          			<td style="padding: 0;font-size: 13px;text-align: center;border-right: 1px solid #ccc;background-color: #F1F1F1;border-bottom: 1px solid #ccc;font-weight: bold;color: #D56100;">
+                                    
+                                   <span th:text="${session.pnr}" ></span>
+                                </td>
+                            </tr>
+
+                           
+
+                             </tbody>
+                           </table> 
+                    </td>
+                </tr>
+
+
+               
+
+
+
+
+                <tr th:class="col-3" style="margin-bottom: 10px;">
+
+
+                    <td valign="top" th:class="payment" style="font-size: 13px;text-align: center;">
+                       
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;height:75px;">
+
+
+                             <tr th:class="col-3" style="margin-bottom: 10px;">
+                                <td valign="top" th:class="payment" style="font-size: 13px;text-align: center;width:50%;">
+                       
+                                    <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+                                        <thead>
+                                        <tr>
+			                                <th colspan="2" style="padding: 0;font-size: 13px;text-align: center;background-color:#1595D3;color: #fff;border-right: 1px solid #ccc;padding: 5px;">Payment Information</th>
+			                            </tr>
+			                            </thead>
+                                
+                                <tbody>
+                                    <tr>
+                                        <td style="padding: 0;font-size: 11px;text-align: center;border-bottom: 1px solid #ccc;background-color: #d9edf7;font-weight: bold;">Basic Fare</td>
+                                        <td style="padding: 0;font-size: 11px;text-align: center;border: 1px solid #ccc;">
+                                        
+                                        <!-- <span th:text="${session.baseFareinBooking}" ></span>5000 -->
+                                       Rs: <span th:text="${session.baseFareinBooking}" ></span>
+                                        </td>
+                                        
+                                       
+                                       
+                                    </tr>
+
+                                     <tr>
+                                        <td style="padding: 0;font-size: 11px;text-align: center;border-bottom: 1px solid #ccc;background-color: #d9edf7;font-weight: bold;">Tax &amp; Surcharge</td>
+                                        <td style="padding: 0;font-size: 11px;text-align: center;border: 1px solid #ccc;">
+                                           <!-- Rs:<span th:text="${flightorder.totalTaxes}" ></span>500 -->
+                                            Rs:  <span th:text="${session.TaxinBooking}" ></span>
+                                           </td>
+                                           
+                                       
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 0;font-size: 12px;text-align: center;border-bottom: 1px solid #ccc;background-color: #d9edf7;font-weight: bold;color: #D56100;">Total Amount</td>
+                                        <td style="padding: 0;font-size: 12px;text-align: center;border: 1px solid #ccc;color: #D56100;">
+                                      <!--   RS: <span th:text="${}"></span>1000 -->
+                                           Rs:  <span th:text="${session.totWithGst}" ></span>
+                                        
+                                        
+                                        </td>
+                                       
+                                    </tr>
+                           
+                                </tbody>
+                        </table>
+                        </td>
+                        <td th:class="payment" style="font-size: 13px;text-align: center;width:50%" valign="top">
+
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;height:75px">
+
+                            <thead>
+                            <tr>
+                                <th colspan="2" style="padding: 0;font-size: 13px;text-align: center;background-color:#1595D3;color: #fff;align: center;padding: 5px;">Contact Information</th>
+                            </tr>
+                            </thead>
+                                
+                                <tbody>
+                                    <tr>
+                                        <td style="padding: 0;font-size: 12px;text-align: center;border: 1px solid #ccc;background-color: #d9edf7;font-weight: bold;">Address</td>
+                                        <td style="padding: 0;font-size: 11px;text-align: center;border: 1px solid #ccc;"><a href="#"><span th:text="${parentComapny.Website}"></span></a>
+                                        </td>
+                                    </tr>
+                                    
+                                </tbody>
+                        </table>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+<tr th:class="gst">
+                <td th:class="gst-table" style="padding: 0;font-size: 13px;text-align: center;">
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;margin-bottom: 20px;">
+
+                            <thead>
+                              <tr th:class="info">
+                                <th th:class="hed" style="font-size: 13px;background-color: #AEDE90;text-align: center;padding-left: 0px;border-right: 1px solid #fff;"><h4 > <!-- th:text="${session.tripDeatailsList.size()}" --> Paid Amount   </h4></th>
+                                <th th:class="hed" style="font-size: 13px;background-color: #AEDE90;text-align: center;padding-left: 0px;border-right: 1px solid #fff;"><h4>Your Markup</h4></th>
+                                <th th:class="hed" style="font-size: 13px;background-color: #AEDE90;text-align: center;padding-left: 0px;border-right: 1px solid #fff;" ><h4>Your Commission</h4></th>                               
+                                <th th:class="hed" style="font-size: 13px;background-color: #AEDE90;text-align: center;padding-left: 0px;border-right: 1px solid #fff;"><h4>Commission Shared</h4></th>
+                                <th th:class="hed" style="font-size: 13px;background-color: #AEDE90;text-align: center;padding-left: 0px;border-right: 1px solid #fff;"><h4>TDS</h4></th>
+                               
+                                 <th th:class="hed" style="font-size: 13px;background-color: #AEDE90;text-align: center;padding-left: 0px;border-right: 1px solid #fff;"><h4>Your profit</h4></th>
+                               </tr>
+                            </thead>
+                        <tbody>
+                           <!--  <tr th:each="invoicePriceDetails ,iterationStatus : ${session.flightInvoiceList}"> -->
+                           <tr>
+                            <td style="padding: 0;font-size: 13px;text-align: center;border-bottom: 1px solid #ccc;">
+                                <span th:text="${session.paidAmount}" ></span>
+                                </td>
+                          <td style="padding: 0;font-size: 13px;text-align: center;border-bottom: 1px solid #ccc;">
+                                    <span th:text="${session.urMarkup}" ></span>
+                                    <!--  <span >/</span>
+                                      <span th:text="${invoicePriceDetails.mobile}"></span> -->
+                                </td>
+                       	
+                                 	<td  style="padding: 0;font-size: 13px;text-align: center;border-bottom: 1px solid #ccc;">
+                                       <span th:text="${session.urCommission}" ></span>
+                                </td>
+                                <td 
+                                style="padding: 0;font-size: 13px;text-align: center;border-bottom: 1px solid #ccc;">
+                                       <span th:text="${session.commissionShared}" ></span>
+                                </td>
+                                <td style="padding: 0;font-size: 13px;text-align: center;border-bottom: 1px solid #ccc;">
+                                      <span th:text="${session.TDS}" ></span> 
+                                </td>
+                                <td style="padding: 0;font-size: 13px;text-align: center;border-bottom: 1px solid #ccc;">
+                                      <span th:text="${session.urProfit}" ></span> 
+                                </td>
+                             
+                            </tr>
+
+                            
+                             </tbody><tbody>
+                        </tbody></table> 
+                    </td>
+                </tr>
+              <!--   <tr>
+                    
+                    <td>
+                        <table style="border-spacing:0;font-family:sans-serif;color:#333333;text-align:center;margin:0 auto;border-top:1px solid #1595D3;margin-bottom:15px" width="100%">
+            
+                            <tbody><tr>
+                                <th style="padding:0;font-size:13px;text-align:left;padding-right:5px;padding-top:10px;padding-left: 10px;padding-bottom: 10px;">
+                                       <span style="padding:0;font-size:13px;text-align:left;padding-right:5px;padding-top:10px;padding-left: 0px;border-bottom: 1px solid #555;">Important Note:-</span>
+                                </th>
+                            </tr>
+                            
+                            
+                            <tr>
+                                <td style="padding:0;font-size:13px;text-align:left;padding-bottom:10px;padding-left: 10px;">All passengers are required to carry valid proof of
+identification, including for children and infants. For all international flights, only acceptable proof of identification will be passport which must be valid for at least 6 months from the date of travel. Indian nationals travelling to and from Nepal are required to carry either Passport or
+Voter's ID card only as proof of identification.For children and infants, Birth Certificate or School ID Card (as may be applicable) will be accepted as proof of identification
+</td>
+</tr>
+<tr>
+                                       <td style="padding:0;font-size:13px;text-align:left;padding-bottom:10px;padding-left: 10px;">Please treat this as a valid invoice for the purpose of service tax.
+</td>
+                                            
+                                           </tr>
+<tr>
+                                       <td style="padding:0;font-size:13px;text-align:left;padding-bottom:10px;padding-left: 10px;">Changes/cancellation in the bookings can be made only up to 4 hour
+prior to scheduled departure time ( 6 hours in case of international travel)
+upon payment of a change/cancellation fee (amount depends on the type of far
+e purchased, as advised at the time of booking) along with difference in
+fare.</td>
+                                           </tr>
+<tr>
+                                       <td style="padding:0;font-size:13px;text-align:left;padding-bottom:10px;padding-left: 10px;">PSF/UDF/ADF are collected on behalf of the Airport Authority of
+India (AAI).</td>
+                                           </tr>
+<tr>
+                                       <td style="padding:0;font-size:13px;text-align:left;padding-bottom:10px;padding-left: 10px;">International : Tax on passenger transport is collected @ 12.36 %
+with an abatement of 60% (inclusive of education cess and secondary and
+higher education cess). In case of a continuous journey, applicable service
+tax is collected on the whole journey, if the passenger embarks from India.</td>
+                                           </tr>
+<tr>
+                                       <td style="padding:0;font-size:13px;text-align:left;padding-bottom:10px;padding-left: 10px;">Domestic: Tax on passenger transport is collected @ 12.36 % with an
+abatement of 60% (inclusive of education cess and secondary and higher
+education cess). On other services, service tax is collected @ 12.36 % with
+an abatement of 60% (inclusive of education cess and secondary and higher
+education cess).</td>
+</tr>
+<tr>
+                                       <td style="padding:0;font-size:13px;text-align:left;padding-bottom:10px;padding-left: 10px;">Airfare Charges include Base Fare, Fuel Charge, CUTE Charge and Agency Commission payable to travel agents (if applicable).</td>
+
+</tr>
+<tr>
+                                       <td style="padding:0;font-size:13px;text-align:left;padding-bottom:10px;padding-left: 10px;">W.e.f 5th Nov 2015, on behalf of GMR Hyderabad International Airport Limited, we will be collecting a User Development Fee (UDF) of Rs 490/Rs 1938 per passenger for domestic/international departure ex- Hyderabad. In
+addition, the Passenger Service Fee (PSF) has been revised to Rs 228 per
+departing passenger.</td>
+
+</tr>
+<tr>
+                                       <td style="padding:0;font-size:13px;text-align:left;padding-bottom:10px;padding-left: 10px;">Swachh Bharat Cess: W.e.f. 15th November 2015, the Swachh Bharat Cess @0.5% with an abatement of 60% (wherever applicable), is collected on
+passenger transport and other services (if any).</td>
+
+</tr>
+<tr>
+                                       <td style="padding:0;font-size:13px;text-align:left;padding-bottom:10px;padding-left: 10px;color: red">Changes/cancellation in the bookings to be done directly from airline in case its upto 4 hour prior to scheduled departure time ( 6 hours in case of international travel)
+</td>
+                                       
+                                      
+                                
+                            </tr>
+                          
+            </tbody>
+            </table>
+                    </td>
+                </tr> -->
+            </table>
+            
+            <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;text-align: center;    margin: 0 auto;">
+
+               	<tr>
+                                <td th:class="from" style="padding: 0;font-size: 13px;text-align: center;padding-right: 5px;">
+                                         <span style="font-family: Helvetica, Georgia, Times, serif;font-size: 13px;text-align: left;">
+                                        <b>Address:</b><span th:text="${parentUser.Address}"></span></span>
+                                        <span>|</span>
+                                        <span style="font-family: Helvetica, Georgia, Times, serif;font-size: 13px;text-align: left;">
+                                        <b>Tel:</b><span th:text="${parentUser.Mobile}"></span></span>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                            
+                            
+                                <td th:class="from" style="padding: 0;font-size: 13px;text-align: center;padding-right: 5px;">
+                                         
+                                          <span style="font-family: Helvetica, Georgia, Times, serif;font-size: 13px;text-align: left;">
+                                         <b>Email:</b><span th:text="${parentUser.Email}"></span></span>
+                                         <span>|</span>
+                                        <span style="font-family: Helvetica, Georgia, Times, serif;font-size: 13px;text-align: left;">                                    
+                                          <b>Website:</b><span th:text="${parentComapny.Website}"></span></span>
+                                        
+                                </td>
+                                
+                                
+                            </tr>
+                            
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+    </div>
+            
+      
+     
+        
+    </body>
+</html>

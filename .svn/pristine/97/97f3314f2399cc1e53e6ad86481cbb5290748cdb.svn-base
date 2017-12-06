@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--[if !mso]><!-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--<![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- <link href="enmailer-invoice.css" rel="stylesheet" type='text/css'> -->
+
+    <title>Emailer invoice</title>
+    <style type="text/css">
+
+     body {
+            margin: 0;
+                padding: 0;
+                min-width: 100%;
+                background-color: #ffffff;
+            }
+            table {
+                border-spacing: 0;
+                font-family: sans-serif;
+                color: #333333;
+            }
+            td {
+                padding: 0;
+                font-size: 13px;
+                    text-align: center;
+            }
+            img {
+                border: 0;
+            }
+            .wrapper {
+                width: 100%;
+                table-layout: fixed;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+            }
+            .webkit {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            .outer {
+                margin: 10px auto;
+                    width: 100%;
+                    max-width: 600px;                    
+                    background-color: #fff;    
+                    border: 1px solid #ddd;
+                }
+                .text-left{
+                    text-align: left;
+                }
+                .text-right{
+                    text-align: right;
+                }
+                .inner {
+               text-align: left;            
+                 }
+                 .inner img{
+                    padding: 10px;
+                    
+                 }
+                 .in-no-date{
+                    width: 60%        
+                 }
+
+                 .main-head{
+                    background-color: #fff;
+                    
+                }
+
+
+                .invoicefrom-address{
+                    width: 60%;
+                }
+                .invoicefrom-address h4{
+                        margin: 4px;
+                }
+                .invoice-no p{
+                        font-size: 13px;
+                        font-family: Georgia, Times, serif;
+                        line-height: 0px;  
+                        color: #fff;              
+                }
+                .invoice-no .h2no p{
+                    font-size: 18px;
+                }
+                .to-from{
+                    background-color: #f1f1f1;
+                }
+                .to-from h2{
+                    background-color: #ccc;
+                    padding: 2px;
+                    margin: 3px;
+
+                }
+                .to-from h4{
+                    font-size: 14px;
+                    margin: 3px;
+                    text-align: left;
+                }
+                .to-from p{
+                    font-size: 13px;
+                    text-align: left;
+                }
+                .from{
+                    padding-right: 5px;
+                }
+                .heading{
+                    padding: 10px;
+                }
+
+                .invoice-no{
+                        width: 80%;
+                }
+.gst-table table tr td{
+        border-bottom: 1px solid #ccc;
+        
+}
+.gst-table table tr th.hed{
+    background-color: #D9EDF7;
+    text-align: center;
+    padding-left: 0px;
+    border-right: 1px solid #fff;
+    font-size: 13px;
+}
+.info th{
+    font-size: 12px;
+}
+.gst-table-summ{
+    padding: 10px;
+    width: 65%;
+
+}
+
+.total-am{
+    width: 33%;
+}
+.gst-summary{
+    vertical-align: top;
+}
+.gst-totals td{
+font-size: 13px;
+}
+.gst-totals td p{
+    margin: 0px 0px 5px;
+}
+.gst-totals td h4{
+    text-align: right;
+}
+
+.gst-tot h4{
+   margin: 0px;
+}
+
+
+@font-face {
+  font-family: 'lintas';
+  src:url('../fonts/lintas.eot?5rbe71');
+  src:url('../fonts/lintas.eot?5rbe71#iefix') format('embedded-opentype'),
+    url('../fonts/lintas.ttf?5rbe71') format('truetype'),
+    url('../fonts/lintas.woff?5rbe71') format('woff'),
+    url('../fonts/lintas.svg?5rbe71#lintas') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="lintas-"], [class*=" lintas-"] {
+  font-family: 'lintas';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.lintas-USD:before {
+  content: "\f155";
+}
+.lintas-INR:before {
+  content: "\f156";
+}
+.lintas-JPY:before {
+  content: "\f157";
+}
+.lintas-CNY:before {
+  content: "\f158";
+}
+.lintas-AFN:before {
+  content: "\e800";
+}
+.lintas-ALL:before {
+  content: "\e801";
+}
+.lintas-AWG:before {
+  content: "\e802";
+}
+.lintas-AZN:before {
+  content: "\e803";
+}
+.lintas-BYR:before {
+  content: "\e804";
+}
+.lintas-BZD:before {
+  content: "\e805";
+}
+.lintas-BOB:before {
+  content: "\e806";
+}
+.lintas-BAM:before {
+  content: "\e807";
+}
+.lintas-BWP:before {
+  content: "\e808";
+}
+.lintas-BRL:before {
+  content: "\e809";
+}
+.lintas-BGN:before {
+  content: "\e80a";
+}
+.lintas-KHR:before {
+  content: "\e80b";
+}
+.lintas-CRC:before {
+  content: "\e80c";
+}
+.lintas-HRK:before {
+  content: "\e80d";
+}
+.lintas-CUP:before {
+  content: "\e80e";
+}
+.lintas-CZK:before {
+  content: "\e80f";
+}
+.lintas-DKK:before {
+  content: "\e810";
+}
+.lintas-CAD:before {
+  content: "\e811";
+}
+.lintas-HKD:before {
+  content: "\e812";
+}
+.lintas-DOP:before {
+  content: "\e813";
+}
+.lintas-EEK:before {
+  content: "\e814";
+}
+.lintas-EUR:before {
+  content: "\e815";
+}
+.lintas-GHC:before {
+  content: "\e816";
+}
+.lintas-GTQ:before {
+  content: "\e817";
+}
+.lintas-HNL:before {
+  content: "\e818";
+}
+.lintas-HUF:before {
+  content: "\e819";
+}
+.lintas-ISK:before {
+  content: "\e81a";
+}
+.lintas-IDR:before {
+  content: "\e81b";
+}
+.lintas-IRR:before {
+  content: "\e81c";
+}
+.lintas-ILS:before {
+  content: "\e81d";
+}
+.lintas-JMD:before {
+  content: "\e81e";
+}
+.lintas-KZT:before {
+  content: "\e81f";
+}
+.lintas-KGS:before {
+  content: "\e820";
+}
+.lintas-LAK:before {
+  content: "\e821";
+}
+.lintas-LVL:before {
+  content: "\e822";
+}
+.lintas-LTL:before {
+  content: "\e823";
+}
+.lintas-MKD:before {
+  content: "\e824";
+}
+.lintas-MYR:before {
+  content: "\e825";
+}
+.lintas-MUR:before {
+  content: "\e826";
+}
+.lintas-MNT:before {
+  content: "\e827";
+}
+.lintas-MZN:before {
+  content: "\e828";
+}
+.lintas-NPR:before {
+  content: "\e829";
+}
+.lintas-ANG:before {
+  content: "\e82a";
+}
+.lintas-NIO:before {
+  content: "\e82b";
+}
+.lintas-NGN:before {
+  content: "\e82c";
+}
+.lintas-KPW:before {
+  content: "\e82d";
+}
+.lintas-NOK:before {
+  content: "\e82e";
+}
+.lintas-OMR:before {
+  content: "\e82f";
+}
+.lintas-PKR:before {
+  content: "\e830";
+}
+.lintas-PAB:before {
+  content: "\e831";
+}
+.lintas-PYG:before {
+  content: "\e832";
+}
+.lintas-PEN:before {
+  content: "\e833";
+}
+.lintas-PHP:before {
+  content: "\e834";
+}
+.lintas-PLN:before {
+  content: "\e835";
+}
+.lintas-GBP:before {
+  content: "\e836";
+}
+.lintas-QAR:before {
+  content: "\e837";
+}
+.lintas-RON:before {
+  content: "\e838";
+}
+.lintas-rounded:before {
+  content: "\e839";
+}
+.lintas-RUB:before {
+  content: "\e83a";
+}
+.lintas-SAR:before {
+  content: "\e83b";
+}
+.lintas-RSD:before {
+  content: "\e83c";
+}
+.lintas-SCR:before {
+  content: "\e83d";
+}
+.lintas-SOS:before {
+  content: "\e83e";
+}
+.lintas-south5:before {
+  content: "\e83f";
+}
+.lintas-KRW:before {
+  content: "\e840";
+}
+.lintas-LKR:before {
+  content: "\e841";
+}
+.lintas-SEK:before {
+  content: "\e842";
+}
+.lintas-CHF:before {
+  content: "\e843";
+}
+.lintas-TWD:before {
+  content: "\e844";
+}
+.lintas-THB:before {
+  content: "\e845";
+}
+.lintas-TTD:before {
+  content: "\e846";
+}
+.lintas-TRL:before {
+  content: "\e847";
+}
+.lintas-TRY:before {
+  content: "\e848";
+}
+.lintas-UAH:before {
+  content: "\e849";
+}
+.lintas-UYU:before {
+  content: "\e84a";
+}
+.lintas-UZS:before {
+  content: "\e84b";
+}
+.lintas-VEF:before {
+  content: "\e84c";
+}
+.lintas-VND:before {
+  content: "\e84d";
+}
+.lintas-YER:before {
+  content: "\e84e";
+}
+.lintas-ZWD:before {
+  content: "\e84f";
+}
+                /*Media Queries*/
+@media screen and (max-width: 400px) {
+
+    .inner, .in-no-date,.from, .to{
+    width: 100% !important;   
+    display: block !important;            
+    }
+    .invoicefrom-address{
+        width: 100% !important;
+        display: block !important; 
+    }
+      
+.gst-table table tr th.hed h4{
+    font-size: 12px !important;
+}
+
+.total-am,.gst-summary{
+display: block !important;
+    width: 100% !important;
+}
+
+}
+       
+    </style>
+    <!--[if (gte mso 9)|(IE)]>
+    <style type="text/css">
+        table {border-collapse: collapse;}
+    </style>
+    <![endif]-->
+
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" yahoo="fix" style="font-family: Georgia, Times, serif; margin: 0;padding: 0;min-width: 100%;background-color: #ffffff;">
+    <div class="wrapper" style="width: 100%;table-layout: fixed;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;">
+        <div class="webkit">
+            <!--[if (gte mso 9)|(IE)]>
+            <table width="600" align="center">
+            <tr>
+            <td>
+            <![endif]-->
+            <table class="outer" align="center" style="border:1px solid #1594D3">
+
+              <tr >
+                
+                <td style="width:100%;">
+                  <table style="width:100%;background: #1594D3;">
+                                  <tr class="main-head"  style="width:100%;background: #1594D3;">
+
+                <td style="width:50%">
+                    <table width="100%" style="text-align: left;">
+                      <tr>
+                        <td class="inner" style="width:25%;border-spacing: 0;font-family: sans-serif;color: #333333;">                        
+                        <p><img th:object="${receipientComp}"  th:src="${receipientComp.logoDisplayable}" width="150" height="100" /> </p>
+                        
+                      </td>  
+                      </tr>
+                    </table>
+                  </td>
+                    <td style="width:50%">
+                    <table width="100%" style="text-align: right;">
+                      <tr>
+                        <td class="inner" style="width:25%;border-spacing: 0;font-family: sans-serif;color: #333333;text-align: right">
+                   
+                  </td>
+                      </tr>
+                    </table>
+                </td>
+
+
+
+
+
+                  <!-- <td class="inner" style="width:25%;border-spacing: 0;font-family: sans-serif;color: #333333;width: 50%;">
+                    <img src="http://dev.mylintas.com/TravelAdmin/images/logo.png">
+                  </td>    
+                   <td class="inner" style="width:25%;border-spacing: 0;font-family: sans-serif;color: #333333;width: 50%;">
+                    <img src="alert.png">
+                  </td> -->                 
+              </tr> 
+                  </table>
+                </td>
+              </tr>
+              <tr class="cd-text">
+                <td class="cd-text-inside" style="border-spacing: 0;font-family: sans-serif;text-align:left;padding: 10px;border-top: 1px solid #ccc;">
+                
+                		
+					<!-- 0 parent himself, 1 parent to child, 2 child to parent , 3 child himself -->					
+					 <h1 style="font-family: sans-serif;text-align:left;font-size: 18px;">Hi <b><span th:text="${receipientType}"></span></b>&nbsp;<span th:text="${receipient}"></span>,</h1>
+					 
+                <th:block th:switch="${actionType}">
+  <div th:case="0">
+     <!-- print object is not active -->
+  </div>
+   <div th:case="1">
+     <b><span th:text="${parentType}"></span></b>&nbsp;<span th:text="${parent }"></span><span th:text="${action}"></span>&nbsp;<b><span th:text="${childType}"></span></b>&nbsp;<span th:text="${child }">.</span>
+  </div>
+   <div th:case="2">
+     <b><span th:text="${childType}"></span></b>&nbsp;<span th:text="${child }"></span><span th:text="${action}"></span>&nbsp;<b><span th:text="${parentType}"></span></b>&nbsp;<span th:text="${parent }">.</span>
+ 
+  </div>
+  <div th:case="3">
+    <b><span th:text="${childType}"></span></b>&nbsp;<span th:text="${child }"></span><span th:text="${action}">.</span>
+              
+  </div>
+</th:block>
+                
+        
+        
+        <p style="margin: 5px;">Date : <span th:text="${date}"></span></p>            
+        <p style="margin: 5px;">Time : <span th:text="${time}"></span></p>      
+                </td>
+                
+                
+              </tr>  
+              
+              
+              
+            
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+    </div>
+</body>
+<!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+</html>

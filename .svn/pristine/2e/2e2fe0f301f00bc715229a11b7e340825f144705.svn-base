@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:cache="http://www.springframework.org/schema/cache" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+  http://www.springframework.org/schema/beans 
+  http://www.springframework.org/schema/beans/spring-beans-3.2.xsd  
+  http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
+  http://www.springframework.org/schema/context  
+  http://www.springframework.org/schema/context/spring-context-3.2.xsd
+  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+  http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+  http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+	<!-- Configure bean to convert JSON to POJO and vice versa -->
+	<cache:annotation-driven />
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" 
+ 	 p:cacheManager-ref="ehcache"/>
+
+	 <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" 
+     p:configLocation="WEB-INF/ehcache.xml"  
+     p:shared="true"/> 
+	<bean id="jsonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+	</bean>
+	<!-- Here we have to mention controller Pakage -->
+	<context:component-scan base-package="com.tayyarah.flight.controller" />
+	<context:component-scan base-package="com.tayyarah.hotel.controller" />
+	<context:component-scan base-package="com.tayyarah.flight.util.api.bluestar" />
+	<context:component-scan base-package="com.tayyarah.common.controller" />
+	<context:component-scan base-package="com.tayyarah.Service" />
+	<context:component-scan base-package="com.tayyarah.bus.controller" />
+	<context:component-scan base-package="com.tayyarah.user.controller" />
+	<context:component-scan base-package="com.tayyarah.flight.service.db" />
+	<context:component-scan base-package="com.tayyarah.hotel.service.db" />
+	<context:component-scan base-package="com.tayyarah.user.service.db" />
+	<context:component-scan base-package="com.tayyarah.umrah.service.db" />
+	<context:component-scan base-package="com.tayyarah.company.service.db" />
+	<context:component-scan base-package="com.tayyarah.insurance.controller" />
+	<context:component-scan base-package="com.tayyarah.umrah.controller" />
+	<context:component-scan base-package="com.tayyarah.email.helper" />
+	<context:component-scan base-package="com.api.employee.controller"/>
+	<context:component-scan base-package="com.api.rm.config.controller"/>
+	<context:component-scan base-package="com.tayyarah.common.order.controller"/>
+	<context:component-scan base-package="com.api.bulk.download.invoice.controller"/>
+	<context:component-scan base-package="com.tayyarah.user.controller"/>
+	
+	<mvc:annotation-driven />
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+
+
+		<!--Local Database connection -->
+		<!--Local Database connection -->
+		 <!-- <property name="url" value="jdbc:mysql://localhost:3306/dumpfromvimal?autoReconnect=true" />
+		<property name="username" value="root" />
+		<property name="password" value="password" /> -->
+		
+		<!-- <property name="url" value="jdbc:mysql://localhost:3306/tayyarah?autoReconnect=true" />
+		<property name="username" value="root" />
+		<property name="password" value="password" /> -->
+		
+		<!-- <property name="url"
+			value="jdbc:mysql://localhost:3306/devtayyarah_m_team?autoReconnect=true" />
+		<property name="username" value="root" />
+		<property name="password" value="password" />
+ -->
+		<!--Dev Database connection -->
+		<!-- <property name="url" value="jdbc:mysql://128.199.145.152:3306/devtayyarah1?autoReconnect=true"/>
+		<property name="username" value="ak" /> <property name="password" value="lintas@intellicomm788"/> -->
+
+		<!-- <property name="url" value="jdbc:mysql://128.199.145.152:3306/devtayyarah_m_team?autoReconnect=true" 
+			/> <property name="username" value="ak" /> <property name="password" value="lintas@intellicomm788" 
+			/> -->
+
+		<!-- Tayyarah live -->
+		<property name="url" value="jdbc:mysql://api.tayyarah.com:3306/tayyarah?autoReconnect=true"/>
+		<property name="username" value="ak" /> <property name="password" value="intellicomm@ispltayyarah788"/>
+
+
+	</bean>
+
+	<!-- here datasource for hotel static content -->
+	<bean id="hotelStaticDataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<!--Local Database connection -->
+		<!-- <property name="url"
+			value="jdbc:mysql://localhost:3306/tayyarah_hotels?autoReconnect=true" />
+		<property name="username" value="root" />
+		<property name="password" value="password" /> -->
+
+		<!--Local Database connection -->
+		<!-- <property name="url" value="jdbc:mysql://localhost:3306/tayyarah_hotels?autoReconnect=true" 
+			/> <property name="username" value="root" /> <property name="password" value="password" 
+			/> -->
+
+		<!--Dev Database connection -->
+		<!-- <property name="url" value="jdbc:mysql://128.199.145.152:3306/tayyarah_hotels?autoReconnect=true"/>
+		<property name="username" value="ak" /> <property name="password" value="lintas@intellicomm788"/> -->
+
+
+		<!-- Tayyarah live -->
+			<property name="url" value="jdbc:mysql://api.tayyarah.com:3306/tayyarah_hotels?autoReconnect=true"/> 
+			<property name="username" value="ak" /> <property name="password" value="intellicomm@ispltayyarah788"/>
+
+	</bean>
+
+	<bean id="hotelsessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="hotelStaticDataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.tayyarah.hotel.model.HotelOverview</value>
+				<value>com.tayyarah.hotel.model.Facility</value>
+				<value>com.tayyarah.hotel.model.Hotelimage</value>
+				<value>com.tayyarah.hotel.model.Hotelinandaround</value>
+				<value>com.tayyarah.hotel.model.HotelinandaroundPK</value>
+				<value>com.tayyarah.hotel.model.HotelPoi</value>
+				<value>com.tayyarah.hotel.model.Hotelreview</value>
+				<value>com.tayyarah.hotel.model.Hotelroomdescription</value>
+				<value>com.tayyarah.hotel.entity.Hotelsecondaryarea</value>
+				<value>com.tayyarah.hotel.model.Hotelthemeandcategory</value>
+				<value>com.tayyarah.hotel.entity.HotelSearchCity</value>
+				<value>com.tayyarah.hotel.entity.RezliveCity</value>
+				<value>com.tayyarah.hotel.entity.ReznextCity</value>
+				<value>com.tayyarah.hotel.entity.TgCity</value>
+				<value>com.tayyarah.hotel.entity.TboCity</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+			</props>
+		</property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<!-- here we have model calss of flight with fully qulified pakage -->
+				<value>com.tayyarah.common.entity.Airport</value>
+				<value>com.tayyarah.flight.entity.FlightMarkup</value>
+				<value>com.tayyarah.common.entity.Airlinelist</value>
+				<value>com.tayyarah.flight.model.TempAirSegment</value>
+				<value>com.tayyarah.flight.entity.FlightSearchDetailsTemp
+				</value>
+				<value>com.tayyarah.flight.entity.FlightAirPriceDetailsTemp
+				</value>
+				<value>com.tayyarah.flight.entity.FlightBookingKeysTemp
+				</value>
+				<value>com.tayyarah.flight.entity.FlightBookingDetailsTemp
+				</value>
+				<value>com.tayyarah.flight.entity.FlightOrderCustomer</value>
+				<value>com.tayyarah.flight.entity.FlightOrderCustomerPriceBreakup
+				</value>
+				<value>com.tayyarah.flight.entity.FlightOrderRow</value>
+				<value>com.tayyarah.flight.entity.FlightOrderRowServiceTax
+				</value>
+				<value>com.tayyarah.flight.entity.FlightOrderTripDetail
+				</value>
+				<value>com.tayyarah.flight.model.FlightInvoiceData</value>
+				<value>com.tayyarah.company.entity.CompanyBookingSystemType
+				</value>
+				<value>com.tayyarah.company.entity.CompanyRole</value>
+				<value>com.tayyarah.flight.entity.FlightCreditNote</value>
+				<value>com.tayyarah.user.entity.WalletAmountTranferHistory
+				</value>
+				<value>com.tayyarah.common.entity.Country</value>
+				<value>com.tayyarah.flight.entity.FlightOrderCustomerSSR
+				</value>
+				<value>com.tayyarah.flight.entity.FlightOrderRowCancellation
+				</value>
+				<value>com.tayyarah.flight.entity.FlightOrderRowMarkup</value>
+				<value>com.tayyarah.flight.entity.FlightOrderRowCommission
+				</value>
+				<value>com.tayyarah.common.entity.OrderCustomer</value>
+				<value>com.tayyarah.common.entity.PaymentTransaction</value>
+				<value>com.tayyarah.user.entity.UserWallet</value>
+				<value>com.tayyarah.user.entity.User</value>
+				<value>com.tayyarah.user.entity.UserRole</value>
+				<value>com.tayyarah.company.entity.Company</value>
+				<value>com.tayyarah.user.entity.FrontUserDetail</value>
+				<value>com.tayyarah.company.entity.CompanyConfig</value>
+				<value>com.tayyarah.company.entity.CompanyConfigType</value>
+				<value>com.tayyarah.common.entity.MoneyExchange</value>
+				<value>com.tayyarah.email.entity.model.Email</value>
+				<value>com.tayyarah.email.entity.model.EmailType</value>
+				<value>com.tayyarah.common.entity.MoneyExchange</value>
+				<value>com.tayyarah.hotel.entity.HotelOrderCancellationPolicy
+				</value>
+				<value>com.tayyarah.hotel.entity.HotelOrderGuest</value>
+				<value>com.tayyarah.hotel.entity.HotelOrderHotelData</value>
+				<value>com.tayyarah.hotel.entity.HotelOrderRoomInfo</value>
+				<value>com.tayyarah.hotel.entity.HotelOrderRow</value>
+				<value>com.tayyarah.hotel.entity.HotelOrderRowServiceTax
+				</value>
+				<value>com.tayyarah.hotel.entity.HotelMarkup</value>
+				<value>com.tayyarah.hotel.entity.HotelSearchTemp</value>
+				<value>com.tayyarah.hotel.entity.HotelTransactionTemp</value>
+				<value>com.tayyarah.hotel.entity.HotelSearchRoomDetailTemp
+				</value>
+				<value>com.tayyarah.hotel.entity.HotelBookingTemp</value>
+				<value>com.tayyarah.hotel.entity.HotelOrderRowMarkup</value>
+				<value>com.tayyarah.hotel.entity.HotelOrderRowCommission
+				</value>
+				<value>com.tayyarah.hotel.entity.HotelCreditNote</value>
+				<value>com.tayyarah.flight.commission.entity.AirlineCommissionMasterSheet
+				</value>
+				<value>com.tayyarah.flight.commission.entity.AirlineCommissionSheet
+				</value>
+				<value>com.tayyarah.flight.commission.entity.AirlineCommissionCompanyBlock
+				</value>
+				<value>com.tayyarah.flight.commission.entity.AirlineCommissionBlock
+				</value>
+				<value>com.tayyarah.hotel.entity.HotelOrderRowCancellation
+				</value>
+				<value>com.tayyarah.email.entity.model.EmailNotification</value>
+				<value>com.tayyarah.common.entity.Enquiry</value>
+				<value>com.tayyarah.hotel.entity.HotelDetails</value>
+				<value>com.tayyarah.hotel.entity.HotelRoomDetails</value>
+				<value>com.tayyarah.hotel.quotation.entity.HotelTravelRequestQuotation
+				</value>
+				<value>com.tayyarah.hotel.quotation.entity.HotelTravelRequest
+				</value>
+				<value>com.tayyarah.hotel.quotation.entity.HotelQuotationHistory
+				</value>
+				<value>com.tayyarah.flight.quotation.entity.FlightTravelRequest
+				</value>
+				<value>com.tayyarah.flight.quotation.entity.FlightTravelRequestQuotation
+				</value>
+				<value>com.tayyarah.flight.quotation.entity.FlightQuotationHistory
+				</value>
+				<value>com.tayyarah.flight.quotation.entity.FlightTravelRequestTripDetail
+				</value>
+				<value>com.tayyarah.flight.quotation.entity.FlightTravelRequestConnectingFlightTripDetail
+				</value>
+				<value>com.tayyarah.common.notification.Notification</value>
+				<value>com.tayyarah.common.notification.NotificationDetail</value>
+				<value>com.tayyarah.common.entity.FlightAndHotelBookApiResponse
+				</value>
+				<value>com.tayyarah.quotation.entity.PaymentOptions</value>
+				<value>com.tayyarah.flight.entity.FlightApiSearchResponseTemp
+				</value>
+				<value>com.tayyarah.bugtracker.entity.BugTracker</value>
+				<value>com.tayyarah.bugtracker.entity.BugTrackerHistory</value>
+				<value>com.tayyarah.bugtracker.entity.BugTrackerComment</value>
+				<value>com.tayyarah.bugtracker.entity.BugTag</value>
+				<value>com.tayyarah.bugtracker.entity.BugTestCase</value>
+				<value>com.tayyarah.common.entity.ApiProvider</value>
+				<value>com.tayyarah.common.entity.ApiProviderSupportDetails
+				</value>
+				<value>com.tayyarah.common.entity.ApiProviderTechSupportDetails
+				</value>
+				<value>com.tayyarah.common.entity.ApiProviderTravelType
+				</value>
+				<value>com.tayyarah.common.entity.PaymentTransactionDetail
+				</value>
+				<value>com.tayyarah.common.entity.PaymentCardInfo</value>
+				<value>com.tayyarah.common.entity.ApiProviderPaymentCardInfo
+				</value>
+				<value>com.tayyarah.common.entity.ApiProviderPaymentTransaction
+				</value>
+				<value>com.tayyarah.common.entity.ApiProviderPaymentTransactionDetail
+				</value>
+				<value>com.tayyarah.apiproviderconfig.entity.ApiProviderTboConfig
+				</value>
+				<value>com.tayyarah.apiproviderconfig.entity.ApiProviderCommonConfig
+				</value>
+				<value>com.tayyarah.apiproviderconfig.entity.ApiProviderBluestarConfig
+				</value>
+				<value>com.tayyarah.apiproviderconfig.entity.ApiProviderDesiyaConfig
+				</value>
+				<value>com.tayyarah.apiproviderconfig.entity.ApiProviderTayyarahConfig
+				</value>
+				<value>com.tayyarah.hotel.entity.HotelPaymentTxDetailHistory
+				</value>
+				<value>com.tayyarah.common.entity.PaymentCardDetailsConfig
+				</value>
+
+				<value>com.tayyarah.common.servicetaxconfig.entity.BusServiceTaxConfig
+				</value>
+				<value>com.tayyarah.common.servicetaxconfig.entity.CarServiceTaxConfig
+				</value>
+				<value>com.tayyarah.common.servicetaxconfig.entity.HolidayServiceTaxConfig
+				</value>
+				<value>com.tayyarah.common.servicetaxconfig.entity.RailServiceTaxConfig
+				</value>
+				<value>com.tayyarah.common.servicetaxconfig.entity.AdvertiseandOtherServiceTaxConfig
+				</value>
+				<value>com.tayyarah.common.servicetaxconfig.entity.VisaServiceTaxConfig
+				</value>
+				<value>com.tayyarah.common.servicetaxconfig.entity.FlightDomesticServiceTaxConfig
+				</value>
+				<value>com.tayyarah.common.servicetaxconfig.entity.FlightInternationalServiceTaxConfig
+				</value>
+				<value>com.tayyarah.common.servicetaxconfig.entity.BookingServiceConfig
+				</value>
+				<value>com.tayyarah.flight.entity.FlightBookingCutoffConfig
+				</value>
+				<value>com.tayyarah.flight.entity.FlightPaymentConfig</value>
+				<value>com.tayyarah.hotel.entity.HotelBookingCutoffConfig
+				</value>
+				<value>com.tayyarah.hotel.entity.HotelPaymentConfig</value>
+				<value>com.tayyarah.common.servicetaxconfig.entity.HotelServiceTaxConfig
+				</value>
+
+				<value>com.tayyarah.bus.quotation.entity.BusTravelRequest
+				</value>
+				<value>com.tayyarah.bus.quotation.entity.BusTravelRequestQuotation
+				</value>
+				<value>com.tayyarah.car.quotation.entity.CarTravelRequest
+				</value>
+				<value>com.tayyarah.car.quotation.entity.CarTravelRequestQuotation
+				</value>
+				<value>com.tayyarah.quotation.entity.InsuranceTravelRequest
+				</value>
+				<value>com.tayyarah.quotation.entity.InsuranceTravelRequestQuotation
+				</value>
+				<value>com.tayyarah.quotation.entity.TrainTravelRequest
+				</value>
+				<value>com.tayyarah.quotation.entity.TrainTravelRequestQuotation
+				</value>
+				<value>com.tayyarah.quotation.entity.VisaTravelRequest</value>
+				<value>com.tayyarah.quotation.entity.VisaTravelRequestQuotation
+				</value>
+				<value>com.tayyarah.bus.entity.BusOrderRow</value>
+				<value>com.tayyarah.car.entity.CarOrderRow</value>
+				<value>com.tayyarah.train.entity.TrainOrderRow</value>
+				<value>com.tayyarah.bus.entity.BusOrderRowServiceTax</value>
+				<value>com.tayyarah.car.entity.CarOrderRowServiceTax</value>
+				<value>com.tayyarah.train.entity.TrainOrderRowServiceTax
+				</value>
+				<value>com.tayyarah.visa.entity.VisaOrderRowServiceTax</value>
+				<value>com.tayyarah.insurance.entity.InsuranceOrderRow</value>
+				<value>com.tayyarah.visa.entity.VisaOrderRow</value>
+				<value>com.tayyarah.insurance.entity.InsuranceOrderRowServiceTax
+				</value>
+				<value>com.tayyarah.common.entity.RmConfigTripDetailsModel
+				</value>
+				<value>com.tayyarah.common.entity.TripRequest</value>
+				<value>com.tayyarah.common.entity.RmConfigModel</value>
+				<value>com.tayyarah.car.entity.CarCreditNote</value>
+				<value>com.tayyarah.bus.entity.BusCreditNote</value>
+				<value>com.tayyarah.train.entity.TrainCreditNote</value>
+				<value>com.tayyarah.visa.entity.VisaCreditNote</value>
+				<value>com.tayyarah.insurance.entity.InsuranceCreditNote
+				</value>
+				<value>com.tayyarah.flight.entity.FlightOrderRowCancellationAPIResponse
+				</value>
+				<value>com.tayyarah.hotel.entity.HotelOrderRowCancellationAPIResponse
+				</value>
+				<value>com.tayyarah.flight.entity.FlightOrderRowCancellationAPIResponse
+				</value>
+				<value>com.tayyarah.hotel.entity.HotelOrderRowCancellationAPIResponse
+				</value>
+				<value>com.tayyarah.apiproviderconfig.entity.ApiProviderEtravelSmartConfig
+				</value>
+				<value>com.tayyarah.bus.entity.BusMarkup</value>
+				<value>com.tayyarah.bus.entity.BusSearchTemp</value>
+				<value>com.tayyarah.bus.entity.BusSeatAvailableTemp</value>
+				<value>com.tayyarah.bus.entity.BusOrderCustomerDetail</value>
+				<value>com.tayyarah.bus.entity.BusOrderRowCommission</value>
+				<value>com.tayyarah.bus.entity.BusOrderRowMarkup</value>
+				<value>com.tayyarah.bus.entity.BusBlockedSeatTemp</value>
+				<value>com.tayyarah.bus.entity.BusOrderRowCancellation</value>
+
+				<value>com.tayyarah.common.gstconfig.entity.FlightDomesticGstTaxConfig
+				</value>
+				<value>com.tayyarah.common.gstconfig.entity.FlightInternationalGstTaxConfig
+				</value>
+				<value>com.tayyarah.common.gstconfig.entity.BusGstTaxConfig</value>
+				<value>com.tayyarah.common.gstconfig.entity.CarGstTaxConfig</value>
+				<value>com.tayyarah.common.gstconfig.entity.HotelGstTaxConfig</value>
+				<value>com.tayyarah.common.gstconfig.entity.InsuranceGstTaxConfig
+				</value>
+				<value>com.tayyarah.common.gstconfig.entity.TrainGstTaxConfig</value>
+				<value>com.tayyarah.common.gstconfig.entity.VisaGstTaxConfig</value>
+				<value>com.tayyarah.common.gstconfig.entity.TravelPackageGstTaxConfig
+				</value>
+				<value>com.tayyarah.flight.entity.FlightOrderRowGstTax</value>
+				<value>com.tayyarah.hotel.entity.HotelOrderRowGstTax</value>
+				<value>com.tayyarah.bus.entity.BusOrderRowGstTax</value>
+				<value>com.tayyarah.car.entity.CarOrderRowGstTax</value>
+				<value>com.tayyarah.insurance.entity.InsuranceOrderRowGstTax
+				</value>
+				<value>com.tayyarah.train.entity.TrainOrderRowGstTax</value>
+				<value>com.tayyarah.visa.entity.VisaOrderRowGstTax</value>
+				<value>com.tayyarah.company.entity.CompanyEntity</value>
+				<value>com.tayyarah.common.entity.StateInfo</value>
+				<value>com.tayyarah.misellaneous.entity.MiscellaneousOrderRowServiceTax
+				</value>
+				<value>com.tayyarah.misellaneous.entity.MiscellaneousOrderRowGstTax
+				</value>
+				<value>com.tayyarah.misellaneous.entity.MiscellaneousOrderRow
+				</value>
+				<value>com.tayyarah.common.gstconfig.entity.MiscellaneousGstTaxConfig
+				</value>
+				<value>com.tayyarah.misellaneous.entity.MiscellaneousCreditNote
+				</value>
+				<value>com.tayyarah.admin.analytics.lookbook.entity.HotelLook</value>
+				<value>com.tayyarah.admin.analytics.lookbook.entity.FlightLook
+				</value>
+				<value>com.tayyarah.admin.analytics.lookbook.entity.BusLook</value>
+				<value>com.tayyarah.admin.analytics.lookbook.entity.HotelBook</value>
+				<value>com.tayyarah.admin.analytics.lookbook.entity.FlightBook
+				</value>
+				<value>com.tayyarah.admin.analytics.lookbook.entity.BusBook</value>
+				<value>com.tayyarah.admin.analytics.lookbook.entity.HotelLookBook
+				</value>
+				<value>com.tayyarah.admin.analytics.lookbook.entity.FlightLookBook
+				</value>
+				<value>com.tayyarah.admin.analytics.lookbook.entity.BusLookBook
+				</value>
+				<value>com.tayyarah.admin.analytics.lookbook.entity.LookBookCustomerIPStatus
+				</value>
+				<value>com.tayyarah.flight.entity.FlightFareAlertDetail
+				</value>
+				<value>com.tayyarah.flight.entity.FlightFareAlertConnectingFlight
+				</value>
+				<value>com.tayyarah.admin.analytics.lookbook.entity.LookBookCustomerIPHistory
+				</value>
+				<value>com.tayyarah.insurance.entity.TrawellTagCategory
+				</value>
+				<value>com.tayyarah.insurance.entity.TrawellTagCountries
+				</value>
+				<value>com.tayyarah.insurance.entity.TrawellTagPlan
+				</value>
+				<value>com.tayyarah.insurance.entity.TrawellTagPremiumChart
+				</value>
+				<value>com.tayyarah.apiproviderconfig.entity.ApiProviderTrawellTagConfig
+				</value>
+				<value>com.tayyarah.bugtracker.entity.BugTestCase</value>
+				<value>com.tayyarah.bugtracker.entity.BugTrackerComment</value>
+				<value>com.tayyarah.insurance.entity.InsuranceOrderCustomerDetail
+				</value>
+				<value>com.tayyarah.insurance.entity.InsurancePolicyTemp
+				</value>
+				<value>com.tayyarah.insurance.entity.InsuranceOrderRowMarkup
+				</value>
+				<value>com.tayyarah.insurance.entity.InsuranceOrderRowCommission
+				</value>
+				<value>com.tayyarah.flight.cache.entity.FlightSearchCache
+				</value>
+				<value>com.tayyarah.flight.cache.entity.FlightSearchCacheDestination
+				</value>
+				<value>com.tayyarah.umrah.entity.TayyarahUmrahContactDetails
+				</value>
+				<value>com.tayyarah.api.orderrow.rm.structure.FlightOrderRowRmConfigStruct</value>
+				<value>com.tayyarah.api.orderrow.rm.structure.HotelOrderRowRmConfigStruct</value>
+				<value>com.tayyarah.api.orderrow.rm.structure.CarOrderRowRmConfigStruct</value>
+				<value>com.tayyarah.api.orderrow.rm.structure.BusOrderRowRmConfigStruct</value>
+				<value>com.tayyarah.api.orderrow.rm.structure.TrainOrderRowRmConfigStruct</value>
+				<value>com.tayyarah.api.orderrow.rm.structure.VisaOrderRowRmConfigStruct</value>
+				<value>com.tayyarah.api.orderrow.rm.structure.InsuranceOrderRowRmConfigStruct</value>
+				<value>com.tayyarah.api.orderrow.rm.structure.MiscellaneousOrderRowRmConfigStruct</value>
+				<value>com.tayyarah.car.ordercustomer.model.CarOrderCustomer</value>
+				<value>com.tayyarah.train.ordercustomer.model.TrainOrderCustomer</value>
+				<value>com.tayyarah.visa.ordercustomer.model.VisaOrderCustomer</value>
+				<value>com.tayyarah.miscellaneous.ordercustomer.model.MiscellaneousOrderCustomer</value>
+				<!-- <value>com.lintas.admin.hotel.model.HotelSearchResponseCacheEntity</value> -->
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="lintasStaticDataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://128.199.202.133:3306/lintashotels?autoReconnect=true" />
+		<property name="username" value="ak" />
+		<property name="password" value="lintas@intellicomm95" />
+	</bean>
+	<bean id="lintashotelsessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="lintasStaticDataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.tayyarah.hotel.reposit.entity.Facility </value>
+				<value>com.tayyarah.hotel.reposit.entity.Hotelimage</value>
+				<value>com.tayyarah.hotel.reposit.entity.Hotelinandaround
+				</value>
+				<value>com.tayyarah.hotel.reposit.entity.HotelMealFare</value>
+				<value>com.tayyarah.hotel.reposit.entity.Hotelmealtype</value>
+				<value>com.tayyarah.hotel.reposit.entity.Hoteloverview</value>
+				<value>com.tayyarah.hotel.reposit.entity.Hotelreview</value>
+				<value>com.tayyarah.hotel.reposit.entity.Hotelroomdescription
+				</value>
+				<value>com.tayyarah.hotel.reposit.entity.HotelRoomExtraFare
+				</value>
+				<value>com.tayyarah.hotel.reposit.entity.Hotelroomfare</value>
+				<value>com.tayyarah.hotel.reposit.entity.Hotelsegment</value>
+				<value>com.tayyarah.hotel.reposit.entity.Mealsfare</value>
+				<value>com.tayyarah.hotel.reposit.entity.HotelBookingComLink
+				</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.use_sql_comments">true</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="hoteltxManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="hotelsessionFactory" />
+	</bean>
+	<bean id="lintashoteltxManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="lintashotelsessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="txManager" />
+	<tx:annotation-driven transaction-manager="hoteltxManager" />
+	<tx:annotation-driven transaction-manager="lintashoteltxManager" />
+
+
+	<bean id="persistenceExceptionTranslationPostProcessor"
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+	<bean id="dataDao" class="com.tayyarah.flight.dao.AirportDAOImp"></bean>
+	<bean id="CmpDao" class="com.tayyarah.company.dao.CompanyDaoIMP"></bean>
+	<!-- <bean id="companyDAO" class="com.tayyarah.company.dao.CompanyDaoImpl"></bean> -->
+	<bean id="CmpServices" class="com.tayyarah.company.service.db.CompanyDAOServiceIMP"></bean>
+	<bean id="CmpconfgDao" class="com.tayyarah.company.dao.CompanyConfigDAOIMP"></bean>
+	<bean id="TempDAO" class="com.tayyarah.flight.dao.FlightTempAirSegmentDAOIMP"></bean>
+	<bean id="FBDAO" class="com.tayyarah.flight.dao.FlightBookingIMP"></bean>
+	<bean id="AWDAO" class="com.tayyarah.user.dao.UserWalletDAOIMP"></bean>
+	<bean id="airlineDAO" class="com.tayyarah.flight.dao.AirlineDAOImp"></bean>
+	<bean id="FCDAO" class="com.tayyarah.flight.dao.FlightCancellationIMP"></bean>
+
+	<!-- from here we have Dao and service calss for hotels -->
+	<bean id="cityDao" class="com.tayyarah.hotel.dao.CityDaoImp"></bean>
+	<bean id="HotelViewDao" class="com.tayyarah.hotel.dao.HoteloverviewDaoImp"></bean>
+	<!-- here we have service calss fully qulified pakage for hotels -->
+	<bean id="cityServices" class="com.tayyarah.hotel.dao.CityDaoServiceImp"></bean>
+	<bean id="insuranceCommonDao" class="com.tayyarah.insurance.dao.InsuranceCommonDaoImp"></bean>
+
+
+	<bean id="HotelVidServices" class="com.tayyarah.hotel.dao.HoteloverviewDaoServiceImp"></bean>
+	<bean id="faclityDao" class="com.tayyarah.hotel.dao.HotelFacilityDaoImp"></bean>
+	<bean id="faclityVidServices" class="com.tayyarah.hotel.dao.HotelFacilityDaoServiceImp"></bean>
+	<bean id="hotelaroundDao" class="com.tayyarah.hotel.dao.HotelinandaroundDaoImp"></bean>
+	<bean id="hotelaroundServices" class="com.tayyarah.hotel.dao.HotelinandaroundDaoServiceImp"></bean>
+	<bean id="hotelimagesDao" class="com.tayyarah.hotel.dao.HotelimagesDaoImp"></bean>
+	<bean id="hotelimageServices" class="com.tayyarah.hotel.dao.HotelimagesDaoServiceImp"></bean>
+	<bean id="hotelrommdesDao" class="com.tayyarah.hotel.dao.HotelroomdescriptionDaoImp"></bean>
+	<bean id="hotelrommdesServices"
+		class="com.tayyarah.hotel.dao.HotelroomdescriptionDaoServiceImp"></bean>
+	<bean id="hotelPoiDao" class="com.tayyarah.hotel.dao.HotelpoiDaoImp"></bean>
+	<bean id="hotelPoiServices" class="com.tayyarah.hotel.dao.HotelpoiDaoServiceImp"></bean>
+	<bean id="hotelreviewDao" class="com.tayyarah.hotel.dao.HotelreviewDaoImp"></bean>
+	<bean id="hotelreviewServices" class="com.tayyarah.hotel.dao.HotelreviewDaoServiceImp"></bean>
+	<bean id="hotelsecondaryDao" class="com.tayyarah.hotel.dao.HotelsecondaryareaDaoImp"></bean>
+	<bean id="hotelsecondaryServices" class="com.tayyarah.hotel.dao.HotelsecondaryareaDaoServiceImp"></bean>
+	<bean id="hotelthemeDao" class="com.tayyarah.hotel.dao.HotelthemeandcategoryDaoImp"></bean>
+	<bean id="hotelthemeServices"
+		class="com.tayyarah.hotel.dao.HotelthemeandcategoryDaoServiceImp"></bean>
+	<bean id="islhotelmappingdao" class="com.tayyarah.hotel.dao.IslhotelmappingDaoImp"></bean>
+	<bean id="islhotelmappingServices" class="com.tayyarah.hotel.dao.IslhotelmappingDaoServiceImp"></bean>
+	<bean id="apihotelstoredao" class="com.tayyarah.hotel.dao.ApiHotelMapStoreDaoImp"></bean>
+	<bean id="apihotelstoredaoServices" class="com.tayyarah.hotel.dao.ApiHotelMapStoreDaoServiceImp"></bean>
+	<bean id="rzamenityDao" class="com.tayyarah.hotel.dao.RzAmenityTypeDaoImp"></bean>
+	<bean id="rzamenityDaoService" class="com.tayyarah.hotel.dao.RzAmenityTypeDaoServiceImp"></bean>
+	<bean id="rzRoomDesDao" class="com.tayyarah.hotel.dao.RzHotelRoomDescriptionDaoImp"></bean>
+	<bean id="rzRoomDesDaoService"
+		class="com.tayyarah.hotel.dao.RzHotelRoomDescriptionDaoServiceImp"></bean>
+	<bean id="rzamenitydao" class="com.tayyarah.hotel.dao.RzRoomAmenityDaoImp"></bean>
+	<bean id="rzamenitydaoService" class="com.tayyarah.hotel.dao.RzRoomAmenityDaoServiceImp"></bean>
+	<bean id="rzfaciltydao" class="com.tayyarah.hotel.dao.RzFacilityDaoImp"></bean>
+	<bean id="rzfaciltydaoService" class="com.tayyarah.hotel.dao.RzFacilityDaoServiceImp"></bean>
+	<bean id="rzroomimageDao" class="com.tayyarah.hotel.dao.RzHotelRoomImageDaoImp"></bean>
+	<bean id="rzroomimageDaoService" class="com.tayyarah.hotel.dao.RzHotelRoomImageDaoServiceImp"></bean>
+	<bean id="rzoverviewDao" class="com.tayyarah.hotel.dao.RzHotelOverviewDaoImp"></bean>
+	<bean id="rzoverviewDaoService" class="com.tayyarah.hotel.dao.RzHotelOverviewDaoServiceImp"></bean>
+	<bean id="hotelTransactionDao" class="com.tayyarah.hotel.dao.HotelTransactionDaoImp"></bean>
+	<bean id="hotelTransactionDaoService" class="com.tayyarah.hotel.dao.HotelTransactionDaoServiceImp"></bean>
+	<bean id="hotelSearchDao" class="com.tayyarah.hotel.dao.HotelSearchDaoImp"></bean>
+	<bean id="hotelSearchDaoService" class="com.tayyarah.hotel.dao.HotelSearchDaoServiceImp"></bean>
+	<bean id="hotelSearchRoomDetailDao" class="com.tayyarah.hotel.dao.HotelSearchRoomDetailDaoImp"></bean>
+	<bean id="hotelSearchRoomDetailDaoService"
+		class="com.tayyarah.hotel.dao.HotelSearchRoomDetailDaoServiceImp"></bean>
+	<bean id="hotelOrderDao" class="com.tayyarah.hotel.dao.HotelOrderDaoImp"></bean>
+	<bean id="hotelMarkupDao" class="com.tayyarah.hotel.dao.HotelMarkupDaoImp"></bean>
+	<bean id="objecttransformer" class="com.tayyarah.hotel.util.HotelObjectTransformer"></bean>
+	<bean id="hotelIdFactory" class="com.tayyarah.hotel.util.HotelIdFactoryImpl"></bean>
+	<bean id="hotelBookingDao" class="com.tayyarah.hotel.dao.HotelBookingDaoImp"></bean>
+	<bean id="moneydao" class="com.tayyarah.common.dao.MoneyExchangeDaoImp"></bean>
+	<bean id="moneydaoService" class="com.tayyarah.common.dao.MoneyExchangeDaoServiceImp"></bean>
+	<bean id="flightOrderRowEmailDao" class="com.tayyarah.email.dao.FlightOrderRowEmailDaoImp"></bean>
+	<bean id="flightOrderIdService" class="com.tayyarah.email.dao.FlightOrderRowEmailDaoServiceImp"></bean>
+	<bean id="asyncSupport" class="com.tayyarah.hotel.util.api.concurrency.AsyncSupport"></bean>
+	<bean id="PdfService" class="com.tayyarah.services.PdfService"></bean>
+	<bean id="emailService" class="com.tayyarah.services.EmailService"></bean>
+	<bean id="emailContentService" class="com.tayyarah.services.EmailContentService"></bean>
+	<bean id="emaildao" class="com.tayyarah.email.dao.EmailDaoImp"></bean>
+	<bean id="Hotelemaildao" class="com.tayyarah.hotel.dao.HotelOrderRowEmailDaoImp"></bean>
+	<bean id="emaildaoService" class="com.tayyarah.email.dao.EmailDaoServiceImp"></bean>
+	<bean id="pricebreakup" class="com.tayyarah.flight.model.FlightInvoiceData"></bean>
+	<bean id="hotelinvoicedata" class="com.tayyarah.hotel.model.HotelEmailInvoiceData"></bean>
+	<bean id="allEmailDao" class="com.tayyarah.email.dao.AllEmailDaoImp"></bean>
+	<bean id="creditnote" class="com.tayyarah.flight.dao.FlightCreditNoteDaoImp"></bean>
+	<bean id="lintashoteldaoImp" class="com.tayyarah.hotel.reposit.dao.HotelRepositDAOIMP"></bean>
+	<bean id="carCreditNote" class="com.tayyarah.car.dao.CarCreditNoteDaoImp"></bean>
+	<bean id="trainCreditNote" class="com.tayyarah.train.dao.TrainCreditNoteDaoImp"></bean>
+	<bean id="visaCreditNote" class="com.tayyarah.visa.dao.VisaCreditNoteDaoImp"></bean>
+	<bean id="insuranceCreditNote" class="com.tayyarah.insurance.dao.InsuranceCreditNoteDaoImp"></bean>
+	<bean id="busCreditNote" class="com.tayyarah.bus.dao.BusCreditNoteDaoImp"></bean>
+	<bean id="hotelRepositService" class="com.tayyarah.services.HotelRepositService"></bean>
+	<bean id="bookingComDAOImp" class="com.tayyarah.hotel.reposit.dao.BookingComDAOImp"></bean>
+	<bean id="walletDAO" class="com.tayyarah.user.dao.WalletTransferHistoryDAOIMP"></bean>
+	<bean id="hotelCreditNoteDao" class="com.tayyarah.hotel.dao.HotelCreditNoteDaoImp"></bean>
+	<bean id="airlineCommissionBlockDao"
+		class="com.tayyarah.flight.commission.dao.AirlineCommissionBlockDaoImp"></bean>
+	<bean id="airlineCommissionSheetDao"
+		class="com.tayyarah.flight.commission.dao.AirlineCommissionSheetDaoImp"></bean>
+	<bean id="emailNotificationdao" class="com.tayyarah.email.dao.EmailNotificationDaoImp"></bean>
+	<bean id="hotelDetailsDAO" class="com.tayyarah.hotel.dao.HotelDetailsDAO"></bean>
+	<bean id="hotelOfflineBookingDao" class="com.tayyarah.hotel.quotation.dao.HotelOfflineBookingDao"></bean>
+	<bean id="hotelTravelRequestDao" class="com.tayyarah.hotel.quotation.dao.HotelTravelRequestDao"></bean>
+	<bean id="flightTravelRequestDao"
+		class="com.tayyarah.flight.quotation.dao.FlightTravelRequestDao"></bean>
+	<bean id="NFDAO" class="com.tayyarah.common.notification.dao.NotificationDaoIMP"></bean>
+	<bean id="bugDao" class="com.tayyarah.bugtracker.dao.BugDaoImpl"></bean>
+	<bean id="apiProviderDAO" class="com.tayyarah.common.dao.ApiProviderDAOIMP"></bean>
+	<bean id="flightCancellationServices" class="com.tayyarah.services.FlightCancellationServices"></bean>
+	<bean id="notificationDAO" class="com.tayyarah.common.dao.NotificationDAO" />
+	<bean id="notificationServices" class="com.tayyarah.services.NotificationServices" />
+	<bean id="hotelAndFlightPaymentTransctionDAO"
+		class="com.tayyarah.common.notification.dao.HotelAndFlightPaymentTransctionDAO" />
+	<!-- <bean id="topCityDirectResponsedao" class="com.tayyarah.hotel.dao.TopCityDIrectResponsedao"/> -->
+
+	<!-- <bean id="topCitiesDirectResponseService" class="com.tayyarah.hotel.dao.TopCityDIrectResponseService"></bean> -->
+	<bean id="bugEmailService" class="com.tayyarah.services.BugEmailService"></bean>
+	<bean id="hotelbookservice" class="com.tayyarah.hotel.util.BookService"
+		scope="singleton"></bean>
+	<bean id="commissionService" class="com.tayyarah.services.CommissionService"></bean>
+	<bean id="currencyManager" class="com.tayyarah.hotel.util.CurrencyManager"></bean>
+	<bean id="hotelAnalyzer" class="com.tayyarah.hotel.util.HotelAnalyzer"></bean>
+	<bean id="citySearchResponse" class="com.tayyarah.hotel.model.CitySearchResponse"
+		scope="singleton"></bean>
+	<bean id="hotelTayyarahRepositService" class="com.tayyarah.services.HotelRepositService"></bean>
+	<bean id="commonConfig" class="com.tayyarah.configuration.CommonConfig"
+		scope="singleton"></bean>
+	<bean id="schedulerService" class="com.tayyarah.services.SchedulerService"></bean>
+	<bean id="carOrderRowEmail" class="com.tayyarah.car.dao.CarOrderRowEmailDaoImp"></bean>
+	<bean id="busOrderRowEmail" class="com.tayyarah.bus.dao.BusOrderRowEmailDaoImp"></bean>
+	<bean id="trainOrderRowEmail" class="com.tayyarah.train.dao.TrainOrderRowEmailDaoImp"></bean>
+	<bean id="visaOrderRowEmail" class="com.tayyarah.visa.dao.VisaOrderRowEmailDaoImp"></bean>
+	<bean id="insuranceOrderRowEmail" class="com.tayyarah.insurance.dao.InsuranceOrderRowEmailDaoImp"></bean>
+	<bean class="com.tayyarah.common.dao.ApiProviderCommonConfigActiveDaoImpl"
+		id="commonConfigApiDatabaseDao" />
+	<bean class="com.tayyarah.common.util.ApiProviderServiceImpl" id="apiProviderServiceImpl"
+		init-method="init">
+		<property name="commonConfigApiDatabaseDao" ref="commonConfigApiDatabaseDao" />
+	</bean>
+
+	<bean id="rmConfigDetailDAO" class="com.tayyarah.common.dao.RmConfigDetailDAOIMP"></bean>
+	<bean id="busCommonDao" class="com.tayyarah.bus.dao.BusCommonDaoImp"></bean>
+	<bean id="flightOrderDAO" class="com.tayyarah.flight.dao.FlightOrderDaoImpl"></bean>
+	<bean id="miscellaneousOrderRowEmail"
+		class="com.tayyarah.misellaneous.dao.MiscellaneousOrderRowEmailDaoImp"></bean>
+	<bean id="miscellaneousCreditNote"
+		class="com.tayyarah.misellaneous.dao.MiscellaneousCreditNoteDaoImp"></bean>
+	<bean id="lookBookDao"
+		class="com.tayyarah.admin.analytics.lookbook.dao.LookBookDaoImpl"></bean>
+
+	<bean id="frontUserDao" class="com.tayyarah.user.dao.FrontUserDaoImp"></bean>
+	<bean id="flightSearchCasheDao" class="com.tayyarah.flight.cache.dao.FlightSearchCacheDaoImpl"></bean>
+
+	<bean id="userService" class="com.tayyarah.umrah.service.TayyarahUmrahUserServiceImp"></bean>
+	<bean id="tayyarahUmrahDao" class="com.tayyarah.umrah.dao.TayyarahUmrahUserDaoImp"></bean>
+	<bean id="bulkEmpDao" class="com.api.bulk.emp.dao.BulkEmpDaoImpl"></bean>
+	<bean id="rmConfigDao" class="com.api.rm.config.dao.RmConfigDaoImpl"></bean>
+	<bean id="agentWalletDao" class="com.tayyarah.agent.wallet.dao.AgentWalletDAOIMP"></bean>
+	<bean id="bulkInvoicePdfDaoImpl" class="com.api.bulk.emp.dao.BulkInvoicePdfDaoImpl"></bean>
+	<!-- collaborators and configuration for this bean go here -->
+</beans>

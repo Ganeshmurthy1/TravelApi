@@ -1,0 +1,76 @@
+package com.tayyarah.common.exception;
+
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Map;
+
+public enum ErrorCodeCustomerEnum implements ErrorCodeEnum {
+	
+	
+	ClassNotFoundException(1, "UNKNOWN_ERROR", "customer.error.unknown"),
+	SOAPException(2, "INVALID_PARAMS", "customer.error.params.invalid"),
+	JAXBException(3, "NOT_FOUND", "customer.error.entity.notfound"),
+	HibernateException(4, "INVALID_PARAMS", "customer.error.params.invalid"),
+	NumberFormatException(5, "NOT_FOUND", "customer.error.entity.notfound"),	
+	RestClientException(6, "INVALID_PARAMS", "customer.error.params.invalid"),
+	Exception(7, "DUP_CUSTNAME", "customer.error.entity.dup.cust"),
+	LimitExceedException(8, "LIMIT_EXCEEDS", "customer.error.limit.exceeds");
+	
+	// lookup table to be used to find enum for conversion
+	private static final Map<Integer,ErrorCodeCustomerEnum> lookup = new HashMap<Integer,ErrorCodeCustomerEnum>();
+	static {
+		for(ErrorCodeCustomerEnum e : EnumSet.allOf(ErrorCodeCustomerEnum.class))
+			lookup.put(e.getErrorCode(), e);
+	}
+	
+	private static ServiceEnum serviceEnum = ServiceEnum.CUSTOMER_SERVICE;
+	private int errorCode;
+	private String name;
+	private String i18nKey;
+	
+	ErrorCodeCustomerEnum(int errorCode, String name, String i18nKey) {
+		this.errorCode = errorCode;
+		this.name = name;
+		this.i18nKey = i18nKey;
+	}
+	
+	public int getErrorCode() {
+		return this.errorCode;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+
+	public int getServiceId() {
+		return serviceEnum.getServiceId();
+	}
+
+	public String getMessageKey() {
+		return i18nKey;
+	}
+
+	public String getDefaultMessage() {
+		switch (this){
+		case ClassNotFoundException:
+			return "An unknown error has been encountered";
+		case SOAPException:
+			return "Invalid parameters were received";
+		case JAXBException:
+			return "Requested entity was not found";
+		case Exception:
+			return "Duplicate customer name used";
+		
+		//FIXME: add more here and can use resource bundle with i18nKey if desired 
+		
+		default: 
+			return "An undefined error has been encountered";
+		}
+	}
+	
+	public static ErrorCodeCustomerEnum get(int errorCode) { 
+		return lookup.get(errorCode); 
+	}
+
+
+}

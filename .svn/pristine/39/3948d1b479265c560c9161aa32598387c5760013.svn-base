@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+	<!-- to fetch data from config file -->
+	<context:property-placeholder location="classpath:CommonConfig.properties" />
+
+	<bean id="commonConfig" class="com.tayyarah.configuration.CommonConfig">
+		<property name="bug_service_url" value="${cc.bug_service_url}" />
+		<property name="server_ip_address" value="${cc.server_ip_address}" />
+		<property name="email_service_url" value="${cc.email_service_url}" />
+		<property name="email_service_Flight_pending_payment_url"
+			value="${cc.email_service_Flight_pending_payment_url}" />
+		<property name="email_service_Hotel_pending_payment_url"
+			value="${cc.email_service_Hotel_pending_payment_url}" />
+		<property name="invoice_hotel_prefix" value="${cc.invoice_hotel_prefix}" />
+		<property name="invoice_flight_prefix" value="${cc.invoice_flight_prefix}" />
+		<property name="is_lintas_enabled" value="${cc.is_lintas_enabled}" />
+		<property name="is_tayyarah_enabled" value="${cc.is_tayyarah_enabled}" />
+		<property name="email_booking" value="${cc.mail.booking}" />
+		<property name="email_support" value="${cc.mail.support}" />
+		<property name="email_support_bcc" value="${bcc.mail.support}" />
+		<property name="email_admin" value="${cc.mail.admin}" />
+		<property name="care_mail_id" value="${cc.care_mail}" />
+		<property name="image_path" value="${cc.image_iamge_Path}" />
+		<property name="defult_image_path" value="${cc.default_image_path}" />
+		<property name="log_location" value="${cc.log_location}" />
+		<property name="log_location_linux" value="${cc.log_location_linux}" />
+		<property name="log_location_windows" value="${cc.log_location_windows}" />
+		<property name="admin_url" value="${cc.admin_url}" />
+		<property name="ibe_url" value="${cc.ibe_url}" />
+		<property name="api_url" value="${cc.api_url}" />
+		<property name="email_verify_url" value="${cc.email_verify_url}" />
+		<property name="max_email_attempts" value="${cc.max_email_attempts}" />
+		<property name="max_email_queue_size" value="${cc.max_email_queue_size}" />
+		<property name="is_dev_mode" value="${cc.is_dev_mode}" />
+		<property name="email_service_Flight_Sendholdticket_url"
+			value="${cc.email_service_Flight_Sendholdticket_url}" />
+		<property name="email_service_Flight_Autorelease_holdbooking_url"
+			value="${cc.email_service_Flight_Autorelease_holdbooking_url}" />
+		<property name="flight_rounding_mode" value="${cc.flight_rounding_mode}" />
+		<property name="hotel_rounding_mode" value="${cc.hotel_rounding_mode}" />
+		<property name="bus_rounding_mode" value="${cc.bus_rounding_mode}" />
+		<property name="system_model" value="${cc.system_model}" />
+		<property name="allHotelFlightCustomerPartialPayment" value="${cc.allHotelFlightCustomerPartialPayment}"></property>
+		<property name="send_all_email_notification" value="${cc.send_all_email_notification}"></property>
+		<property name="corporateAgreementExpiryEmailUrl" value="${cc.corporate_agrement_expiry_mail_url}"></property>
+		<property name="sendFlightMailBeforeDeparture" value="${cc.flight_mail_before_departure_url}"></property>
+        <property name="sendFlightMailBeforeOneDay" value="${cc.flight_mail_before_oneday_url}"></property>
+        <property name="reset_all_b2c_ip" value="${cc.reset_all_b2c_ip}"></property>
+        <property name="flightCacheEnable" value="${cc.flight_cache_enable}"></property>
+	</bean>
+</beans>

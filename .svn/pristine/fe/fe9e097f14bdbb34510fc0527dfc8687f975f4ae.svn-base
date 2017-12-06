@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-3.2.xsd"> 
+<!--   to fetch data from config file -->
+   <context:property-placeholder location="classpath:APIConfiguration.properties" />
+     
+    <bean id="travelportConfig" class="com.tayyarah.apiconfig.model.TravelportConfig">
+        <property name="url" value="${tp.host.url}"/>   
+        <property name="environment" value="${tp.environment}"/>
+        <property name="targetBranch" value="${tp.targetBranch}"/>
+        <property name="username" value="${tp.username}"/>
+        <property name="password" value="${tp.password}"/>
+         <property name="pcc" value="${tp.pcc}"/>
+        <property name="isTest" value="${tp.isTest}"/>
+         <property name="isEnabled" value="${tp.isEnabled}"/>
+    </bean>
+  
+  
+   <bean id="bluestarConfig" class="com.tayyarah.apiconfig.model.BluestarConfig">
+        <property name="url" value="${bs.host.url}"/>   
+        <property name="interface_Code" value="${bs.interface_Code}"/>
+        <property name="interface_Auth_Key" value="${bs.interface_Auth_Key}"/>
+        <property name="Agent_Code" value="${bs.Agent_Code}"/>
+        <property name="transaction_Pwd" value="${bs.transaction_Pwd}"/>
+             <property name="isTest" value="${bs.isTest}"/>
+         <property name="isEnabled" value="${bs.isEnabled}"/>
+    </bean>
+    
+     <bean id="lintasConfig" class="com.tayyarah.apiconfig.model.LintasConfig">
+        <property name="url" value="${li.host.url}"/>   
+        <property name="paymode" value="${li.paymode}"/>
+        <property name="app_key" value="${li.app_key}"/>
+        <property name="userid" value="${li.userid}"/>
+        <property name="username" value="${li.username}"/>
+        <!-- <property name="pcc" value="${li.pcc}"/> -->
+        <property name="isTest" value="${li.isTest}"/>
+         <property name="isEnabled" value="${li.isEnabled}"/>
+    </bean>
+    
+      
+    <bean id="tayyarahConfig" class="com.tayyarah.apiconfig.model.TayyarahConfig">
+        <property name="url" value="${ta.host.url}"/>   
+        <property name="paymode" value="${ta.paymode}"/>
+        <property name="app_key" value="${ta.app_key}"/>
+        <property name="userid" value="${ta.userid}"/>
+        <property name="username" value="${ta.username}"/>
+        <property name="isTest" value="${ta.isTest}"/>
+        <property name="isEnabled" value="${ta.isEnabled}"/>
+    </bean>
+    
+    <!--  <bean id="tboFlightConfig" class="com.tayyarah.apiconfig.model.TboFlightConfig">
+       <property name="url" value="${tb.host.url}"/>  
+        <property name="username" value="${tb.username}"/>       
+        <property name="password" value="${tb.password}"/>
+        <property name="enduserip" value="${tb.enduserip}"/>
+           <property name="clientid" value="${tb.clientid}"/>
+        <property name="isTest" value="${tb.isTest}"/>
+         <property name="isEnabled" value="${tb.isEnabled}"/>
+    </bean> -->
+    
+    
+    <!--Hotel configuration beans are defined below...  -->
+    
+
+ 	<bean id="configTravelguru" class="com.tayyarah.hotel.util.HotelApiCredentials">
+        <property name="endPointUrl" value="${htgu.endPointUrl}"/>   
+        <property name="userName" value="${htgu.userName}"/>
+        <property name="password" value="${htgu.password}"/>
+        <property name="propertyId" value="${htgu.propertyId}"/>
+        <property name="id" value="${htgu.id}"/>       
+        <property name="apiProviderName" value="${htgu.apiProviderName}"/>
+        <property name="apiCurrency" value="${htgu.apiCurrency}"/>
+        <property name="isEnabled" value="${htgu.isEnabled}"/>
+        <property name="isTesting" value="${htgu.isTest}"/>
+    </bean>
+    <bean id="configReznext" class="com.tayyarah.hotel.util.HotelApiCredentials">
+        <property name="endPointUrl" value="${hrzn.endPointUrl}"/>   
+        <property name="userName" value="${hrzn.userName}"/>
+        <property name="password" value="${hrzn.password}"/>       
+        <property name="systemId" value="${hrzn.systemId}"/>
+        <property name="messageId" value="${hrzn.systemId}"/>
+        <property name="id" value="${hrzn.id}"/>       
+        <property name="apiProviderName" value="${hrzn.apiProviderName}"/>
+        <property name="apiCurrency" value="${hrzn.apiCurrency}"/>
+        <property name="isEnabled" value="${hrzn.isEnabled}"/>
+        <property name="isTesting" value="${hrzn.isTest}"/>
+    </bean>        
+    <bean id="configRezive" class="com.tayyarah.hotel.util.HotelApiCredentials">
+         <property name="endPointUrl" value="${hrzl.endPointUrl}"/>   
+        <property name="userName" value="${hrzl.userName}"/>
+        <property name="password" value="${hrzl.password}"/>
+        <property name="propertyId" value="${hrzl.propertyId}"/>
+        <property name="systemId" value="${hrzl.systemId}"/>
+        <property name="id" value="${hrzl.id}"/>       
+        <property name="apiProviderName" value="${hrzl.apiProviderName}"/>
+        <property name="apiCurrency" value="${hrzl.apiCurrency}"/>
+        <property name="isEnabled" value="${hrzl.isEnabled}"/>
+        <property name="isTesting" value="${hrzl.isTest}"/>
+    </bean>
+    <bean id="configTayyarah" class="com.tayyarah.hotel.util.HotelApiCredentials">
+    	<property name="authUrl" value="${htay.authUrl}"/> 
+        <property name="endPointUrl" value="${htay.endPointUrl}"/>   
+        <property name="userName" value="${htay.userName}"/>
+        <property name="password" value="${htay.password}"/>
+        <property name="propertyId" value="${htay.propertyId}"/>
+        <property name="apiKey" value="${htay.apiKey}"/>
+        <property name="id" value="${htay.id}"/>       
+        <property name="apiProviderName" value="${htay.apiProviderName}"/>
+        <property name="apiCurrency" value="${htay.apiCurrency}"/>
+        <property name="isEnabled" value="${htay.isEnabled}"/>
+        <property name="isTesting" value="${htay.isTest}"/>
+    </bean>
+    <bean id="configLintas" class="com.tayyarah.hotel.util.HotelApiCredentials">
+        <property name="endPointUrl" value="${hlin.endPointUrl}"/>   
+        <property name="userName" value="${hlin.userName}"/>
+        <property name="password" value="${hlin.password}"/>
+        <property name="propertyId" value="${hlin.propertyId}"/>
+        <property name="apiKey" value="${hlin.apiKey}"/>
+        <property name="id" value="${hlin.id}"/>       
+        <property name="apiProviderName" value="${hlin.apiProviderName}"/>
+        <property name="apiCurrency" value="${hlin.apiCurrency}"/>
+        <property name="isEnabled" value="${hlin.isEnabled}"/>
+        <property name="isTesting" value="${hlin.isTest}"/>
+    </bean>
+    
+    <bean id="configLintasReposit" class="com.tayyarah.hotel.util.HotelApiCredentials">
+        <property name="endPointUrl" value="${hlinrep.endPointUrl}"/>   
+        <property name="userName" value="${hlinrep.userName}"/>
+        <property name="password" value="${hlinrep.password}"/>
+        <property name="propertyId" value="${hlinrep.propertyId}"/>
+        <property name="apiKey" value="${hlinrep.apiKey}"/>
+        <property name="id" value="${hlinrep.id}"/>       
+        <property name="apiProviderName" value="${hlinrep.apiProviderName}"/>
+        <property name="apiCurrency" value="${hlinrep.apiCurrency}"/>
+        <property name="isEnabled" value="${hlinrep.isEnabled}"/>
+        <property name="isTesting" value="${hlinrep.isTest}"/>
+    </bean>
+    <bean id="configTBO" class="com.tayyarah.hotel.util.HotelApiCredentials">
+    	<property name="authUrl" value="${htbo.authUrl}"/> 
+        <property name="endPointUrl" value="${htbo.endPointUrl}"/>   
+        <property name="userName" value="${htbo.userName}"/>
+        <property name="password" value="${htbo.password}"/>
+        <property name="propertyId" value="${htbo.propertyId}"/>       
+        <property name="id" value="${htbo.id}"/>       
+        <property name="apiProviderName" value="${htbo.apiProviderName}"/>
+        <property name="apiCurrency" value="${htbo.apiCurrency}"/>
+        <property name="isEnabled" value="${htbo.isEnabled}"/>
+        <property name="isTesting" value="${htbo.isTest}"/>
+    </bean>
+     <bean id="configTayyarahReposit" class="com.tayyarah.hotel.util.HotelApiCredentials">
+    	<property name="authUrl" value="${htayrep.authUrl}"/> 
+        <property name="endPointUrl" value="${htayrep.endPointUrl}"/>   
+        <property name="userName" value="${htayrep.userName}"/>
+        <property name="password" value="${htayrep.password}"/>
+        <property name="propertyId" value="${htayrep.propertyId}"/>       
+        <property name="id" value="${htayrep.id}"/>       
+        <property name="apiProviderName" value="${htayrep.apiProviderName}"/>
+        <property name="apiCurrency" value="${htayrep.apiCurrency}"/>
+        <property name="isEnabled" value="${htayrep.isEnabled}"/>
+        <property name="isTesting" value="${htayrep.isTest}"/>
+    </bean>
+</beans>

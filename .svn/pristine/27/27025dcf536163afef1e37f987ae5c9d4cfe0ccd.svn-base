@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>Flight E-Ticket</title>
+<meta name="description" content="Intellicomm" />
+<meta name="author" content="see humans.txt"/>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style type="text/css">
+ /* Some resets and issue fixes */
+        #outlook a { padding:0; }
+        body{ width:100% !important; -webkit-text; size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0; }     
+        .ReadMsgBody { width: 100%; }
+        .ExternalClass {width:100%;} 
+        .backgroundTable {margin:0 auto; padding:0; width:100%;!important;} 
+        table td {border-collapse: collapse;}
+      
+        .ExternalClass * {line-height: 115%;}           
+        /* End reset */
+     body {
+            margin: 0;
+                padding: 0;
+                min-width: 100%;
+                background-color: #ffffff;
+            }
+            table {
+                border-spacing: 0;
+                font-family: sans-serif;
+                color: #333333;
+            }
+            td {
+                padding: 0;
+                font-size: 13px;
+                    text-align: center;
+            }
+            img {
+                border: 0;
+            }
+            .wrapper {
+                width: 100%;
+                table-layout: fixed;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+            }
+            .webkit {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            .outer {
+                margin: 10px auto;
+                    width: 100%;
+                    max-width: 600px;                    
+                    background-color: #f9f9f9;    
+                    border: 1px solid #ddd;
+                }      
+    </style>
+       </head>
+    <body  leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" yahoo="fix" style="font-family: Georgia, Times, serif; margin: 0;padding: 0;min-width: 100%;background-color: #ffffff;">
+        <div th:th:class="wrapper" style="width: 100%;table-layout: fixed;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;">
+        <div th:class="webkit" style="max-width: 600px;margin: 0 auto;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table width="600" align="center">
+            <tr>
+            <td>
+            <![endif]-->
+            
+            <table style="border-spacing: 0;font-family: sans-serif;color: #333333;margin: 10px auto;width: 100%;max-width: 600px;font-size: 18px;">
+	            <tr style="text-align: center;margin: 10px auto;">
+		            <td style="text-align: center;margin: 10px auto;font-size: 16px;">Intellicomm Solutions &amp; Enterprises Private Limited</td>
+	            </tr> 
+	            <tr style="text-align: center;margin: 10px auto;">
+		            <td style="text-align: center;margin: 10px auto;font-size: 16px;">   
+		            <img th:object="${user}"  th:src="${user.logoDisplayable}" width="150" height="100"  /> </td>
+	            </tr> 
+            </table>
+            <table th:class="outer" style="border-spacing: 0;font-family: sans-serif;color: #333333;margin: 10px auto;width: 100%;max-width: 600px;background-color: #f9f9f9;border: 2px solid #eee;">
+                <tr th:class="main-head" style="background-color: #fff;">
+                      <td style="padding: 0;font-size: 13px;text-align: center; border-bottom: 1px solid #ccc;">
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;" >
+                            <tr>
+                                
+                                <td th:class="inner"  style="padding: 0; font-size: 13px; text-align: left; padding-right: 5px; width:49%;">
+                                
+                                <table width="100%" th:class="invoice-no" style="border-spacing: 0;font-family: sans-serif;color: #333333;width: 100%;">
+                                        <tbody>
+                                          <tr th:class="h2no" >
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;"><!-- <p style="font-size: 18px;font-family: Georgia, Times, serif;line-height: 0px;color: #fff;">E-Ticket No:</p> -->
+                                            <address class="text-right" style="font-size: 13px;font-style: normal;font-family: Georgia, Times, serif;line-height: 18px;color: #000;">            
+                                                  <b>From:<span th:text="${company.Companyname}"></span></b>
+                                                  <br />
+                                                  <span ># 19 "The Oyster",2nd floor</span><br />
+                                                  <span  >Nandi durga road, Jaymahal extension,</span><br />
+                                                   <span >Bengaluru-560046</span><br />
+                                                  Phone : <span  >+91-080-42855555</span><br />
+                                                  Email : <span > care@tayyarah.com</span><br />
+                                            </address>
+                                            </td>                                           
+                                          </tr>                                         
+                                      </tbody>
+                                    </table>
+									 
+								</td>
+                                <td th:class="in-no-date" align="right" style="padding: 0;font-size: 13px;text-align: center;width: 49%;">
+                                       <table width="100%" th:class="invoice-no" style="border-spacing: 0;font-family: sans-serif;color: #333333;width: 100%;">
+                                        <tbody>
+                                          <tr th:class="h2no" >
+                                            <td style="padding: 5px;font-size: 13px;text-align: right; padding-right: 10px;"><!-- <p style="font-size: 18px;font-family: Georgia, Times, serif;line-height: 0px;color: #fff;">E-Ticket No:</p> -->
+                                            <address class="text-right" style="font-size: 13px;font-style: normal;font-family: Georgia, Times, serif;line-height: 18px;color: #000;">            
+                                                  <b>To:<span th:text="${company.Companyname}"></span></b>
+                                                  <br />
+                                                  Address : <span th:text="${company.Address}"></span><br />
+                                                  City : <span th:text="${company.City}"></span><br />
+                                                  Country : <span th:text="${company.Countryname}"></span><br />
+                                                  Phone : <span th:text="${company.Phone}"></span><br />
+                                                  Email : <span th:text="${company.Email}"></span><br />
+                                            </address>
+                                            </td>                                           
+                                          </tr>                                         
+                                      </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table> 
+                        
+                                              
+                    </td>
+                </tr>
+                
+          <tr th:class="main-head" style="background-color: #fff;">
+                      <td style="padding: 0;font-size: 13px;text-align: center;border-bottom: 1px solid #ccc">
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;" >
+                            <tr>
+                                
+                                <td th:class="inner"  style="padding: 0; font-size: 13px; text-align: left; padding-right: 5px; width:49%;height: 95px;" valign="top">
+                                
+                                <table width="100%" th:class="invoice-no" style="border-spacing: 0;font-family: sans-serif;color: #333333;width: 100%;">
+                                        <tbody>
+                                          <tr th:class="h2no" >
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;">
+                                            
+                                                   <p style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"><b  style="width:40%;">Credit Note No :</b> <span style="width:60%;"> NA</span></p>
+                                                   <p style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"><b style="width:40%;">Invoice No :</b> <span th:text="${flightorder.invoiceNo}" style="width:60%;"></span> </p>
+                                                   <p style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"><b style="width:40%;">Travel Cost Center :</b> <span style="width:60%;"> NA </span> </p>
+                                                   <p style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"><b style="width:40%;">Invoice Date :</b> <span style="width:60%;"> 1/20/2017 </span> </p>
+                                                   <p style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"><b style="width:40%;">Travel Ref No :</b> <span style="width:60%;"> NA </span> </p>
+                                                  
+                                            
+                                            </td>                                           
+                                          </tr>                                         
+                                      </tbody>
+                                    </table>
+									 
+								</td>
+                                <td th:class="in-no-date" align="right" style="padding: 0;font-size: 13px;text-align: center;width: 49%;height: 95px;" valign="top">
+                                       <table width="100%" th:class="invoice-no" style="border-spacing: 0;font-family: sans-serif;color: #333333;width: 100%;">
+                                        <tbody>
+                                          <tr th:class="h2no" >
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;">
+                                            
+                                                   <p style=" font-size: 11px;padding: 0px;padding-bottom: 5px;margin: 0px;"><b  style="width:40%;">Employee Code :</b> <span style="width:60%;"> TY-CRN-01-27</span></p>
+                                                   <p style=" font-size: 11px;padding: 0px;padding-bottom: 5px;margin: 0px;"><b style="width:40%;">Project Code :</b> <span style="width:60%;"> 1003122 </span> </p>
+                                                   <p style=" font-size: 11px;padding: 0px;padding-bottom: 5px;margin: 0px;"><b style="width:40%;">Billable Type :</b> <span style="width:60%;"> Indirect/SGA </span> </p>
+                                                   <p style=" font-size: 11px;padding: 0px;padding-bottom: 5px;margin: 0px;"  ><b style="width:40%;">Ticket Number :</b>  <span  style="width:60%;"> NA  </span> </p>
+                                                  
+                                            
+                                            </td>                                         
+                                          </tr>                                         
+                                      </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table> 
+                        
+                                              
+                    </td>
+                </tr> 
+                
+                 <tr th:class="main-head" style="background-color: #fff;">
+                      <td style="padding: 0;font-size: 13px;text-align: center; border-bottom: 1px solid #ccc">
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;" >
+                            <tr>
+                                
+                                <td th:class="inner"  style="padding: 0; font-size: 13px; text-align: left; padding-right: 5px; width:49%;height: 45px;" valign="top">
+                                
+                                <table width="100%" th:class="invoice-no" style="border-spacing: 0;font-family: sans-serif;color: #333333;width: 100%;">
+                                        <tbody>
+                                          <tr th:class="h2no" >
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;">
+                                            
+                                                   <p style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"><b  style="width:40%;">PAN No :</b> <span  th:text="${flightorder.pnr}" style="width:60%;"> TY-CRN-01-27</span></p>
+                                                   <p style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"><b style="width:40%;">Service Tax No :</b> <span style="width:60%;"> NA </span> </p>
+                                                   
+                                            
+                                            </td>                                           
+                                          </tr>                                         
+                                      </tbody>
+                                    </table>
+									 
+								</td>
+                                <td th:class="in-no-date" align="right" style="padding: 0;font-size: 13px;text-align: center;width: 49%;height: 45px;" valign="top">
+                                       <table width="100%" th:class="invoice-no" style="border-spacing: 0;font-family: sans-serif;color: #333333;width: 100%;">
+                                        <tbody>
+                                          <tr th:class="h2no" >
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;">
+                                            
+                                                 
+                                            
+                                            </td>                                         
+                                          </tr>                                         
+                                      </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>               
+                    </td>
+                </tr>  
+                 <tr th:class="main-head" style="background-color: #fff;">
+                      <td style="padding: 0;font-size: 13px;text-align: center; ">
+                        <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;" >
+                            <tr>
+                                
+                                <td th:class="inner"  style="padding: 0; font-size: 13px; text-align: left;  width:100%;" valign="top">
+                                
+                                <table width="100%" th:class="invoice-no" style="border-spacing: 0;font-family: sans-serif;color: #333333;width: 100%;">
+                                
+                                <thead>
+                                	<tr th:class="h2no" >
+                                            <th style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;width:10%;height: 25px;">
+                                            
+                                                    <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;">SL No</b>  
+                                            </th>     
+                                            <th style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;width:70%;height: 25px;">
+                                              <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;">Details</b>  
+                                                   
+                                            </th>  
+                                             <th style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;width:20%;height: 25px;">
+                                               <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;">Amount in INR </b>  
+                                            </th>                                      
+                                          </tr>
+                                </thead>
+                                        <tbody>
+                                          <tr th:class="h2no" >
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;border-top: 1px solid #ccc;width:10%;height: 25px;">
+                                            
+                                                    <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;" >1</b>  
+                                            </td>     
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;border-top: 1px solid #ccc;width:70%;height: 25px;">
+                                             <p style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"><span >MR</span>  <span  > </span> <span>Surname</span></p>
+                                                   
+                                                   
+                                            </td>  
+                                             <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;width:20%;height: 25px;border-top: 1px solid #ccc;">
+                                               <p style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"> <span  >  </span> </p>
+                                              
+                                            </td>                                      
+                                          </tr>  
+                                          
+                                          <tr th:class="h2no" >
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;border-top: 1px solid #ccc;width:10%;height: 25px;">
+                                            
+                                                   <p style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"> <span >  </span> </p>
+                                              
+                                            </td>     
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;border-top: 1px solid #ccc;width:70%;height: 25px;">
+                                             <p style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"> <span  > Start Date- </span><span>Origin</span>-<span >Destination</span></p>
+                                                  
+                                            </td>  
+                                             <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;width:20%;height: 25px;border-top: 1px solid #ccc;">
+                                               <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;">  </b>  
+                                            </td>                                      
+                                          </tr>
+                                          
+                                          <tr th:class="h2no" >
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;border-top: 1px solid #ccc;width:10%;height: 25px;">
+                                            
+                                                    <b style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"> </b>  
+                                            </td>     
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;border-top: 1px solid #ccc;width:70%;height: 25px;">
+                                              <b style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;">Ticket Cost</b>  
+                                                   
+                                            </td>  
+                                             <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;width:20%;height: 25px;border-top: 1px solid #ccc;">
+                                               <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;">  <span  th:text="${session.baseFareinBooking}"> No info</span></b>  
+                                            </td>                                      
+                                          </tr>  
+                                          
+                                          <tr th:class="h2no" >
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;border-top: 1px solid #ccc;width:10%;height: 25px;">
+                                            
+                                                    <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"> </b>  
+                                            </td>     
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;border-top: 1px solid #ccc;width:70%;height: 25px;">
+                                              <b style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;">Cancellation Charges</b>  
+                                                   
+                                            </td>  
+                                             <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;width:20%;height: 25px;border-top: 1px solid #ccc;">
+                                               <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;">  (921)</b>  
+                                            </td>                                      
+                                          </tr>  
+                                          
+                                           <tr th:class="h2no" >
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;border-top: 1px solid #ccc;width:10%;height: 25px;">
+                                            
+                                                    <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"> </b>  
+                                            </td>     
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;border-top: 1px solid #ccc;width:70%;height: 25px;">
+                                              <b style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;">Service Charges</b>  
+                                                   
+                                            </td>  
+                                             <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;width:20%;height: 25px;border-top: 1px solid #ccc;">
+                                               <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;">  (100.00)</b>  
+                                            </td>                                      
+                                          </tr>  
+                                          
+                                           <tr th:class="h2no" >
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;border-top: 1px solid #ccc;width:10%;height: 25px;">
+                                            
+                                                    <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"> </b>  
+                                            </td>     
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;border-top: 1px solid #ccc;width:70%;height: 25px;">
+                                              <b style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;">Service Tax On Service Fee( 14% )</b>  
+                                                   
+                                            </td>  
+                                             <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;width:20%;height: 25px;border-top: 1px solid #ccc;">
+                                               <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;">  (14)</b>  
+                                            </td>                                      
+                                          </tr>  
+                                          
+                                            <tr th:class="h2no" >
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;border-top: 1px solid #ccc;width:10%;height: 25px;">
+                                            
+                                                    <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"> </b>  
+                                            </td>     
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;border-top: 1px solid #ccc;width:70%;height: 25px;">
+                                              <b style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;">Swatch Barth Cess ( 05% )</b>  
+                                                   
+                                            </td>  
+                                             <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;width:20%;height: 25px;border-top: 1px solid #ccc;">
+                                               <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;">  (0.50)</b>  
+                                            </td>                                      
+                                          </tr>  
+                                          
+                                          <tr th:class="h2no" >
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;border-top: 1px solid #ccc;width:10%;height: 25px;">
+                                            
+                                                    <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"> </b>  
+                                            </td>     
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;border-top: 1px solid #ccc;width:70%;height: 25px;">
+                                              <b style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;">Krishi Kalyan Cess ( 05% )</b>  
+                                                   
+                                            </td>  
+                                             <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;width:20%;height: 25px;border-top: 1px solid #ccc;">
+                                               <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"> (0.50)</b>  
+                                            </td>                                      
+                                          </tr>  
+                                          
+                                           <tr th:class="h2no" >
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;border-top: 1px solid #ccc;width:10%;height: 25px;">
+                                            
+                                                    <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;"> </b>  
+                                            </td>     
+                                            <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;border-right: 1px solid #ccc;border-top: 1px solid #ccc;width:70%;height: 25px;">
+                                              <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;">Total Amount in INR</b>  
+                                                   
+                                            </td>  
+                                             <td style="padding: 5px;font-size: 13px;text-align: left; padding-right: 10px;width:20%;height: 25px;border-top: 1px solid #ccc;">
+                                               <b  style=" font-size: 11px;padding: 0px;margin: 0px;padding-bottom: 5px;" th:text="${session.totWithGst}"> </b>  
+                                            </td>                                      
+                                          </tr>
+                                          
+                                          
+                                          
+                                                                               
+                                      </tbody>
+                                    </table>
+									 
+								</td>
+                               
+                            </tr>
+                        </table> 
+                        
+                                              
+                    </td>
+                </tr> 
+                
+                
+                
+                
+                
+                
+            </table>
+ 
+   <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+    </div>
+      
+     
+        
+    </body>
+</html>
